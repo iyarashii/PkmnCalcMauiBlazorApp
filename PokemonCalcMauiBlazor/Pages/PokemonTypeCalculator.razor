@@ -1,0 +1,145 @@
+﻿@using PokemonTypeLibrary.Models
+@using System.Drawing
+@using System.Linq
+<PageTitle>Pokemon Type Calculator</PageTitle>
+
+<body class="bg-dark text-white">
+    <fieldset class="border p-2 mb-2">
+        <legend class="w-auto">Defending Pokemon Types</legend>
+        <table class="container-fluid text-center" style="border-collapse:collapse; width:100%;">
+            <tr>
+                <td>Primary Type</td>
+                <td>Secondary Type</td>
+            </tr>
+            <tr>
+                <td>
+                    <select class="container-fluid bg-dark" @bind="@PkmnCalc.SelectedPrimaryTypeName"
+                            style="color:@PkmnCalc.SelectedPrimaryTypeColor">
+                        @foreach (var pkmnType in PkmnCalc.PrimaryPkmnTypeList)
+                        {
+                            bool isSelected = false, isHidden = false, isDisabled = false;
+                            if (pkmnType.TypeName == PkmnCalc.SelectedPrimaryTypeName)
+                                isSelected = true;
+                            else if (pkmnType.TypeName == PkmnCalc.SelectedSecondaryTypeName && pkmnType.TypeName != emptyTypeName)
+                                isHidden = isDisabled = true;
+                            <option style="color:@pkmnType.TypeColor" selected="@isSelected" hidden="@isHidden" disabled="@isDisabled">
+                                @pkmnType.TypeName
+                            </option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <select class="container-fluid bg-dark" @bind="@PkmnCalc.SelectedSecondaryTypeName"
+                            style="color:@PkmnCalc.SelectedSecondaryTypeColor">
+                        @foreach (var pkmnType in PkmnCalc.SecondaryPkmnTypeList)
+                        {
+                            bool isSelected = false, isHidden = false, isDisabled = false;
+                            if (pkmnType.TypeName == PkmnCalc.SelectedSecondaryTypeName)
+                                isSelected = true;
+                            else if (pkmnType.TypeName == PkmnCalc.SelectedPrimaryTypeName && pkmnType.TypeName != emptyTypeName)
+                                isHidden = isDisabled = true;
+                            <option style="color:@pkmnType.TypeColor" selected="@isSelected" hidden="@isHidden" disabled="@isDisabled">
+                                @pkmnType.TypeName
+                            </option>
+                        }
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    @if (PkmnCalc.SelectedPrimaryTypeName != emptyTypeName || PkmnCalc.SelectedSecondaryTypeName != emptyTypeName)
+    {
+        <table class="container-fluid text-center table-bordered" style="border-collapse:collapse; table-layout:fixed">
+            <tr>
+                <th class="border border-white">
+                    Type
+                </th>
+                <th class="border border-white">
+                    Damage Multiplier
+                </th>
+            </tr>
+            @foreach (var pkmnType in PkmnCalc.PkmnTypeList.Where(x => x is not EmptyPkmnType))
+            {
+                <tr style="background-color:@pkmnType.TypeColor">
+                    <td class="border border-white" style="color:black; background-color:transparent">
+                        @pkmnType.TypeName
+                    </td>
+                    <td class="border border-white" style="color:black; background-color:transparent">
+                        @(pkmnType.DmgMultiplier)x
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</body>
+@code {
+    public PkmnCalcPage PkmnCalc = new PkmnCalcPage();
+    public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
+    public class PkmnCalcPage
+    {
+        // collections used by pokemon defending type comboboxes
+        public List<IPkmnType> PrimaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
+        public List<IPkmnType> SecondaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
+        private string _selectedPrimaryTypeName = emptyTypeName;
+        public string SelectedPrimaryTypeName
+        {
+            get => _selectedPrimaryTypeName;
+            set
+            {
+                _selectedPrimaryTypeName = value;
+                Calculate();
+            }
+        }
+
+        private string _selectedSecondaryTypeName = emptyTypeName;
+
+        public string SelectedSecondaryTypeName
+        {
+            get => _selectedSecondaryTypeName;
+            set
+            {
+                _selectedSecondaryTypeName = value;
+                Calculate();
+            }
+        }
+
+
+        // collection used by objectlistview
+        public List<IPkmnType> PkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
+
+        public string SelectedPrimaryTypeColor { get => SelectedPrimaryType.TypeColor; }
+
+        public string SelectedSecondaryTypeColor { get => SelectedSecondaryType.TypeColor; }
+        private IPkmnType _selectedPrimaryType = PkmnTypeFactory.CreateEmptyPkmnType();
+        private IPkmnType _selectedSecondaryType = PkmnTypeFactory.CreateEmptyPkmnType();
+
+        public IPkmnType SelectedPrimaryType
+        {
+            get => PrimaryPkmnTypeList.Where(type => type.TypeName == SelectedPrimaryTypeName).Single();
+            set => _selectedPrimaryType = value;
+        }
+        public IPkmnType SelectedSecondaryType
+        {
+            get => SecondaryPkmnTypeList.Where(type => type.TypeName == SelectedSecondaryTypeName).Single();
+            set => _selectedSecondaryType = value;
+        }
+
+        public void Calculate()
+        {
+            // check if both comboboxes select the (none) type
+            if (SelectedPrimaryTypeName == emptyTypeName && SelectedSecondaryTypeName == emptyTypeName)
+            {
+                return;
+            }
+
+            // calculate damage multiplier for each pkmn type in the list
+            foreach (var pkmnType in PkmnTypeList)
+            {
+                pkmnType.DmgMultiplier = pkmnType.CalculateDmgMultiplier(SelectedPrimaryType, SelectedSecondaryType);
+            }
+
+            // sort by damage multiplier from highest to lowest
+            PkmnTypeList.Sort((x, y) => y.DmgMultiplier.CompareTo(x.DmgMultiplier));
+        }
+    }
+}

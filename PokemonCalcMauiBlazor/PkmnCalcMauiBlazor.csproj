@@ -49,4 +49,17 @@
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
 
+    <ItemGroup>
+      <AndroidResource Remove="PokemonTypeLibrary\**" />
+      <Compile Remove="PokemonTypeLibrary\**" />
+      <Content Remove="PokemonTypeLibrary\**" />
+      <EmbeddedResource Remove="PokemonTypeLibrary\**" />
+      <MauiXaml Remove="PokemonTypeLibrary\**" />
+      <None Remove="PokemonTypeLibrary\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PokemonTypeLibrary\PokemonTypeLibrary.csproj" />
+    </ItemGroup>
+
 </Project>
