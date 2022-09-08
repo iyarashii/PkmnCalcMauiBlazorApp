@@ -2,10 +2,23 @@
 @using System.Drawing
 @using System.Linq
 <PageTitle>Pokemon Type Calculator</PageTitle>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    .sort-th {
+        cursor: pointer;
+    }
+
+    .fa {
+        float: right;
+    }
+</style>
 
 <body class="bg-dark text-white">
     <fieldset class="border p-2 mb-2">
         <legend class="w-auto">Defending Pokemon Types</legend>
+      @*  <select class="container-fluid bg-dark" @bind="">
+
+        </select>*@
         <table class="container-fluid text-center" style="border-collapse:collapse; width:100%;">
             <tr>
                 <td>Primary Type</td>
@@ -51,11 +64,13 @@
     {
         <table class="container-fluid text-center table-bordered" style="border-collapse:collapse; table-layout:fixed">
             <tr>
-                <th class="border border-white">
+                <th class="border border-white text-white sort-th" @onclick="@(() => SortTable(nameof(PkmnType.TypeName)))">
                     Type
+                    <span class="fa @(SetSortIcon(nameof(PkmnType.TypeName)))"></span>
                 </th>
-                <th class="border border-white">
+                <th class="border border-white text-white sort-th" @onclick="@(() => SortTable(nameof(PkmnType.DmgMultiplier)))">
                     Damage Multiplier
+                    <span class="fa @(SetSortIcon(nameof(PkmnType.DmgMultiplier)))"></span>
                 </th>
             </tr>
             @foreach (var pkmnType in PkmnCalc.PkmnTypeList.Where(x => x is not EmptyPkmnType))
@@ -73,10 +88,49 @@
     }
 </body>
 @code {
+    private bool isSortedAscending;
+    private string activeSortColumn;
+    private void SortTable(string columnName)
+    {
+        if (columnName != activeSortColumn)
+        {
+            PkmnCalc.PkmnTypeList = PkmnCalc.PkmnTypeList.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList();
+            isSortedAscending = true;
+            activeSortColumn = columnName;
+        }
+        else
+        {
+            if (isSortedAscending)
+            {
+                PkmnCalc.PkmnTypeList =  PkmnCalc.PkmnTypeList.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList();
+            }
+            else
+            {
+                PkmnCalc.PkmnTypeList = PkmnCalc.PkmnTypeList.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList();
+            }
+            isSortedAscending = !isSortedAscending;
+        }
+    }
+    private string SetSortIcon(string columnName)
+    {
+        if (activeSortColumn != columnName)
+        {
+            return string.Empty;
+        }
+        if (isSortedAscending)
+        {
+            return "fa-sort-up";
+        }
+        else
+        {
+            return "fa-sort-down";
+        }
+    }
     public PkmnCalcPage PkmnCalc = new PkmnCalcPage();
     public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
     public class PkmnCalcPage
     {
+        public SortingType SelectedSortingType { get; set; }
         // collections used by pokemon defending type comboboxes
         public List<IPkmnType> PrimaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
         public List<IPkmnType> SecondaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
