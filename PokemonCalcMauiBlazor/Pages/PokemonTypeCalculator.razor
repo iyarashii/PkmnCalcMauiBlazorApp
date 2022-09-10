@@ -127,7 +127,6 @@
     public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
     public class PkmnCalcPage
     {
-        // collections used by pokemon defending type comboboxes
         public List<IPkmnType> PrimaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
         public List<IPkmnType> SecondaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
         private string _selectedPrimaryTypeName = emptyTypeName;
@@ -176,11 +175,8 @@
 
         public void Calculate()
         {
-            // check if both comboboxes select the (none) type
             if (SelectedPrimaryTypeName == emptyTypeName && SelectedSecondaryTypeName == emptyTypeName)
-            {
                 return;
-            }
 
             // calculate damage multiplier for each pkmn type in the list
             foreach (var pkmnType in PkmnTypeList)
