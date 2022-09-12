@@ -62,4 +62,8 @@
       <ProjectReference Include="..\PokemonTypeLibrary\PokemonTypeLibrary.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Data\" />
+    </ItemGroup>
+
 </Project>
