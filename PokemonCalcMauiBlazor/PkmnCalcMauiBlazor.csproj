@@ -64,6 +64,11 @@
 
     <ItemGroup>
       <Folder Include="Data\" />
+      <Folder Include="wwwroot\css\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MudBlazor" Version="6.0.15" />
     </ItemGroup>
 
 </Project>
