@@ -26,7 +26,6 @@
             </tr>
             <tr>
                 <td>
-                    @*<MudSelect T="string" Label="Primary Type" AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedPrimaryTypeName" Style="label {-webkit-text-fill-color:red;};">*@
                     <MudSelect T="string" Label="Primary Type" AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedPrimaryTypeName"
                     Style="@($"-webkit-text-fill-color:{SelectedPrimaryTypeColor}")">
                         @foreach (var pkmnType in PrimaryPkmnTypeList)
@@ -39,20 +38,6 @@
                             <MudSelectItem Value="@pkmnType.TypeName" Style="@($"color:{pkmnType.TypeColor}")" Disabled="isDisabled"/>
                         }
                     </MudSelect>
-                    @*<select class="container-fluid bg-dark" @bind="@SelectedPrimaryTypeName"
-                            style="color:@SelectedPrimaryTypeColor">
-                        @foreach (var pkmnType in PrimaryPkmnTypeList)
-                        {
-                            bool isSelected = false, isHidden = false, isDisabled = false;
-                            if (pkmnType.TypeName == SelectedPrimaryTypeName)
-                                isSelected = true;
-                            else if (pkmnType.TypeName == SelectedSecondaryTypeName && pkmnType.TypeName != emptyTypeName)
-                                isHidden = isDisabled = true;
-                            <option style="color:@pkmnType.TypeColor" selected="@isSelected" hidden="@isHidden" disabled="@isDisabled">
-                                @pkmnType.TypeName
-                            </option>
-                        }
-                    </select>*@
                 </td>
                 <td>
                     <MudSelect T="string" Label="Secondary Type" AnchorOrigin="Origin.BottomCenter" Style="@($"-webkit-text-fill-color:{SelectedSecondaryTypeColor}")" @bind-Value="@SelectedSecondaryTypeName">
@@ -66,20 +51,6 @@
                             <MudSelectItem Value="@pkmnType.TypeName" Style="@($"color:{pkmnType.TypeColor}")" Disabled="isDisabled"/>
                         }
                     </MudSelect>
-                    @*<select class="container-fluid bg-dark" @bind="@SelectedSecondaryTypeName"
-                            style="color:@SelectedSecondaryTypeColor">
-                        @foreach (var pkmnType in SecondaryPkmnTypeList)
-                        {
-                            bool isSelected = false, isHidden = false, isDisabled = false;
-                            if (pkmnType.TypeName == SelectedSecondaryTypeName)
-                                isSelected = true;
-                            else if (pkmnType.TypeName == SelectedPrimaryTypeName && pkmnType.TypeName != emptyTypeName)
-                                isHidden = isDisabled = true;
-                            <option style="color:@pkmnType.TypeColor" selected="@isSelected" hidden="@isHidden" disabled="@isDisabled">
-                                @pkmnType.TypeName
-                            </option>
-                        }
-                    </select>*@
                 </td>
             </tr>
         </MudSimpleTable>
