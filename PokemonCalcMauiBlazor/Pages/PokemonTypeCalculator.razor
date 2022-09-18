@@ -26,7 +26,7 @@
             </tr>
             <tr>
                 <td>
-                    <MudSelect T="string" Label="Primary Type" AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedPrimaryTypeName"
+                    <MudSelect Dense="true" MaxHeight="-1" T="string" Label="Primary Type" AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedPrimaryTypeName"
                     Style="@($"-webkit-text-fill-color:{SelectedPrimaryTypeColor}")">
                         @foreach (var pkmnType in PrimaryPkmnTypeList)
                         {
@@ -40,7 +40,7 @@
                     </MudSelect>
                 </td>
                 <td>
-                    <MudSelect T="string" Label="Secondary Type" AnchorOrigin="Origin.BottomCenter" Style="@($"-webkit-text-fill-color:{SelectedSecondaryTypeColor}")" @bind-Value="@SelectedSecondaryTypeName">
+                    <MudSelect T="string" Dense="true" MaxHeight="1000" Label="Secondary Type" AnchorOrigin="Origin.BottomCenter" Style="@($"-webkit-text-fill-color:{SelectedSecondaryTypeColor}")" @bind-Value="@SelectedSecondaryTypeName">
                         @foreach (var pkmnType in SecondaryPkmnTypeList)
                         {
                             bool isSelected = false, isHidden = false, isDisabled = false;
