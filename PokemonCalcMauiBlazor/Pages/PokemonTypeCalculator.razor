@@ -35,7 +35,9 @@
                                 isSelected = true;
                             else if (pkmnType.TypeName == SelectedSecondaryTypeName && pkmnType.TypeName != emptyTypeName)
                                 isHidden = isDisabled = true;
-                            <MudSelectItem Value="pkmnType.TypeName" Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)}")" Disabled="isDisabled"/>
+                            <MudSelectItem Value="pkmnType.TypeName" 
+                            Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)};-webkit-text-fill-color:{pkmnType.TypeColor}")" 
+                            Disabled="isDisabled" />
                         }
                     </MudSelect>
                 </td>
@@ -48,7 +50,7 @@
                                 isSelected = true;
                             else if (pkmnType.TypeName == SelectedPrimaryTypeName && pkmnType.TypeName != emptyTypeName)
                                 isHidden = isDisabled = true;
-                            <MudSelectItem Value="@pkmnType.TypeName" Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)}")" Disabled="isDisabled" />
+                            <MudSelectItem Value="@pkmnType.TypeName" Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)};-webkit-text-fill-color:{pkmnType.TypeColor}")" Disabled="isDisabled" />
                         }
                     </MudSelect>
                 </td>
