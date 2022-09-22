@@ -16,6 +16,7 @@
 </style>
 
 <body class="bg-dark text-white">
+    <MudPaper>
         <fieldset class="border-solid border-2 mud-border-primary pa-4" style="margin:10px;">
         <legend style="margin-inline:5px;">Defending Pokemon Types</legend>
         <MudSimpleTable Style="border-collapse:collapse; width:100%; padding:5px;">
@@ -58,30 +59,22 @@
     </fieldset>
     @if (SelectedPrimaryTypeName != emptyTypeName || SelectedSecondaryTypeName != emptyTypeName)
     {
-        <table class="container-fluid text-center table-bordered" style="border-collapse:collapse; table-layout:fixed">
-            <tr>
-                <th class="border border-white text-white sort-th" @onclick="@(() => SortTable(nameof(PkmnType.TypeName)))">
-                    Type
-                    <span class="fa @(SetSortIcon(nameof(PkmnType.TypeName)))"></span>
-                </th>
-                <th class="border border-white text-white sort-th" @onclick="@(() => SortTable(nameof(PkmnType.DmgMultiplier)))">
-                    Damage Multiplier
-                    <span class="fa @(SetSortIcon(nameof(PkmnType.DmgMultiplier)))"></span>
-                </th>
-            </tr>
-            @foreach (var pkmnType in PkmnTypeList.Where(x => x is not EmptyPkmnType))
-            {
-                <tr style="background-color:@pkmnType.TypeColor">
-                    <td class="border border-white" style="color:black; background-color:transparent">
-                        @pkmnType.TypeName
-                    </td>
-                    <td class="border border-white" style="color:black; background-color:transparent">
-                        @(pkmnType.DmgMultiplier)x
-                    </td>
-                </tr>
-            }
-        </table>
+        <MudTable Dense="true" Bordered="true" Items="@PkmnTypeList.Where(x => x is not EmptyPkmnType)" Hover="true" SortLabel="Sort By">
+            <ColGroup>
+                    <col style="width:50%;"/>
+                    <col style="width:50%;"/>
+            </ColGroup>
+            <HeaderContent>
+                <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<IPkmnType, object>(x => x.TypeName)">Type</MudTableSortLabel></MudTh>
+                <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<IPkmnType, object>(x => x.DmgMultiplier)">Damage Multiplier</MudTableSortLabel></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd Style="@($"color:{context.TypeColor};text-align:center")" DataLabel="Type">@context.TypeName</MudTd>
+                <MudTd Style="@($"color:{context.TypeColor};text-align:center")" DataLabel="Damage Multiplier">@($"{context.DmgMultiplier}x")</MudTd>
+            </RowTemplate>
+        </MudTable>
     }
+    </MudPaper>
 </body>
 @code {
     private bool isSortedAscending;
