@@ -65,44 +65,6 @@
     </MudPaper>
 </body>
 @code {
-    private bool isSortedAscending;
-    private string activeSortColumn;
-    private void SortTable(string columnName)
-    {
-        if (columnName != activeSortColumn)
-        {
-            PkmnTypeList = PkmnTypeList.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList();
-            isSortedAscending = true;
-            activeSortColumn = columnName;
-        }
-        else
-        {
-            if (isSortedAscending)
-            {
-                PkmnTypeList =  PkmnTypeList.OrderByDescending(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList();
-            }
-            else
-            {
-                PkmnTypeList = PkmnTypeList.OrderBy(x => x.GetType().GetProperty(columnName).GetValue(x, null)).ToList();
-            }
-            isSortedAscending = !isSortedAscending;
-        }
-    }
-    private string SetSortIcon(string columnName)
-    {
-        if (activeSortColumn != columnName)
-        {
-            return string.Empty;
-        }
-        if (isSortedAscending)
-        {
-            return "fa-sort-up";
-        }
-        else
-        {
-            return "fa-sort-down";
-        }
-    }
     public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
     public List<IPkmnType> PrimaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
     public List<IPkmnType> SecondaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
