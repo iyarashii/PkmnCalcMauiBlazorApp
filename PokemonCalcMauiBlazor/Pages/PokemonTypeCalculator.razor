@@ -18,10 +18,8 @@
                     Style="@($"-webkit-text-fill-color:{SelectedPrimaryTypeColor}")">
                         @foreach (var pkmnType in PrimaryPkmnTypeList)
                         {
-                            bool isSelected = false, isHidden = false, isDisabled = false;
-                            if (pkmnType.TypeName == SelectedPrimaryTypeName)
-                                isSelected = true;
-                            else if (pkmnType.TypeName == SelectedSecondaryTypeName && pkmnType.TypeName != emptyTypeName)
+                            bool isHidden = false, isDisabled = false;
+                            if (pkmnType.TypeName == SelectedSecondaryTypeName && pkmnType.TypeName != emptyTypeName)
                                 isHidden = isDisabled = true;
                             <MudSelectItem Value="pkmnType.TypeName" 
                             Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)};-webkit-text-fill-color:{pkmnType.TypeColor}")" 
@@ -33,10 +31,8 @@
                     <MudSelect T="string" Dense="true" MaxHeight="1000" Label="Secondary Type" AnchorOrigin="Origin.BottomCenter" Style="@($"-webkit-text-fill-color:{SelectedSecondaryTypeColor}")" @bind-Value="@SelectedSecondaryTypeName">
                         @foreach (var pkmnType in SecondaryPkmnTypeList)
                         {
-                            bool isSelected = false, isHidden = false, isDisabled = false;
-                            if (pkmnType.TypeName == SelectedSecondaryTypeName)
-                                isSelected = true;
-                            else if (pkmnType.TypeName == SelectedPrimaryTypeName && pkmnType.TypeName != emptyTypeName)
+                            bool isHidden = false, isDisabled = false;
+                            if (pkmnType.TypeName == SelectedPrimaryTypeName && pkmnType.TypeName != emptyTypeName)
                                 isHidden = isDisabled = true;
                             <MudSelectItem Value="@pkmnType.TypeName" Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)};-webkit-text-fill-color:{pkmnType.TypeColor}")" Disabled="isDisabled" />
                         }
