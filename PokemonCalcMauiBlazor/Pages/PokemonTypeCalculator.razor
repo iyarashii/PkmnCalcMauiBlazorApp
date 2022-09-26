@@ -14,29 +14,12 @@
             </tr>
             <tr>
                 <td>
-                    <MudSelect Dense="true" MaxHeight="-1" T="string" Label="Primary Type" AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedPrimaryTypeName"
-                    Style="@($"-webkit-text-fill-color:{SelectedPrimaryTypeColor}")">
-                        @foreach (var pkmnType in PrimaryPkmnTypeList)
-                        {
-                            bool isHidden = false, isDisabled = false;
-                            if (pkmnType.TypeName == SelectedSecondaryTypeName && pkmnType.TypeName != emptyTypeName)
-                                isHidden = isDisabled = true;
-                            <MudSelectItem Value="pkmnType.TypeName" 
-                            Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)};-webkit-text-fill-color:{pkmnType.TypeColor}")" 
-                            Disabled="isDisabled" />
-                        }
-                    </MudSelect>
+                    <PokemonTypeSelect PkmnTypeList="@PrimaryPkmnTypeList" SelectedTypeColor="@SelectedPrimaryTypeColor"
+                    @bind-SelectedTypeName="SelectedPrimaryTypeName" Selected2ndTypeName="@SelectedSecondaryTypeName" />
                 </td>
                 <td>
-                    <MudSelect T="string" Dense="true" MaxHeight="1000" Label="Secondary Type" AnchorOrigin="Origin.BottomCenter" Style="@($"-webkit-text-fill-color:{SelectedSecondaryTypeColor}")" @bind-Value="@SelectedSecondaryTypeName">
-                        @foreach (var pkmnType in SecondaryPkmnTypeList)
-                        {
-                            bool isHidden = false, isDisabled = false;
-                            if (pkmnType.TypeName == SelectedPrimaryTypeName && pkmnType.TypeName != emptyTypeName)
-                                isHidden = isDisabled = true;
-                            <MudSelectItem Value="@pkmnType.TypeName" Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)};-webkit-text-fill-color:{pkmnType.TypeColor}")" Disabled="isDisabled" />
-                        }
-                    </MudSelect>
+                    <PokemonTypeSelect PkmnTypeList="@SecondaryPkmnTypeList" SelectedTypeColor="@SelectedSecondaryTypeColor"
+                    @bind-SelectedTypeName="SelectedSecondaryTypeName" Selected2ndTypeName="@SelectedPrimaryTypeName" />
                 </td>
             </tr>
         </MudSimpleTable>

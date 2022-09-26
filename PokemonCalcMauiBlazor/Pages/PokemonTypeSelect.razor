@@ -1,0 +1,37 @@
+﻿@using PokemonTypeLibrary.Models
+@using System.Drawing
+@using System.Linq
+<MudSelect Dense="true" MaxHeight="-1" T="string" Label="Primary Type" AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedTypeName"
+            Style="@($"-webkit-text-fill-color:{SelectedTypeColor}")">
+    @foreach (var pkmnType in PkmnTypeList)
+    {
+        bool isHidden = false, isDisabled = false;
+        if (pkmnType.TypeName == Selected2ndTypeName && pkmnType.TypeName != emptyTypeName)
+            isHidden = isDisabled = true;
+        <MudSelectItem Value="pkmnType.TypeName" Disabled="isDisabled"
+        Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)};-webkit-text-fill-color:{pkmnType.TypeColor}")"/>
+    }
+</MudSelect>
+@code {
+    private string _selectedTypeName;
+    public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
+    [Parameter]
+    public string SelectedTypeColor { get; set; }
+    [Parameter]
+    public string SelectedTypeName 
+    {
+        get => _selectedTypeName; 
+        set 
+        {
+            if (_selectedTypeName == value) return;
+            _selectedTypeName = value; 
+            SelectedTypeNameChanged.InvokeAsync(value);
+        } 
+    }
+    [Parameter]
+    public EventCallback<string> SelectedTypeNameChanged { get; set; }
+    [Parameter]
+    public string Selected2ndTypeName { get; set; }
+    [Parameter]
+    public List<IPkmnType> PkmnTypeList { get; set; }
+}
