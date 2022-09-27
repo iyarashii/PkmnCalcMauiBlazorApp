@@ -14,11 +14,11 @@
             </tr>
             <tr>
                 <td>
-                    <PokemonTypeSelect PkmnTypeList="@PrimaryPkmnTypeList" SelectedTypeColor="@SelectedPrimaryTypeColor"
+                    <PokemonTypeSelect Label="Primary Type" PkmnTypeList="@PrimaryPkmnTypeList" SelectedTypeColor="@SelectedPrimaryTypeColor"
                     @bind-SelectedTypeName="SelectedPrimaryTypeName" Selected2ndTypeName="@SelectedSecondaryTypeName" />
                 </td>
                 <td>
-                    <PokemonTypeSelect PkmnTypeList="@SecondaryPkmnTypeList" SelectedTypeColor="@SelectedSecondaryTypeColor"
+                        <PokemonTypeSelect Label="Secondary Type" PkmnTypeList="@SecondaryPkmnTypeList" SelectedTypeColor="@SelectedSecondaryTypeColor"
                     @bind-SelectedTypeName="SelectedSecondaryTypeName" Selected2ndTypeName="@SelectedPrimaryTypeName" />
                 </td>
             </tr>
@@ -70,8 +70,6 @@
         }
     }
 
-
-    // collection used by objectlistview
     public List<IPkmnType> PkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
 
     public string SelectedPrimaryTypeColor { get => SelectedPrimaryType.TypeColor; }

@@ -1,7 +1,7 @@
 ﻿@using PokemonTypeLibrary.Models
 @using System.Drawing
 @using System.Linq
-<MudSelect Dense="true" MaxHeight="-1" T="string" Label="Primary Type" AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedTypeName"
+<MudSelect Dense="true" MaxHeight="-1" T="string" Label="@Label" AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedTypeName"
             Style="@($"-webkit-text-fill-color:{SelectedTypeColor}")">
     @foreach (var pkmnType in PkmnTypeList)
     {
@@ -15,6 +15,8 @@
 @code {
     private string _selectedTypeName;
     public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
+    [Parameter]
+    public string Label { get; set; }
     [Parameter]
     public string SelectedTypeColor { get; set; }
     [Parameter]
