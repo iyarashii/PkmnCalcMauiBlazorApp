@@ -9,10 +9,6 @@
         <legend style="margin-inline:5px;">Defending Pokemon Types</legend>
         <MudSimpleTable Style="border-collapse:collapse; width:100%; padding:5px;">
             <tr>
-                <td>Primary Type</td>
-                <td>Secondary Type</td>
-            </tr>
-            <tr>
                 <td>
                     <PokemonTypeSelect Label="Primary Type" PkmnTypeList="@PrimaryPkmnTypeList" SelectedTypeColor="@SelectedPrimaryTypeColor"
                     @bind-SelectedTypeName="SelectedPrimaryTypeName" Selected2ndTypeName="@SelectedSecondaryTypeName" />
