@@ -4,7 +4,6 @@
 <PageTitle>Pokemon Type Calculator</PageTitle>
 
 <body class="bg-dark text-white">
-    <MudPaper>
         <fieldset class="border-solid border-2 mud-border-primary" style="margin:5px;">
         <legend style="margin-inline:5px;">Defending Pokemon Types</legend>
         <MudSimpleTable Style="border-collapse:collapse; width:100%; padding:0px 5px 5px 5px;">
@@ -37,7 +36,6 @@
             </RowTemplate>
         </MudTable>
     }
-    </MudPaper>
 </body>
 @code {
     public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
