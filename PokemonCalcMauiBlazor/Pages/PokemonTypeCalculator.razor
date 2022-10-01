@@ -21,7 +21,7 @@
     </fieldset>
     @if (SelectedPrimaryTypeName != emptyTypeName || SelectedSecondaryTypeName != emptyTypeName)
     {
-        <MudTable Dense="true" Bordered="true" Items="@PkmnTypeList.Where(x => x is not EmptyPkmnType)" Hover="true" SortLabel="Sort By">
+        <MudTable Dense="true" Bordered="false" Items="@PkmnTypeList.Where(x => x is not EmptyPkmnType)" Hover="true" SortLabel="Sort By">
             <ColGroup>
                     <col style="width:50%;"/>
                     <col style="width:50%;"/>
