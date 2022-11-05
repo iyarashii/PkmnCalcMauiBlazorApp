@@ -34,7 +34,11 @@
     {
         if (firstRender)
         {
+            #if ANDROID
+            _isDarkMode = Application.Current.RequestedTheme == AppTheme.Dark;
+            #else
             _isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            #endif
             StateHasChanged();
         }
     }
