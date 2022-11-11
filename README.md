@@ -1,5 +1,13 @@
 # PkmnCalcMauiBlazorApp
 .NET MAUI Blazor App implementation of the https://github.com/iyarashii/PokemonTypeCalculator  
+Other versions:
+- Xamarin.Android - https://github.com/iyarashii/PokemonTypeCalculator
+- WinForms - https://github.com/iyarashii/PkmnCalcWinForms
+- WPF - https://github.com/iyarashii/PkmnCalcWPF
+- WPF with Avalonia - https://github.com/iyarashii/PkmnTypeCalcAvaloniaWpf
+- ASP.NET with Razor Pages - https://github.com/iyarashii/PkmnTypeCalcRazorPages
+- Blazor WASM - https://github.com/iyarashii/PkmnCalcBlazorWasm
+
 This app shows damage multipliers that affect defending pokemon.  
 App on Windows:
 ![image](https://user-images.githubusercontent.com/38395954/196004141-13c05d37-5737-408d-99ad-168bcc4dd029.png)
