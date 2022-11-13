@@ -30,8 +30,9 @@ sorted by dmg multiplier lowest to highest:
 2. android
 <img src="https://user-images.githubusercontent.com/38395954/196034674-bfcd4106-4055-4819-ba38-cb50158d7967.png" width="300">
 
-Pokedex page:
-1: Windows
-![windows pokedex page](https://user-images.githubusercontent.com/38395954/197001537-b4890372-4da7-40a3-86b4-998c6160d915.png)
+Pokedex page:  
+1. Windows  
+![windows pokedex page](https://user-images.githubusercontent.com/38395954/201537004-15e855d2-93ab-44f2-9124-a519ccdeea46.png)
+
 2. Android  
 <img src="https://user-images.githubusercontent.com/38395954/197001907-b3d19560-5689-4de9-b311-d9486be87d95.png" width="300">
