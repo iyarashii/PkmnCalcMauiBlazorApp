@@ -1,15 +1,23 @@
 ﻿@using PokemonTypeLibrary.Models
 @using System.Drawing
 @using System.Linq
-<MudSelect Dense="true" MaxHeight="@maxHeight" T="string" Label="@Label" AnchorOrigin="Origin.BottomCenter" @bind-Value="@SelectedTypeName"
-            Style="@($"-webkit-text-fill-color:{SelectedTypeColor}")">
+<MudSelect 
+        Dense="true" 
+        MaxHeight="@maxHeight" 
+        T="string" 
+        Label="@Label" 
+        AnchorOrigin="Origin.BottomCenter" 
+        @bind-Value="@SelectedTypeName"
+        Style="@($"-webkit-text-fill-color:{SelectedTypeColor}")">
     @foreach (var pkmnType in PkmnTypeList)
     {
         bool isHidden = false, isDisabled = false;
         if (pkmnType.TypeName == Selected2ndTypeName && pkmnType.TypeName != emptyTypeName)
             isHidden = isDisabled = true;
-        <MudSelectItem Value="pkmnType.TypeName" Disabled="isDisabled"
-        Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)};-webkit-text-fill-color:{pkmnType.TypeColor}")"/>
+        <MudSelectItem 
+            Value="pkmnType.TypeName" 
+            Disabled="isDisabled"
+            Style="@($"color:{pkmnType.TypeColor};display:{(isHidden ? "none" : string.Empty)};-webkit-text-fill-color:{pkmnType.TypeColor}")"/>
     }
 </MudSelect>
 @code {
