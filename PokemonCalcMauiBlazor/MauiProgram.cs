@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Components.WebView.Maui;
+﻿// Copyright (c) 2022 iyarashii @ https://github.com/iyarashii 
+// Licensed under the GNU General Public License v3.0.
+
+using Microsoft.AspNetCore.Components.WebView.Maui;
 using MudBlazor.Services;
 
 namespace PkmnCalcMauiBlazor;
