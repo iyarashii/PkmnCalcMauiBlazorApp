@@ -1,4 +1,6 @@
-﻿<Router AppAssembly="@typeof(Main).Assembly">
+﻿@*// Copyright (c) 2022 iyarashii @ https://github.com/iyarashii
+// Licensed under the GNU General Public License v3.0.*@
+<Router AppAssembly="@typeof(Main).Assembly">
 	<Found Context="routeData">
 		<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
