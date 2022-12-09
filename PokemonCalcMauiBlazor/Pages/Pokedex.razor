@@ -1,10 +1,42 @@
 ﻿@*// Copyright (c) 2022 iyarashii @ https://github.com/iyarashii
 // Licensed under the GNU General Public License v3.0.*@
 @page "/pokedex"
-<h3>Pokedex</h3>
+@inject IJSRuntime jsRuntime;
+<h3>Pokedex @PageTitle</h3>
+<MudButton Variant="Variant.Filled" OnClick="GetPageTitle" >Get page title</MudButton>
 <MudPaper>
-    <embed src="https://www.serebii.net/pokedex-sv/" width="1624" height="1080"/>
+    <embed id="serebiiPokedex" src="https://www.serebii.net/pokedex-sv/" width="1624" height="1080"/>
 </MudPaper>
 @code {
+    private IJSObjectReference? module;
+    public string PageTitle { get; set; }
 
+    public async void GetPageTitle()
+    {
+        string titleTag = "<title>";
+        string titleEndTag = "</title>";
+        var temp = await module.InvokeAsync<string>("getPageTitle");
+        PageTitle = GetBetween(temp, titleTag, titleEndTag);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            module = await jsRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Pokedex.razor.js");
+        }
+    }
+    public static string GetBetween(string strSource, string strStart, string strEnd)
+    {
+        if (strSource.Contains(strStart) && strSource.Contains(strEnd))
+        {
+            int start, end;
+            start = strSource.IndexOf(strStart, 0) + strStart.Length;
+            end = strSource.IndexOf(strEnd, start);
+            return strSource.Substring(start, end - start);
+        }
+
+        return "";
+    }
 }
+
