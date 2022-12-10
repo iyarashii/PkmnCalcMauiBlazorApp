@@ -4,8 +4,8 @@
 @inject IJSRuntime jsRuntime;
 <h3>Pokedex @PageTitle</h3>
 <MudButton Variant="Variant.Filled" OnClick="GetPageTitle" >Get page title</MudButton>
-<MudPaper>
-    <embed id="serebiiPokedex" src="https://www.serebii.net/pokedex-sv/" width="1624" height="1080"/>
+<MudPaper Height="1080px">
+    <iframe id="serebiiPokedex" src="https://www.serebii.net/pokedex-sv/"/>
 </MudPaper>
 @code {
     private IJSObjectReference? module;
