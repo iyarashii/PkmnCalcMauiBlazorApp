@@ -1,22 +1,28 @@
 ﻿@*// Copyright (c) 2022 iyarashii @ https://github.com/iyarashii
 // Licensed under the GNU General Public License v3.0.*@
 @page "/pokedex"
+@using System.Net;
 @inject IJSRuntime jsRuntime;
 <h3>Pokedex @PageTitle</h3>
 <MudButton Variant="Variant.Filled" OnClick="GetPageTitle" >Get page title</MudButton>
 <MudPaper Height="1080px">
-    <iframe id="serebiiPokedex" src="https://www.serebii.net/pokedex-sv/"/>
+    <iframe id="serebiiPokedex" src="@PokedexSource" />
 </MudPaper>
 @code {
     private IJSObjectReference? module;
     public string PageTitle { get; set; }
+    public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
 
     public async void GetPageTitle()
     {
-        string titleTag = "<title>";
-        string titleEndTag = "</title>";
-        var temp = await module.InvokeAsync<string>("getPageTitle");
-        PageTitle = GetBetween(temp, titleTag, titleEndTag);
+        using (HttpClient client = new HttpClient())
+        {
+            string downloadString = await client.GetStringAsync(PokedexSource);
+            string titleTag = "<title>";
+            string titleEndTag = "</title>";
+            //var temp = await module.InvokeAsync<string>("getPageTitle");
+            PageTitle = GetBetween(downloadString, titleTag, titleEndTag);
+        }
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
