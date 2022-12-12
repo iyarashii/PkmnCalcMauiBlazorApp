@@ -2,14 +2,12 @@
 // Licensed under the GNU General Public License v3.0.*@
 @page "/pokedex"
 @using System.Net;
-@inject IJSRuntime jsRuntime;
 <h3>Pokedex @PageTitle</h3>
 <MudButton Variant="Variant.Filled" OnClick="GetPageTitle" >Get page title</MudButton>
 <MudPaper Height="1080px">
     <iframe id="serebiiPokedex" src="@PokedexSource" />
 </MudPaper>
 @code {
-    private IJSObjectReference? module;
     public string PageTitle { get; set; }
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
 
@@ -20,18 +18,10 @@
             string downloadString = await client.GetStringAsync(PokedexSource);
             string titleTag = "<title>";
             string titleEndTag = "</title>";
-            //var temp = await module.InvokeAsync<string>("getPageTitle");
             PageTitle = GetBetween(downloadString, titleTag, titleEndTag);
         }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            module = await jsRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Pokedex.razor.js");
-        }
-    }
     public static string GetBetween(string strSource, string strStart, string strEnd)
     {
         if (strSource.Contains(strStart) && strSource.Contains(strEnd))
