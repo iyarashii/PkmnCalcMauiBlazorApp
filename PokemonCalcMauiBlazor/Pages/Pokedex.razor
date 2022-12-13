@@ -2,24 +2,26 @@
 // Licensed under the GNU General Public License v3.0.*@
 @page "/pokedex"
 @using System.Net;
-<h3>Pokedex @PageTitle</h3>
+<h3>@PageTitle</h3>
+<MudTextField @bind-Value="PokemonName" Label="Pokemon" Variant="Variant.Text"></MudTextField>
 <MudButton Variant="Variant.Filled" OnClick="GetPageTitle" >Get page title</MudButton>
 <MudPaper Height="1080px">
-    <iframe id="serebiiPokedex" src="@PokedexSource" />
+    <iframe id="serebiiPokedex" src="@(PokedexSource + PokemonName)" />
 </MudPaper>
 @code {
     public string PageTitle { get; set; }
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
-
+    public string PokemonName { get; set; }
     public async void GetPageTitle()
     {
         using (HttpClient client = new HttpClient())
         {
-            string downloadString = await client.GetStringAsync(PokedexSource);
+            string downloadString = await client.GetStringAsync(PokedexSource + PokemonName);
             string titleTag = "<title>";
             string titleEndTag = "</title>";
-            PageTitle = GetBetween(downloadString, titleTag, titleEndTag);
+            PageTitle = "Title: " + GetBetween(downloadString, titleTag, titleEndTag);
         }
+        StateHasChanged();
     }
 
     public static string GetBetween(string strSource, string strStart, string strEnd)
