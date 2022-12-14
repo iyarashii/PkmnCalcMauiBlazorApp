@@ -2,9 +2,10 @@
 // Licensed under the GNU General Public License v3.0.*@
 @page "/pokedex"
 @using System.Net;
+@using System.Text.RegularExpressions;
 <h3>@PageTitle</h3>
 <MudTextField @bind-Value="PokemonName" Label="Pokemon" Variant="Variant.Text"></MudTextField>
-<MudButton Variant="Variant.Filled" OnClick="GetPageTitle" >Get page title</MudButton>
+<MudButton Variant="Variant.Filled" OnClick="SavePokemonNames" >Save list of pokemon names from Scarlet/Violet</MudButton>
 <MudPaper Height="1080px">
     <iframe id="serebiiPokedex" src="@(PokedexSource + PokemonName)" />
 </MudPaper>
@@ -12,14 +13,18 @@
     public string PageTitle { get; set; }
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
     public string PokemonName { get; set; }
-    public async void GetPageTitle()
+    public async void SavePokemonNames()
     {
         using (HttpClient client = new HttpClient())
         {
             string downloadString = await client.GetStringAsync(PokedexSource + PokemonName);
-            string titleTag = "<title>";
-            string titleEndTag = "</title>";
-            PageTitle = "Title: " + GetBetween(downloadString, titleTag, titleEndTag);
+            var pokemonNameMatches = Regex.Matches(downloadString, "(?<=<option value=\"/pokedex-sv/.+?/\">\\d+? )(.*)(?=</option>)");
+            List<string> pokemonNamesToSave = new();
+            foreach (Match pokemonNameMatch in pokemonNameMatches)
+            {
+                pokemonNamesToSave.Add(pokemonNameMatch.Value);
+            }
+            File.AppendAllLines(@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt", pokemonNamesToSave);
         }
         StateHasChanged();
     }
