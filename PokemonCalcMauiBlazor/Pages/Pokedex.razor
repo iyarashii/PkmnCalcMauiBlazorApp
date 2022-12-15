@@ -4,7 +4,10 @@
 @using System.Net;
 @using System.Text.RegularExpressions;
 <h3>@PageTitle</h3>
-<MudTextField @bind-Value="PokemonName" Label="Pokemon" Variant="Variant.Text"></MudTextField>
+<MudAutocomplete T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@Search2"
+                 ResetValueOnEmptyText="false"
+                 CoerceText="true" CoerceValue="false"
+                 AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
 <MudButton Variant="Variant.Filled" OnClick="SavePokemonNames" >Save list of pokemon names from Scarlet/Violet</MudButton>
 <MudPaper Height="1080px">
     <iframe id="serebiiPokedex" src="@(PokedexSource + PokemonName)" />
@@ -13,6 +16,18 @@
     public string PageTitle { get; set; }
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
     public string PokemonName { get; set; }
+    private string pathToPokemonNames = @"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt";
+
+    private async Task<IEnumerable<string>> Search2(string value)
+    {
+        // if text is null or empty, don't return values (drop-down will not open)
+        if (string.IsNullOrEmpty(value))
+            return new string[0];
+        var names = await File.ReadAllLinesAsync(pathToPokemonNames);
+
+        return names.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+    }
+
     public async void SavePokemonNames()
     {
         using (HttpClient client = new HttpClient())
