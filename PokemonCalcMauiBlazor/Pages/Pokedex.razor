@@ -10,7 +10,7 @@
                  AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
 <MudButton Variant="Variant.Filled" OnClick="SavePokemonNames" >Save list of pokemon names from Scarlet/Violet</MudButton>
 <MudPaper Height="1080px">
-    <iframe id="serebiiPokedex" src="@(PokedexSource + PokemonName)" />
+    <iframe id="serebiiPokedex" src="@(PokedexSource + PokemonName?.Replace(" ", "").ToLower())" />
 </MudPaper>
 @code {
     public string PageTitle { get; set; }
