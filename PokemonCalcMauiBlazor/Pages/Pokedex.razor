@@ -17,14 +17,14 @@
     {
         using (HttpClient client = new HttpClient())
         {
-            string downloadString = await client.GetStringAsync(PokedexSource + PokemonName);
+            string downloadString = await client.GetStringAsync(PokedexSource);
             var pokemonNameMatches = Regex.Matches(downloadString, "(?<=<option value=\"/pokedex-sv/.+?/\">\\d+? )(.*)(?=</option>)");
-            List<string> pokemonNamesToSave = new();
+            HashSet<string> pokemonNamesToSave = new();
             foreach (Match pokemonNameMatch in pokemonNameMatches)
             {
                 pokemonNamesToSave.Add(pokemonNameMatch.Value);
             }
-            File.AppendAllLines(@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt", pokemonNamesToSave);
+            File.AppendAllLines(pathToPokemonNames, pokemonNamesToSave);
         }
         StateHasChanged();
     }
