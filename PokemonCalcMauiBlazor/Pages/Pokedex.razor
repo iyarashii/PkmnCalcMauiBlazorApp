@@ -3,7 +3,6 @@
 @page "/pokedex"
 @using System.Net;
 @using System.Text.RegularExpressions;
-<h3>@PageTitle</h3>
 <MudAutocomplete T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@Search2"
                  ResetValueOnEmptyText="false"
                  CoerceText="true" CoerceValue="false"
@@ -13,7 +12,6 @@
     <iframe id="serebiiPokedex" src="@(PokedexSource + PokemonName?.Replace(" ", "").ToLower())" />
 </MudPaper>
 @code {
-    public string PageTitle { get; set; }
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
     public string PokemonName { get; set; }
     private string pathToPokemonNames = @"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt";
