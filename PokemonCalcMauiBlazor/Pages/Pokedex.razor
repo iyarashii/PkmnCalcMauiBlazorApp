@@ -3,7 +3,7 @@
 @page "/pokedex"
 @using System.Net;
 @using System.Text.RegularExpressions;
-<MudAutocomplete T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@Search2"
+<MudAutocomplete T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@SearchForPokemonName"
                  ResetValueOnEmptyText="false"
                  CoerceText="true" CoerceValue="false"
                  AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
@@ -16,14 +16,14 @@
     public string PokemonName { get; set; }
     private string pathToPokemonNames = @"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt";
 
-    private async Task<IEnumerable<string>> Search2(string value)
+    private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
     {
         // if text is null or empty, don't return values (drop-down will not open)
-        if (string.IsNullOrEmpty(value))
+        if (string.IsNullOrEmpty(pokemonName))
             return new string[0];
         var names = await File.ReadAllLinesAsync(pathToPokemonNames);
 
-        return names.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+        return names.Where(x => x.Contains(pokemonName, StringComparison.InvariantCultureIgnoreCase));
     }
 
     public async void SavePokemonNames()
