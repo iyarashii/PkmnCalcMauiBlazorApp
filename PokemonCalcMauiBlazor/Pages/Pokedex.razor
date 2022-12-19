@@ -3,11 +3,12 @@
 @page "/pokedex"
 @using System.Net;
 @using System.Text.RegularExpressions;
+@inject IDialogService DialogService
 <MudAutocomplete T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@SearchForPokemonName"
                  ResetValueOnEmptyText="false"
                  CoerceText="true" CoerceValue="false"
                  AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
-<MudButton Variant="Variant.Filled" OnClick="SavePokemonNames" >Save list of pokemon names from Scarlet/Violet</MudButton>
+<MudButton Variant="Variant.Filled" OnClick="OpenSavePokemonDataDialog" >Save list of pokemon names from Scarlet/Violet</MudButton>
 <MudPaper Height="1080px">
     <iframe id="serebiiPokedex" src="@(PokedexSource + PokemonName?.Replace(" ", "").ToLower())" />
 </MudPaper>
@@ -26,7 +27,7 @@
         return names.Where(x => x.Contains(pokemonName, StringComparison.InvariantCultureIgnoreCase));
     }
 
-    public async void SavePokemonNames()
+    public async Task SavePokemonNames()
     {
         using (HttpClient client = new HttpClient())
         {
@@ -40,6 +41,16 @@
             File.AppendAllLines(pathToPokemonNames, pokemonNamesToSave);
         }
         StateHasChanged();
+    }
+
+    private async Task OpenSavePokemonDataDialog()
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true };
+        var dialogRef = DialogService.Show<SavePokemonDataDialog>("Pokemon Data Download Dialog", options);
+        if (await dialogRef.GetReturnValueAsync<bool?>() ?? false)
+        {
+            await SavePokemonNames();
+        }
     }
 }
 
