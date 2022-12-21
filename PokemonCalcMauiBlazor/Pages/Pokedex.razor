@@ -4,7 +4,7 @@
 @using System.Net;
 @using System.Text.RegularExpressions;
 @inject IDialogService DialogService
-<MudAutocomplete T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@SearchForPokemonName"
+<MudAutocomplete AutoFocus="true" accesskey="f" T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@SearchForPokemonName"
                  ResetValueOnEmptyText="false"
                  CoerceText="true" CoerceValue="false"
                  AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
