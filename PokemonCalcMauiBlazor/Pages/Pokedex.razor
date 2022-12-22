@@ -15,10 +15,13 @@
 @code {
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
     public string PokemonName { get; set; }
-    //private string pathToPokemonNames = @"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt";
+    #if DEBUG
+    private string pathToPokemonNames = @"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt";
+    #else
     private string pathToPokemonNames = Path.Combine(
                                             Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location),
                                             "pokemon_names.txt");
+    #endif
 
     private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
     {
