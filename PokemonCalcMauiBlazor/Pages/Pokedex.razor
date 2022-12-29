@@ -18,9 +18,7 @@
     #if DEBUG && WINDOWS
     private string pathToPokemonNames = @"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt";
     #else
-    private string pathToPokemonNames = Path.Combine(
-                                            Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location),
-                                            "pokemon_names.txt");
+    private string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, "pokemon_names.txt");
     #endif
 
     private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
