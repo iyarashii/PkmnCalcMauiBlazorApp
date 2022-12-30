@@ -23,5 +23,5 @@ public partial class App : Application
 	}
 
     [DllImport("user32.dll")]
-    public static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
+    private static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
 }
