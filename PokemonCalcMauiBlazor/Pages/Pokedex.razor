@@ -27,7 +27,6 @@
         if (string.IsNullOrEmpty(pokemonName))
             return new string[0];
         var names = await File.ReadAllLinesAsync(pathToPokemonNames);
-
         return names.Where(x => x.Contains(pokemonName, StringComparison.InvariantCultureIgnoreCase));
     }
 
