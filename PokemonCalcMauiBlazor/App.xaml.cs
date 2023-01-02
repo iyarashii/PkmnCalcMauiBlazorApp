@@ -12,7 +12,7 @@ public partial class App : Application
 		InitializeComponent();
         Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, view) =>
         {
-#if WINDOWS
+#if WINDOWS // maximizes window on app start
             var nativeWindow = handler.PlatformView;
             nativeWindow.Activate();
             IntPtr windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(nativeWindow);
