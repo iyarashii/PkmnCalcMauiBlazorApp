@@ -4,6 +4,11 @@
 @using System.Net;
 @using System.Text.RegularExpressions;
 @inject IDialogService DialogService
+
+@if(IsDebug())
+{
+<p>@pathToPokemonNames</p>
+}
 <MudAutocomplete AutoFocus="true" accesskey="f" T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@SearchForPokemonName"
                  ResetValueOnEmptyText="false"
                  CoerceText="true" CoerceValue="false"
@@ -54,6 +59,15 @@
         {
             await SavePokemonNames();
         }
+    }
+
+    public static bool IsDebug()
+    {
+    #if DEBUG
+          return true;
+    #else
+          return false;
+    #endif
     }
 }
 
