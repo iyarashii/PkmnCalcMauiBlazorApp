@@ -1,0 +1,60 @@
+﻿<MudSelect Dense="true"
+           T="string"
+           Label="@Label"
+           AnchorOrigin="Origin.BottomCenter"
+           @bind-Value="@SelectedPokedexType">
+    @foreach (var pokedexType in pokedexTypes)
+    {
+        <MudSelectItem Value="@pokedexType" />
+    }
+</MudSelect>
+@code {
+    [Parameter]
+    public string Label { get; set; }
+    private string _selectedPokedexType;
+    [Parameter]
+    public string SelectedPokedexType
+    {
+        get => _selectedPokedexType;
+        set
+        {
+            if (_selectedPokedexType == value) return;
+            _selectedPokedexType = value;
+            SelectedPokedexTypeChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter]
+    public EventCallback<string> SelectedPokedexTypeChanged { get; set; }
+    private List<string> pokedexTypes = new List<string>
+    {
+        "Full Pokédex",
+        "Red/Blue Pokédex",
+        "Gold/Silver Pokédex",
+        "Ruby/Sapphire Pokédex",
+        "Diamond/Pearl Pokédex",
+        "Black/White Pokédex",
+        "X & Y Pokédex",
+        "Sun & Moon Pokédex",
+        "Let's Go Pokédex",
+        "Sword & Shield Pokédex",
+        "BDSP Pokédex",
+        "Legends Pokédex",
+        "GO Pokédex",
+        "Scarlet & Violet Pokédex",
+    };
+}
+
+@*Pokédex
+-Red/Blue Pokédex
+-Gold/Silver Pokédex
+-Ruby/Sapphire Pokédex
+-Diamond/Pearl Pokédex
+-Black/White Pokédex
+-X & Y Pokédex
+-Sun & Moon Pokédex
+-Let's Go Pokédex
+-Sword & Shield Pokédex
+-BDSP Pokédex
+-Legends Pokédex
+-GO Pokédex
+-Scarlet & Violet Pokédex*@
