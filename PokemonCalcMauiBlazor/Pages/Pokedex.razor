@@ -25,8 +25,8 @@
     private string pathToPokemonNames = @"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt";
     #else
     private string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, "pokemon_names.txt");
-    #endif
-    public string SelectedPokedexType { get; set; }
+#endif
+    public string SelectedPokedexType { get; set; } = "Scarlet & Violet Pokédex";
     private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
     {
         // if text is null or empty, don't return values (drop-down will not open)
