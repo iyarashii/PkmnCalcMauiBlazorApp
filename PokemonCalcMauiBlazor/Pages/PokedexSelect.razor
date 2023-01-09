@@ -5,7 +5,7 @@
            @bind-Value="@SelectedPokedexType">
     @foreach (var pokedexType in pokedexTypes)
     {
-        <MudSelectItem Value="@pokedexType" />
+        <MudSelectItem Value="@pokedexType.Key" />
     }
 </MudSelect>
 @code {
@@ -25,21 +25,21 @@
     }
     [Parameter]
     public EventCallback<string> SelectedPokedexTypeChanged { get; set; }
-    private List<string> pokedexTypes = new List<string>
+    private Dictionary<string, string> pokedexTypes = new Dictionary<string, string>
     {
-        "Full Pokédex",
-        "Red/Blue Pokédex",
-        "Gold/Silver Pokédex",
-        "Ruby/Sapphire Pokédex",
-        "Diamond/Pearl Pokédex",
-        "Black/White Pokédex",
-        "X & Y Pokédex",
-        "Sun & Moon Pokédex",
-        "Let's Go Pokédex",
-        "Sword & Shield Pokédex",
-        "BDSP Pokédex",
-        "Legends Pokédex",
-        "GO Pokédex",
-        "Scarlet & Violet Pokédex",
+        {"Full Pokédex", "https://www.serebii.net/pokemon/"},
+        {"Red/Blue Pokédex", "https://www.serebii.net/pokedex/"},
+        {"Gold/Silver Pokédex", "https://www.serebii.net/pokedex-gs/"},
+        {"Ruby/Sapphire Pokédex", "https://www.serebii.net/pokedex-rs/"},
+        {"Diamond/Pearl Pokédex", "https://www.serebii.net/pokedex-dp/"},
+        {"Black/White Pokédex", "https://www.serebii.net/pokedex-bw/"},
+        {"X & Y Pokédex", "https://www.serebii.net/pokedex-xy/"},
+        {"Sun & Moon Pokédex", "https://www.serebii.net/pokedex-sm/"},
+        {"Let's Go Pokédex", "https://www.serebii.net/pokedex-sm/"},
+        {"Sword & Shield Pokédex", "https://www.serebii.net/pokedex-swsh/"},
+        {"BDSP Pokédex", "https://www.serebii.net/pokedex-swsh/"},
+        {"Legends Pokédex", "https://www.serebii.net/pokedex-swsh/"},
+        {"GO Pokédex", "https://www.serebii.net/pokemongo/pokemon/"},
+        {"Scarlet & Violet Pokédex", "https://www.serebii.net/pokedex-sv/"},
     };
 }
