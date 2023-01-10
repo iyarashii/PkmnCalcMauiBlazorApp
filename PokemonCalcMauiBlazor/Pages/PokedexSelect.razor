@@ -9,22 +9,9 @@
     }
 </MudSelect>
 @code {
-    [Parameter]
-    public string Label { get; set; }
     private string _selectedPokedexType;
-    [Parameter]
-    public string SelectedPokedexType
-    {
-        get => _selectedPokedexType;
-        set
-        {
-            if (_selectedPokedexType == value) return;
-            _selectedPokedexType = value;
-            SelectedPokedexTypeChanged.InvokeAsync(value);
-        }
-    }
-    [Parameter]
-    public EventCallback<string> SelectedPokedexTypeChanged { get; set; }
+    private string _pokedexSource;
+    private EventCallback<string> _selectedPokedexTypeChanged;
     private Dictionary<string, string> pokedexTypes = new Dictionary<string, string>
     {
         {"Full Pokédex", "https://www.serebii.net/pokemon/"},
@@ -40,6 +27,40 @@
         {"BDSP Pokédex", "https://www.serebii.net/pokedex-swsh/"},
         {"Legends Pokédex", "https://www.serebii.net/pokedex-swsh/"},
         {"GO Pokédex", "https://www.serebii.net/pokemongo/pokemon/"},
-        {"Scarlet & Violet Pokédex", "https://www.serebii.net/pokedex-sv/"},
+        {"Scarlet & Violet Pokédex", "https://www.serebii.net/pokedex-sv/"}
     };
+
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public string SelectedPokedexType
+    {
+        get => _selectedPokedexType;
+        set
+        {
+            if (_selectedPokedexType == value) return;
+            _selectedPokedexType = value;
+            PokedexSource = pokedexTypes.GetValueOrDefault(_selectedPokedexType);
+            SelectedPokedexTypeChanged.InvokeAsync(value);
+        }
+    }
+
+    [Parameter]
+    public string PokedexSource
+    {
+        get => _pokedexSource;
+        set
+        {
+            if (_pokedexSource == value) return;
+            _pokedexSource = value;
+            PokedexSourceChanged.InvokeAsync(value);
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> PokedexSourceChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<string> SelectedPokedexTypeChanged { get; set; }
 }

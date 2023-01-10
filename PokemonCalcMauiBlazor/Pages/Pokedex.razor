@@ -5,7 +5,7 @@
 @using System.Text.RegularExpressions;
 @inject IDialogService DialogService
 
-<PokedexSelect Label="Pokedex Type" @bind-SelectedPokedexType="SelectedPokedexType" />
+<PokedexSelect Label="Pokedex Type" @bind-SelectedPokedexType="SelectedPokedexType" @bind-PokedexSource="PokedexSource" />
 @if(IsDebug())
 {
 <p>@pathToPokemonNames</p>
