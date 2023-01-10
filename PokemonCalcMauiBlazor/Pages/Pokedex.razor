@@ -8,7 +8,9 @@
 <PokedexSelect Label="Pokedex Type" @bind-SelectedPokedexType="SelectedPokedexType" @bind-PokedexSource="PokedexSource" />
 @if(IsDebug())
 {
-<p>@pathToPokemonNames</p>
+<p>Path to names: @pathToPokemonNames</p>
+<p>Dex src: @PokedexSource</p>
+<p>Iframe src: @(PokedexSource + PokemonName?.Replace(" ", "").ToLower())</p>
 }
 <MudAutocomplete AutoFocus="true" accesskey="f" T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@SearchForPokemonName"
                  ResetValueOnEmptyText="false"
