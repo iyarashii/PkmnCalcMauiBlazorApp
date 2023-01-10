@@ -13,7 +13,7 @@
 <p>Iframe src: @(PokedexSource + PokemonName?.Replace(" ", "").ToLower())</p>
 }
 <MudAutocomplete AutoFocus="true" accesskey="f" T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@SearchForPokemonName"
-                 ResetValueOnEmptyText="false"
+                 ResetValueOnEmptyText="true"
                  CoerceText="true" CoerceValue="false"
                  AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
 <MudButton Variant="Variant.Filled" OnClick="OpenSavePokemonDataDialog" >Save list of pokemon names from Scarlet/Violet</MudButton>
