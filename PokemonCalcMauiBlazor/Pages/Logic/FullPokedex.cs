@@ -11,9 +11,9 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class FullPokedex : IPokedexType
     {
-        public string Name => throw new NotImplementedException();
+        public string Name => "Full Pokédex";
 
-        public string Url => throw new NotImplementedException();
+        public string Url => "https://www.serebii.net/pokemon/";
 
         public string Regex => throw new NotImplementedException();
     }
