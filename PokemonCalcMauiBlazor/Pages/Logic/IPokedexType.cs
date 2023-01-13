@@ -14,5 +14,6 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
         string Name { get; }
         string Url { get; }
         string Regex { get; }
+        string FileName { get; }
     }
 }

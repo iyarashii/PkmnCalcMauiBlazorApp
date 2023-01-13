@@ -16,5 +16,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
         public string Url => "https://www.serebii.net/pokedex-sv/";
 
         public string Regex => "(?<=<option value=\"/pokedex-sv/.+?/\">\\d+? )(.*)(?=</option>)";
+
+        public string FileName => "pokedex-sv.txt";
     }
 }

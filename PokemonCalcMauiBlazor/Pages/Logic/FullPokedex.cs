@@ -14,7 +14,8 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
         public string Name => "Full Pokédex";
 
         public string Url => "https://www.serebii.net/pokemon/";
-
         public string Regex => throw new NotImplementedException();
+
+        public string FileName => throw new NotImplementedException();
     }
 }
