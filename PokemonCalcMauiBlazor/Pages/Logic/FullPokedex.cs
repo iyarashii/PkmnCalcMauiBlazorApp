@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class FullPokedex : IPokedexType
+    public class FullPokedex : PokedexType
     {
-        public string Name => "Full Pokédex";
+        public override string Name => "Full Pokédex";
 
-        public string Url => "https://www.serebii.net/pokemon/";
-        public string Regex => throw new NotImplementedException();
+        public override string Url => "https://www.serebii.net/pokemon/";
 
-        public string FileName => throw new NotImplementedException();
+        public override string Regex => throw new NotImplementedException();
+
+        public override string FileName => throw new NotImplementedException();
     }
 }
