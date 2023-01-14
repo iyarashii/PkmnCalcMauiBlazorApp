@@ -1,47 +1,53 @@
-﻿<MudSelect Dense="true"
-           T="string"
+﻿@using Logic
+<MudSelect Dense="true"
+           T="IPokedexType"
            Label="@Label"
            AnchorOrigin="Origin.BottomCenter"
            @bind-Value="@SelectedPokedexType">
     @foreach (var pokedexType in pokedexTypes)
     {
-        <MudSelectItem Value="@pokedexType.Key" />
+        <MudSelectItem Value="@pokedexType" />
     }
 </MudSelect>
 @code {
-    private string _selectedPokedexType;
+    private IPokedexType _selectedPokedexType;
     private string _pokedexSource;
-    private EventCallback<string> _selectedPokedexTypeChanged;
-    private Dictionary<string, string> pokedexTypes = new Dictionary<string, string>
+    private EventCallback<IPokedexType> _selectedPokedexTypeChanged;
+    //private Dictionary<string, string> pokedexTypes = new Dictionary<string, string>
+    //{
+    //    {"Full Pokédex", "https://www.serebii.net/pokemon/"},
+    //    {"Red/Blue Pokédex", "https://www.serebii.net/pokedex/"},
+    //    {"Gold/Silver Pokédex", "https://www.serebii.net/pokedex-gs/"},
+    //    {"Ruby/Sapphire Pokédex", "https://www.serebii.net/pokedex-rs/"},
+    //    {"Diamond/Pearl Pokédex", "https://www.serebii.net/pokedex-dp/"},
+    //    {"Black/White Pokédex", "https://www.serebii.net/pokedex-bw/"},
+    //    {"X & Y Pokédex", "https://www.serebii.net/pokedex-xy/"},
+    //    {"Sun & Moon Pokédex", "https://www.serebii.net/pokedex-sm/"},
+    //    {"Let's Go Pokédex", "https://www.serebii.net/pokedex-sm/"},
+    //    {"Sword & Shield Pokédex", "https://www.serebii.net/pokedex-swsh/"},
+    //    {"BDSP Pokédex", "https://www.serebii.net/pokedex-swsh/"},
+    //    {"Legends Pokédex", "https://www.serebii.net/pokedex-swsh/"},
+    //    {"GO Pokédex", "https://www.serebii.net/pokemongo/pokemon/"},
+    //    {"Scarlet & Violet Pokédex", "https://www.serebii.net/pokedex-sv/"}
+    //};
+    private List<IPokedexType> pokedexTypes = new List<IPokedexType>
     {
-        {"Full Pokédex", "https://www.serebii.net/pokemon/"},
-        {"Red/Blue Pokédex", "https://www.serebii.net/pokedex/"},
-        {"Gold/Silver Pokédex", "https://www.serebii.net/pokedex-gs/"},
-        {"Ruby/Sapphire Pokédex", "https://www.serebii.net/pokedex-rs/"},
-        {"Diamond/Pearl Pokédex", "https://www.serebii.net/pokedex-dp/"},
-        {"Black/White Pokédex", "https://www.serebii.net/pokedex-bw/"},
-        {"X & Y Pokédex", "https://www.serebii.net/pokedex-xy/"},
-        {"Sun & Moon Pokédex", "https://www.serebii.net/pokedex-sm/"},
-        {"Let's Go Pokédex", "https://www.serebii.net/pokedex-sm/"},
-        {"Sword & Shield Pokédex", "https://www.serebii.net/pokedex-swsh/"},
-        {"BDSP Pokédex", "https://www.serebii.net/pokedex-swsh/"},
-        {"Legends Pokédex", "https://www.serebii.net/pokedex-swsh/"},
-        {"GO Pokédex", "https://www.serebii.net/pokemongo/pokemon/"},
-        {"Scarlet & Violet Pokédex", "https://www.serebii.net/pokedex-sv/"}
+        new FullPokedex(),
+        new ScarletVioletPokedex()
     };
 
     [Parameter]
     public string Label { get; set; }
 
     [Parameter]
-    public string SelectedPokedexType
+    public IPokedexType SelectedPokedexType
     {
         get => _selectedPokedexType;
         set
         {
             if (_selectedPokedexType == value) return;
             _selectedPokedexType = value;
-            PokedexSource = pokedexTypes.GetValueOrDefault(_selectedPokedexType);
+            PokedexSource = _selectedPokedexType.Url;
             SelectedPokedexTypeChanged.InvokeAsync(value);
         }
     }
@@ -62,5 +68,5 @@
     public EventCallback<string> PokedexSourceChanged { get; set; }
 
     [Parameter]
-    public EventCallback<string> SelectedPokedexTypeChanged { get; set; }
+    public EventCallback<IPokedexType> SelectedPokedexTypeChanged { get; set; }
 }
