@@ -3,6 +3,7 @@
 @page "/pokedex"
 @using System.Net;
 @using System.Text.RegularExpressions;
+@using Logic;
 @inject IDialogService DialogService
 
 <PokedexSelect Label="Pokedex Type" @bind-SelectedPokedexType="SelectedPokedexType" @bind-PokedexSource="PokedexSource" />
@@ -28,7 +29,7 @@
     #else
     private string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, "pokemon_names.txt");
 #endif
-    public string SelectedPokedexType { get; set; } = "Scarlet & Violet Pokédex";
+    public IPokedexType SelectedPokedexType { get; set; } = new ScarletVioletPokedex();
     private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
     {
         // if text is null or empty, don't return values (drop-down will not open)
