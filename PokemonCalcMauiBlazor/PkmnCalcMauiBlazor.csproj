@@ -33,7 +33,7 @@
 
     <ItemGroup>
         <!-- App Icon -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg"/>
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 
         <!-- Splash Screen -->
         <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -50,11 +50,17 @@
     </ItemGroup>
 
     <ItemGroup>
+      <AndroidResource Remove="Data\backup\**" />
       <AndroidResource Remove="PokemonTypeLibrary\**" />
+      <Compile Remove="Data\backup\**" />
       <Compile Remove="PokemonTypeLibrary\**" />
+      <Content Remove="Data\backup\**" />
       <Content Remove="PokemonTypeLibrary\**" />
+      <EmbeddedResource Remove="Data\backup\**" />
       <EmbeddedResource Remove="PokemonTypeLibrary\**" />
+      <MauiXaml Remove="Data\backup\**" />
       <MauiXaml Remove="PokemonTypeLibrary\**" />
+      <None Remove="Data\backup\**" />
       <None Remove="PokemonTypeLibrary\**" />
     </ItemGroup>
 
@@ -63,7 +69,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Data\" />
       <Folder Include="wwwroot\css\" />
     </ItemGroup>
 
