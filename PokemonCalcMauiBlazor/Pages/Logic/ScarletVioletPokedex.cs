@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class ScarletVioletPokedex : IPokedexType
+    public class ScarletVioletPokedex : PokedexType
     {
-        public string Name => "Scarlet & Violet Pokédex";
+        public override string Name => "Scarlet & Violet Pokédex";
 
-        public string Url => "https://www.serebii.net/pokedex-sv/";
+        public override string Url => "https://www.serebii.net/pokedex-sv/";
 
-        public string Regex => "(?<=<option value=\"/pokedex-sv/.+?/\">\\d+? )(.*)(?=</option>)";
+        public override string Regex => "(?<=<option value=\"/pokedex-sv/.+?/\">\\d+? )(.*)(?=</option>)";
 
-        public string FileName => "pokedex-sv.txt";
+        public override string FileName => "pokedex-sv.txt";
     }
 }
