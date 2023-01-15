@@ -17,6 +17,6 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 
         public override string Regex => throw new NotImplementedException();
 
-        public override string FileName => throw new NotImplementedException();
+        public override string FileName => "pokedex-full.txt";
     }
 }
