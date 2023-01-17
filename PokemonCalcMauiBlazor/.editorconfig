@@ -3,7 +3,7 @@
 # All files
 [*]
 indent_style = space
-file_header_template = Copyright (c) 2022 iyarashii @ https://github.com/iyarashii \nLicensed under the GNU General Public License v3.0.
+file_header_template = Copyright (c) 2023 iyarashii @ https://github.com/iyarashii \nLicensed under the GNU General Public License v3.0.
 
 # Xml files
 [*.xml]
