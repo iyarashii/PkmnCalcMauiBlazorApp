@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class BrilliantDiamondShiningPearlPokedex : SwordShieldPokedex
+    public class BdspPokedex : SwordShieldPokedex
     {
         public override string Name => "BDSP Pokédex";
     }
