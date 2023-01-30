@@ -25,11 +25,11 @@
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
     public string PokemonName { get; set; }
     #if DEBUG && WINDOWS
-    private string pathToPokemonNames = @"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\pokemon_names.txt";
+    private string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
     #else
     private string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, "pokemon_names.txt");
 #endif
-    public IPokedexType SelectedPokedexType { get; set; } = new ScarletVioletPokedex();
+    public static IPokedexType SelectedPokedexType { get; set; } = new ScarletVioletPokedex();
     private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
     {
         // if text is null or empty, don't return values (drop-down will not open)
@@ -44,7 +44,7 @@
         using (HttpClient client = new HttpClient())
         {
             string downloadString = await client.GetStringAsync(PokedexSource);
-            var pokemonNameMatches = Regex.Matches(downloadString, "(?<=<option value=\"/pokedex-sv/.+?/\">\\d+? )(.*)(?=</option>)");
+            var pokemonNameMatches = Regex.Matches(downloadString, SelectedPokedexType.Regex);
             HashSet<string> pokemonNamesToSave = new();
             foreach (Match pokemonNameMatch in pokemonNameMatches)
             {
