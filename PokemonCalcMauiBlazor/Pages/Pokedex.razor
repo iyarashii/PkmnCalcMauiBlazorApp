@@ -61,7 +61,7 @@
             HashSet<string> pokemonNamesToSave = new();
             foreach (Match pokemonNameMatch in pokemonNameMatches)
             {
-                pokemonNamesToSave.Add(pokemonNameMatch.Value);
+                pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", ""));
             }
             File.WriteAllLines(pathToPokemonNames, pokemonNamesToSave);
         }
