@@ -22,14 +22,27 @@
     <iframe id="serebiiPokedex" src="@(PokedexSource + PokemonName?.Replace(" ", "").ToLower())" />
 </MudPaper>
 @code {
+    private static IPokedexType selectedPokedexType = new ScarletVioletPokedex();
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
     public string PokemonName { get; set; }
     #if DEBUG && WINDOWS
-    private string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
+    private static string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
     #else
-    private string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, "pokemon_names.txt");
+    private static string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
 #endif
-    public static IPokedexType SelectedPokedexType { get; set; } = new ScarletVioletPokedex();
+    public static IPokedexType SelectedPokedexType
+    {
+        get => selectedPokedexType;
+        set
+        {
+            selectedPokedexType = value;
+            #if DEBUG && WINDOWS
+                pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
+    #else
+                pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
+#endif
+        }
+    }
     private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
     {
         // if text is null or empty, don't return values (drop-down will not open)
