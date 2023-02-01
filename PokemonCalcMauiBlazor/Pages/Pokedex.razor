@@ -11,7 +11,9 @@
 {
 <p>Path to names: @pathToPokemonNames</p>
 <p>Dex src: @PokedexSource</p>
-<p>Iframe src: @(PokedexSource + PokemonName?.Replace(" ", "").ToLower())</p>
+<p>Iframe src: @(PokedexSource + ((!string.IsNullOrEmpty(PokemonName) && char.IsDigit(PokemonName[0])) 
+                                ? PokemonName.Substring(0, 3) + ".shtml" 
+                                : PokemonName?.Replace(" ", "").ToLower()))</p>
 }
 <MudAutocomplete AutoFocus="true" accesskey="f" T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@SearchForPokemonName"
                  ResetValueOnEmptyText="true"
@@ -19,12 +21,15 @@
                  AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
 <MudButton Variant="Variant.Filled" OnClick="OpenSavePokemonDataDialog" >Save list of pokemon names from Scarlet/Violet</MudButton>
 <MudPaper Height="1080px">
-    <iframe id="serebiiPokedex" src="@(PokedexSource + PokemonName?.Replace(" ", "").ToLower())" />
+    <iframe id="serebiiPokedex" src="@(PokedexSource + 
+    ((!string.IsNullOrEmpty(PokemonName) && char.IsDigit(PokemonName[0])) 
+    ? PokemonName.Substring(0, 3) + ".shtml" 
+    : PokemonName?.Replace(" ", "").ToLower()))" />
 </MudPaper>
 @code {
     private static IPokedexType selectedPokedexType = new ScarletVioletPokedex();
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
-    public string PokemonName { get; set; }
+    public string PokemonName { get; set; } = "";
     #if DEBUG && WINDOWS
     private static string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
     #else
@@ -61,6 +66,9 @@
             HashSet<string> pokemonNamesToSave = new();
             foreach (Match pokemonNameMatch in pokemonNameMatches)
             {
+                if (SelectedPokedexType is RedBluePokedex)
+                    pokemonNamesToSave.Add(pokemonNameMatch.Value);
+                else
                 pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", ""));
             }
             File.WriteAllLines(pathToPokemonNames, pokemonNamesToSave);
