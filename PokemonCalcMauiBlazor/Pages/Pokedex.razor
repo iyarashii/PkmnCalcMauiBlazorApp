@@ -42,10 +42,10 @@
         {
             selectedPokedexType = value;
             #if DEBUG && WINDOWS
-                pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
-    #else
-                pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
-#endif
+            pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
+            #else
+            pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
+            #endif
         }
     }
     private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
@@ -66,10 +66,10 @@
             HashSet<string> pokemonNamesToSave = new();
             foreach (Match pokemonNameMatch in pokemonNameMatches)
             {
-                if (SelectedPokedexType is RedBluePokedex)
+                if (SelectedPokedexType is RedBluePokedex || SelectedPokedexType is GoldSilverPokedex)
                     pokemonNamesToSave.Add(pokemonNameMatch.Value);
                 else
-                pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", ""));
+                    pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", ""));
             }
             File.WriteAllLines(pathToPokemonNames, pokemonNamesToSave);
         }
