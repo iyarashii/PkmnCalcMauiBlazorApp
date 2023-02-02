@@ -15,7 +15,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 
         public override string Url => "https://www.serebii.net/pokedex-gs/";
 
-        public override string Regex => throw new NotImplementedException();
+        public override string Regex => "(?<=<option value=\"/pokedex-gs/.+?\">)(\\d.*)";
 
         public override string FileName => "pokedex-gs.txt";
     }
