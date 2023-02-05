@@ -67,7 +67,8 @@
             foreach (Match pokemonNameMatch in pokemonNameMatches)
             {
                 if (SelectedPokedexType is RedBluePokedex || SelectedPokedexType is GoldSilverPokedex 
-                    || SelectedPokedexType is RubySapphirePokedex || SelectedPokedexType is DiamondPearlPokedex)
+                    || SelectedPokedexType is RubySapphirePokedex || SelectedPokedexType is DiamondPearlPokedex
+                    || SelectedPokedexType is BlackWhitePokedex)
                     pokemonNamesToSave.Add(pokemonNameMatch.Value);
                 else
                     pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", ""));
