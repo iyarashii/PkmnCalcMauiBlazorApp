@@ -42,7 +42,7 @@
         {
             selectedPokedexType = value;
             #if DEBUG && WINDOWS
-            pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
+    pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
             #else
             pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
             #endif
@@ -66,7 +66,14 @@
             HashSet<string> pokemonNamesToSave = new();
             foreach (Match pokemonNameMatch in pokemonNameMatches)
             {
-                if (SelectedPokedexType is RedBluePokedex || SelectedPokedexType is GoldSilverPokedex 
+                if (SelectedPokedexType is XyPokedex)
+                {
+                    if (pokemonNameMatch.Value.Substring(0, 3) == pokemonNameMatch.Value.Substring(11, 3))
+                    {
+                        pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "</option>", "").Remove(0, 11));
+                    }
+                }
+                else if (SelectedPokedexType is RedBluePokedex || SelectedPokedexType is GoldSilverPokedex 
                     || SelectedPokedexType is RubySapphirePokedex || SelectedPokedexType is DiamondPearlPokedex
                     || SelectedPokedexType is BlackWhitePokedex)
                     pokemonNamesToSave.Add(pokemonNameMatch.Value);
