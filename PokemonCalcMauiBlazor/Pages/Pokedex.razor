@@ -19,7 +19,7 @@
                  ResetValueOnEmptyText="true"
                  CoerceText="true" CoerceValue="false"
                  AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
-<MudButton Variant="Variant.Filled" OnClick="OpenSavePokemonDataDialog" >Save list of pokemon names from Scarlet/Violet</MudButton>
+<MudButton Variant="Variant.Filled" OnClick="OpenSavePokemonDataDialog" >Save list of pokemon names from @SelectedPokedexType.Name</MudButton>
 <MudPaper Height="1080px">
     <iframe id="serebiiPokedex" src="@(PokedexSource + 
     ((!string.IsNullOrEmpty(PokemonName) && char.IsDigit(PokemonName[0])) 
