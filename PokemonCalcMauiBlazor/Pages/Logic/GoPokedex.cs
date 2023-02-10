@@ -15,7 +15,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 
         public override string Url => "https://www.serebii.net/pokemongo/pokemon/";
 
-        public override string Regex => throw new NotImplementedException();
+        public override string Regex => "(?<=<option value=\"/pokemongo/pokemon/.+?\">)(\\d.*)(?=</option>)";
 
         public override string FileName => "pokedex-go.txt";
     }
