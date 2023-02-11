@@ -66,26 +66,33 @@
                 downloadString = downloadString.Split("</SELECT> </FORM></td></tr></table><option value=\"/pokedex-swsh/")[0];
             var pokemonNameMatches = Regex.Matches(downloadString, SelectedPokedexType.Regex);
             HashSet<string> pokemonNamesToSave = new();
-            foreach (Match pokemonNameMatch in pokemonNameMatches)
+            Action<Match> formatAndSavePokemonName;
+            switch (selectedPokedexType)
             {
-                switch (selectedPokedexType)
-                {
-                    case XyPokedex or SunMoonPokedex:
+                case XyPokedex or SunMoonPokedex:
+                    formatAndSavePokemonName = pokemonNameMatch =>
+                    {
                         var pokemonNumber = pokemonNameMatch.Value.Substring(0, 3);
                         if (pokemonNumber == pokemonNameMatch.Value.Substring(11, 3))
                         {
                             var pokemonName = Regex.Replace(pokemonNameMatch.Value, "</option>", "").Remove(0, 14).Trim();
                             pokemonNamesToSave.Add($"{pokemonNumber} {pokemonName}");
                         }
-                        break;
-                    case RedBluePokedex or GoldSilverPokedex or RubySapphirePokedex 
+                    };
+                    break;
+                case RedBluePokedex or GoldSilverPokedex or RubySapphirePokedex
                     or DiamondPearlPokedex or BlackWhitePokedex or SwordShieldPokedex or GoPokedex:
-                        pokemonNamesToSave.Add(pokemonNameMatch.Value.Trim());
-                        break;
-                    default:
+                    formatAndSavePokemonName = pokemonNameMatch => 
+                       pokemonNamesToSave.Add(pokemonNameMatch.Value.Trim());
+                    break;
+                default:
+                    formatAndSavePokemonName = pokemonNameMatch =>  
                         pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", "").Trim());
-                        break;
-                }
+                    break;
+            }
+            foreach (Match pokemonNameMatch in pokemonNameMatches)
+            {
+                formatAndSavePokemonName(pokemonNameMatch);
             }
             File.WriteAllLines(pathToPokemonNames, pokemonNamesToSave);
         }
