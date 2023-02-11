@@ -62,7 +62,7 @@
         using (HttpClient client = new HttpClient())
         {
             string downloadString = await client.GetStringAsync(PokedexSource);
-            if (SelectedPokedexType is SwordShieldPokedex)
+            if (selectedPokedexType is SwordShieldPokedex)
                 downloadString = downloadString.Split("</SELECT> </FORM></td></tr></table><option value=\"/pokedex-swsh/")[0];
             var pokemonNameMatches = Regex.Matches(downloadString, SelectedPokedexType.Regex);
             HashSet<string> pokemonNamesToSave = new();
