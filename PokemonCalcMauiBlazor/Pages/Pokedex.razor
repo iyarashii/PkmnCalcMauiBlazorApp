@@ -68,22 +68,24 @@
             HashSet<string> pokemonNamesToSave = new();
             foreach (Match pokemonNameMatch in pokemonNameMatches)
             {
-                if (SelectedPokedexType is XyPokedex || SelectedPokedexType is SunMoonPokedex)
+                switch (selectedPokedexType)
                 {
-                    var pokemonNumber = pokemonNameMatch.Value.Substring(0, 3);
-                    if (pokemonNumber == pokemonNameMatch.Value.Substring(11, 3))
-                    {
-                        var pokemonName = Regex.Replace(pokemonNameMatch.Value, "</option>", "").Remove(0, 14).Trim();
-                        pokemonNamesToSave.Add($"{pokemonNumber} {pokemonName}");
-                    }
+                    case XyPokedex or SunMoonPokedex:
+                        var pokemonNumber = pokemonNameMatch.Value.Substring(0, 3);
+                        if (pokemonNumber == pokemonNameMatch.Value.Substring(11, 3))
+                        {
+                            var pokemonName = Regex.Replace(pokemonNameMatch.Value, "</option>", "").Remove(0, 14).Trim();
+                            pokemonNamesToSave.Add($"{pokemonNumber} {pokemonName}");
+                        }
+                        break;
+                    case RedBluePokedex or GoldSilverPokedex or RubySapphirePokedex 
+                    or DiamondPearlPokedex or BlackWhitePokedex or SwordShieldPokedex or GoPokedex:
+                        pokemonNamesToSave.Add(pokemonNameMatch.Value.Trim());
+                        break;
+                    default:
+                        pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", "").Trim());
+                        break;
                 }
-                else if (SelectedPokedexType is RedBluePokedex || SelectedPokedexType is GoldSilverPokedex 
-                    || SelectedPokedexType is RubySapphirePokedex || SelectedPokedexType is DiamondPearlPokedex
-                    || SelectedPokedexType is BlackWhitePokedex || SelectedPokedexType is SwordShieldPokedex 
-                    || SelectedPokedexType is GoPokedex)
-                    pokemonNamesToSave.Add(pokemonNameMatch.Value.Trim());
-                else
-                    pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", "").Trim());
             }
             File.WriteAllLines(pathToPokemonNames, pokemonNamesToSave);
         }
