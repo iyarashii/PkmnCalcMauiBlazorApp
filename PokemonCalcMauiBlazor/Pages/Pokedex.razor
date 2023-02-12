@@ -83,7 +83,7 @@
                 case RedBluePokedex or GoldSilverPokedex or RubySapphirePokedex
                     or DiamondPearlPokedex or BlackWhitePokedex or SwordShieldPokedex or GoPokedex:
                     formatAndSavePokemonName = pokemonNameMatch => 
-                       pokemonNamesToSave.Add(pokemonNameMatch.Value.Trim());
+                       pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value.Trim(), "</option>", ""));
                     break;
                 default:
                     formatAndSavePokemonName = pokemonNameMatch =>  
