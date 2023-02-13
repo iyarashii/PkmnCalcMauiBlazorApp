@@ -200,7 +200,7 @@
 200 Misdreavus
 201 Unown
 202 Wobbuffet
-203 Girafarig 
+203 Girafarig
 204 Pineco
 205 Forretress
 206 Dunsparce
