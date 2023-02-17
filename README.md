@@ -10,7 +10,17 @@ Other versions:
 
 This app shows damage multipliers that affect defending pokemon.  
 App on Windows:
+Type calc
 ![image](https://user-images.githubusercontent.com/38395954/196004141-13c05d37-5737-408d-99ad-168bcc4dd029.png)
+
+Pokedex
+![image](https://user-images.githubusercontent.com/38395954/219704402-e4b35c7d-5bac-473f-8331-b467ac28c5c2.png)
+Filter by name
+![image](https://user-images.githubusercontent.com/38395954/219704582-769a4813-ccf1-497b-aa89-387702fd96d8.png)
+Filter suggestions
+![image](https://user-images.githubusercontent.com/38395954/219704763-42f4beac-12b6-467f-b31e-1e6b2669bba3.png)
+
+
 App on Android:  
 <img src="https://user-images.githubusercontent.com/38395954/196034384-ccd88503-d719-4dcf-977e-867e0a3055f3.png" width="300">
 
