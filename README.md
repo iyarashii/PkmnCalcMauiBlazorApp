@@ -13,15 +13,20 @@ App on Windows:
 Type calc
 ![image](https://user-images.githubusercontent.com/38395954/196004141-13c05d37-5737-408d-99ad-168bcc4dd029.png)
 
-Pokedex
+Pokedex - Windows  
 ![image](https://user-images.githubusercontent.com/38395954/219704402-e4b35c7d-5bac-473f-8331-b467ac28c5c2.png)
-Filter by name
+Pokedex - Android  
+<img src="https://user-images.githubusercontent.com/38395954/219873361-a69fe4b9-d72b-4ed7-9fdd-32ba2ad8c0a7.png" width="300">
+Filter by name - Windows  
 ![image](https://user-images.githubusercontent.com/38395954/219704582-769a4813-ccf1-497b-aa89-387702fd96d8.png)
+Filter by name - Android    
+<img src="https://user-images.githubusercontent.com/38395954/219873376-2d709345-f0fd-4de1-9941-558099e0d0f5.png" width="300">
+
 Filter suggestions
 ![image](https://user-images.githubusercontent.com/38395954/219704763-42f4beac-12b6-467f-b31e-1e6b2669bba3.png)
 
 
-App on Android:  
+App on Android - Type Calc:  
 <img src="https://user-images.githubusercontent.com/38395954/196034384-ccd88503-d719-4dcf-977e-867e0a3055f3.png" width="300">
 
 After selecting types it displays every pokemon attack type and a multiplier of its damage. The list of multipliers and types is sorted by the dmg multiplier from highest to lowest by default.
