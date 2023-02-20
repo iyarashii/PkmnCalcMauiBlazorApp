@@ -15,6 +15,10 @@
                                 ? PokemonName.Substring(0, 3) + ".shtml" 
                                 : PokemonName?.Replace(" ", "").ToLower()))</p>
 }
+@if (progressVisible)
+{
+    <SavePokemonNamesProgress Value="SaveProgress" />
+}
 <MudAutocomplete AutoFocus="true" accesskey="f" T="string" Label="Pokemon Name" @bind-Value="PokemonName" SearchFunc="@SearchForPokemonName"
                  ResetValueOnEmptyText="true"
                  CoerceText="true" CoerceValue="false"
@@ -27,9 +31,11 @@
     : PokemonName?.Replace(" ", "").ToLower()))" />
 </MudPaper>
 @code {
+    private bool progressVisible = false;
     private static IPokedexType selectedPokedexType = new ScarletVioletPokedex();
     public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
     public string PokemonName { get; set; } = "";
+    public double SaveProgress { get; set; } = 0.0;
     #if DEBUG && WINDOWS
     private static string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
     #else
@@ -90,13 +96,20 @@
                         pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", "").Trim());
                     break;
             }
+            var progress = 0.0;
             foreach (Match pokemonNameMatch in pokemonNameMatches)
             {
                 formatAndSavePokemonName(pokemonNameMatch);
+                progress++;
+                progressVisible = true;
+                SaveProgress = progress / pokemonNameMatches.Count * 100;
+                StateHasChanged();
             }
             File.WriteAllLines(pathToPokemonNames, pokemonNamesToSave);
         }
-        StateHasChanged();
+        await Task.Delay(3000);
+        progressVisible = false;
+        SaveProgress = 0.0;
     }
 
     private async Task OpenSavePokemonDataDialog()
