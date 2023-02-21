@@ -1,4 +1,4 @@
-﻿@*// Copyright (c) 2022 iyarashii @ https://github.com/iyarashii
+﻿@*// Copyright (c) iyarashii @ https://github.com/iyarashii
 // Licensed under the GNU General Public License v3.0.*@
 @page "/pokedex"
 @using System.Net;
@@ -40,7 +40,7 @@
     private static string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
     #else
     private static string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
-#endif
+    #endif
     public static IPokedexType SelectedPokedexType
     {
         get => selectedPokedexType;
@@ -48,7 +48,7 @@
         {
             selectedPokedexType = value;
             #if DEBUG && WINDOWS
-    pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
+            pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
             #else
             pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
             #endif
