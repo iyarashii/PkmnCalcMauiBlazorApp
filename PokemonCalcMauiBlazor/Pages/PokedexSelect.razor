@@ -1,4 +1,5 @@
 ﻿@using Logic
+
 <MudSelect Dense="true"
            T="IPokedexType"
            Label="@Label"
@@ -9,6 +10,7 @@
         <MudSelectItem Value="@pokedexType" />
     }
 </MudSelect>
+
 @code {
     private IPokedexType _selectedPokedexType;
     private string _pokedexSource;
