@@ -30,6 +30,7 @@
     ? PokemonName.Substring(0, 3) + ".shtml" 
     : PokemonName?.Replace(" ", "").ToLower()))" />
 </MudPaper>
+
 @code {
     private bool progressVisible = false;
     private static IPokedexType selectedPokedexType = new ScarletVioletPokedex();
