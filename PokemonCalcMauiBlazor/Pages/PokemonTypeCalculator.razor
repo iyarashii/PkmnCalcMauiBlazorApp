@@ -3,8 +3,8 @@
 @using PokemonTypeLibrary.Models
 @using System.Drawing
 @using System.Linq
-<PageTitle>Pokemon Type Calculator</PageTitle>
 
+<PageTitle>Pokemon Type Calculator</PageTitle>
 <body>
     <fieldset name="defendingTypes" class="border-2 mud-border-primary" style="margin:5px 0px 5px 0px;">
         <legend style="margin-inline:5px;">Defending Pokemon Types</legend>
@@ -39,6 +39,7 @@
         </MudTable>
     }
 </body>
+
 @code {
     public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
     public List<IPkmnType> PrimaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
