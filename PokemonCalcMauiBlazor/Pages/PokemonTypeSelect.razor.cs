@@ -14,7 +14,7 @@ namespace PkmnCalcMauiBlazor.Pages
             private readonly int maxHeight = -1;
         #endif
         private string _selectedTypeName;
-        public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
+        public static string EmptyTypeName { get; } = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
         [Parameter]
         public string Label { get; set; }
         [Parameter]

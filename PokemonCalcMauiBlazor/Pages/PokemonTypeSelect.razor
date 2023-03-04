@@ -11,7 +11,7 @@
     @foreach (var pkmnType in PkmnTypeList)
     {
         bool isHidden = false, isDisabled = false;
-        if (pkmnType.TypeName == Selected2ndTypeName && pkmnType.TypeName != emptyTypeName)
+        if (pkmnType.TypeName == Selected2ndTypeName && pkmnType.TypeName != EmptyTypeName)
             isHidden = isDisabled = true;
         <MudSelectItem 
             Value="pkmnType.TypeName" 
