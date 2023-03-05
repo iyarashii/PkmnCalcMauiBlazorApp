@@ -8,10 +8,10 @@ namespace PkmnCalcMauiBlazor.Pages
 {
     public partial class PokemonTypeCalculator : ComponentBase
     {
-        public static string emptyTypeName = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
+        public static string EmptyTypeName { get; } = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
         public List<IPkmnType> PrimaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
         public List<IPkmnType> SecondaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
-        private string _selectedPrimaryTypeName = emptyTypeName;
+        private string _selectedPrimaryTypeName = EmptyTypeName;
         public string SelectedPrimaryTypeName
         {
             get => _selectedPrimaryTypeName;
@@ -22,7 +22,7 @@ namespace PkmnCalcMauiBlazor.Pages
             }
         }
 
-        private string _selectedSecondaryTypeName = emptyTypeName;
+        private string _selectedSecondaryTypeName = EmptyTypeName;
 
         public string SelectedSecondaryTypeName
         {
@@ -55,7 +55,7 @@ namespace PkmnCalcMauiBlazor.Pages
 
         public void Calculate()
         {
-            if (SelectedPrimaryTypeName == emptyTypeName && SelectedSecondaryTypeName == emptyTypeName)
+            if (SelectedPrimaryTypeName == EmptyTypeName && SelectedSecondaryTypeName == EmptyTypeName)
                 return;
 
             // calculate damage multiplier for each pkmn type in the list

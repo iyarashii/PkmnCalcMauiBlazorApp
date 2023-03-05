@@ -8,13 +8,12 @@ namespace PkmnCalcMauiBlazor.Pages
 {
     public partial class PokemonTypeSelect : ComponentBase
     {
-        #if ANDROID
-            private readonly int maxHeight = 600;
-        #else
+#if ANDROID
+        private readonly int maxHeight = 600;
+#else
             private readonly int maxHeight = -1;
-        #endif
+#endif
         private string _selectedTypeName;
-        public static string EmptyTypeName { get; } = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
         [Parameter]
         public string Label { get; set; }
         [Parameter]
