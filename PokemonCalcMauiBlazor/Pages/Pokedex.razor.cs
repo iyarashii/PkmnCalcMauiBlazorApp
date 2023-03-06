@@ -37,7 +37,7 @@ namespace PkmnCalcMauiBlazor.Pages
         {
             // if text is null or empty, don't return values (drop-down will not open)
             if (string.IsNullOrEmpty(pokemonName))
-                return new string[0];
+                return Array.Empty<string>();
             var names = await File.ReadAllLinesAsync(pathToPokemonNames);
             return names.Where(x => x.Contains(pokemonName, StringComparison.InvariantCultureIgnoreCase));
         }
