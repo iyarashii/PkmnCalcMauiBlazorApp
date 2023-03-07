@@ -51,30 +51,25 @@ namespace PkmnCalcMauiBlazor.Pages
                     downloadString = downloadString.Split("</SELECT> </FORM></td></tr></table><option value=\"/pokedex-swsh/")[0];
                 var pokemonNameMatches = Regex.Matches(downloadString, SelectedPokedexType.Regex);
                 HashSet<string> pokemonNamesToSave = new();
-                Action<Match> formatAndSavePokemonName;
-                switch (selectedPokedexType)
+                Action<Match> formatAndSavePokemonName = selectedPokedexType switch
                 {
-                    case XyPokedex or SunMoonPokedex:
-                        formatAndSavePokemonName = pokemonNameMatch =>
-                        {
-                            var pokemonNumber = pokemonNameMatch.Value.Substring(0, 3);
-                            if (pokemonNumber == pokemonNameMatch.Value.Substring(11, 3))
-                            {
-                                var pokemonName = Regex.Replace(pokemonNameMatch.Value, "</option>", "").Remove(0, 14).Trim();
-                                pokemonNamesToSave.Add($"{pokemonNumber} {pokemonName}");
-                            }
-                        };
-                        break;
-                    case RedBluePokedex or GoldSilverPokedex or RubySapphirePokedex
-                        or DiamondPearlPokedex or BlackWhitePokedex or SwordShieldPokedex or GoPokedex:
-                        formatAndSavePokemonName = pokemonNameMatch =>
-                           pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value.Trim(), "</option>", ""));
-                        break;
-                    default:
-                        formatAndSavePokemonName = pokemonNameMatch =>
-                            pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", "").Trim());
-                        break;
-                }
+                    XyPokedex or SunMoonPokedex => pokemonNameMatch =>
+                                            {
+                                                var pokemonNumber = pokemonNameMatch.Value.Substring(0, 3);
+                                                if (pokemonNumber == pokemonNameMatch.Value.Substring(11, 3))
+                                                {
+                                                    var pokemonName = Regex.Replace(pokemonNameMatch.Value, "</option>", "").Remove(0, 14).Trim();
+                                                    pokemonNamesToSave.Add($"{pokemonNumber} {pokemonName}");
+                                                }
+                                            }
+
+                    ,
+                    RedBluePokedex or GoldSilverPokedex or RubySapphirePokedex
+                        or DiamondPearlPokedex or BlackWhitePokedex or SwordShieldPokedex or GoPokedex => pokemonNameMatch =>
+                           pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value.Trim(), "</option>", "")),
+                    _ => pokemonNameMatch =>
+                            pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", "").Trim()),
+                };
                 var progress = 0.0;
                 foreach (Match pokemonNameMatch in pokemonNameMatches)
                 {
