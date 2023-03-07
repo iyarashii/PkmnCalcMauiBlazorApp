@@ -71,7 +71,7 @@ namespace PkmnCalcMauiBlazor.Pages
                             pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", "").Trim()),
                 };
                 var progress = 0.0;
-                foreach (Match pokemonNameMatch in pokemonNameMatches)
+                foreach (Match pokemonNameMatch in pokemonNameMatches.Cast<Match>())
                 {
                     formatAndSavePokemonName(pokemonNameMatch);
                     progress++;
