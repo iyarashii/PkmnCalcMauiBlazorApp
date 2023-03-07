@@ -44,7 +44,7 @@ namespace PkmnCalcMauiBlazor.Pages
 
         public async Task SavePokemonNames()
         {
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new())
             {
                 string downloadString = await client.GetStringAsync(PokedexSource);
                 if (selectedPokedexType is SwordShieldPokedex)
