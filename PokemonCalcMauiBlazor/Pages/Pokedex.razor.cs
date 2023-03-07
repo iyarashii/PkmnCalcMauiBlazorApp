@@ -55,7 +55,7 @@ namespace PkmnCalcMauiBlazor.Pages
                 {
                     XyPokedex or SunMoonPokedex => pokemonNameMatch =>
                                             {
-                                                var pokemonNumber = pokemonNameMatch.Value.Substring(0, 3);
+                                                var pokemonNumber = pokemonNameMatch.Value[..3];
                                                 if (pokemonNumber == pokemonNameMatch.Value.Substring(11, 3))
                                                 {
                                                     var pokemonName = Regex.Replace(pokemonNameMatch.Value, "</option>", "").Remove(0, 14).Trim();
