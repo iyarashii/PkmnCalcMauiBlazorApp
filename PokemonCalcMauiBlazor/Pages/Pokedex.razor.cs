@@ -10,10 +10,14 @@ namespace PkmnCalcMauiBlazor.Pages
 {
     public partial class Pokedex : ComponentBase
     {
+        private string SerebiiPokedexSource
+        {
+            get => $"{PokedexSource}{GetPokedexPageName()}";
+        }
         private bool progressVisible = false;
         private static IPokedexType selectedPokedexType = new ScarletVioletPokedex();
-        public string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
-        public string PokemonName { get; set; } = "";
+        public static string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
+        public static string PokemonName { get; set; } = "";
         public double SaveProgress { get; set; } = 0.0;
 #if DEBUG && WINDOWS
         private static string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
@@ -33,6 +37,13 @@ namespace PkmnCalcMauiBlazor.Pages
 #endif
             }
         }
+
+        // returns pokemon number or pokemon name depending on the pokedex for example "25.shtml" or "pikachu"
+        public static string GetPokedexPageName() =>
+                                                    ((!string.IsNullOrEmpty(PokemonName)
+                                                    && char.IsDigit(PokemonName[0]))
+                                                    ? $"{PokemonName[..3]}.shtml"
+                                                    : PokemonName?.Replace(" ", "").ToLower());
         private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
         {
             // if text is null or empty, don't return values (drop-down will not open)
