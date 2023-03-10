@@ -39,18 +39,14 @@ namespace PkmnCalcMauiBlazor.Pages
         public string SelectedPrimaryTypeColor { get => SelectedPrimaryType.TypeColor; }
 
         public string SelectedSecondaryTypeColor { get => SelectedSecondaryType.TypeColor; }
-        private IPkmnType _selectedPrimaryType = PkmnTypeFactory.CreateEmptyPkmnType();
-        private IPkmnType _selectedSecondaryType = PkmnTypeFactory.CreateEmptyPkmnType();
 
         public IPkmnType SelectedPrimaryType
         {
             get => PrimaryPkmnTypeList.Where(type => type.TypeName == SelectedPrimaryTypeName).Single();
-            set => _selectedPrimaryType = value;
         }
         public IPkmnType SelectedSecondaryType
         {
             get => SecondaryPkmnTypeList.Where(type => type.TypeName == SelectedSecondaryTypeName).Single();
-            set => _selectedSecondaryType = value;
         }
 
         public void Calculate()
