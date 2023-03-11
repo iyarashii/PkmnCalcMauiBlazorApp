@@ -16,14 +16,8 @@ namespace PkmnCalcMauiBlazor.Pages
             {
                 if (_value == value) return;
                 _value = value;
-                if (_disposed)
-                {
-                    return;
-                }
                 StateHasChanged();
             }
         }
-        bool _disposed;
-        public void Dispose() => _disposed = true;
     }
 }
