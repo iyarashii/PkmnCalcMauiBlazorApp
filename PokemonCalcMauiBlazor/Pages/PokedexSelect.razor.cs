@@ -10,7 +10,7 @@ namespace PkmnCalcMauiBlazor.Pages
     {
         private IPokedexType _selectedPokedexType;
         private string _pokedexSource;
-        private List<IPokedexType> pokedexTypes = new List<IPokedexType>
+        private readonly List<IPokedexType> pokedexTypes = new List<IPokedexType>
         {
             new FullPokedex(),
             new RedBluePokedex(),
