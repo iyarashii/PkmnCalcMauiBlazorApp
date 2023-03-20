@@ -10,7 +10,7 @@ namespace PkmnCalcMauiBlazor.Pages
 {
     public partial class Pokedex : ComponentBase
     {
-        private string SerebiiPokedexSource
+        private static string SerebiiPokedexSource
         {
             get => $"{PokedexSource}{GetPokedexPageName()}";
         }
