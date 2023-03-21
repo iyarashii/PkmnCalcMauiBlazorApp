@@ -1,2 +1,9 @@
 ﻿@page "/attackdex"
-Attackdex
+@inherits BasePage
+<label>Attackdex type</label>
+@if (IsDebug())
+{
+    <p>Path to data: </p>
+    <p>Dex src: </p>
+    <p>Iframe src: </p>
+}

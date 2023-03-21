@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace PkmnCalcMauiBlazor.Pages
 {
-    public partial class Attackdex : ComponentBase
+    public partial class Attackdex : BasePage
     {
 
     }
