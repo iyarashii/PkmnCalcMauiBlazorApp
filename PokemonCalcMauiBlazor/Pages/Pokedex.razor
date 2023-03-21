@@ -2,7 +2,7 @@
 // Licensed under the GNU General Public License v3.0.*@
 @page "/pokedex"
 @inject IDialogService DialogService
-
+@inherits BasePage
 <PokedexSelect Label="Pokedex Type" @bind-SelectedPokedexType="SelectedPokedexType" @bind-PokedexSource="PokedexSource" />
 @if(IsDebug())
 {

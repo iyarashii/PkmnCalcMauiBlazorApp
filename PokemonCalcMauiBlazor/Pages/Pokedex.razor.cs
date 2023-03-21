@@ -8,7 +8,7 @@ using PkmnCalcMauiBlazor.Pages.Logic;
 
 namespace PkmnCalcMauiBlazor.Pages
 {
-    public partial class Pokedex : ComponentBase
+    public partial class Pokedex : BasePage
     {
         private static string SerebiiPokedexSource
         {
@@ -105,15 +105,6 @@ namespace PkmnCalcMauiBlazor.Pages
             {
                 await SavePokemonNames();
             }
-        }
-
-        public static bool IsDebug()
-        {
-#if DEBUG
-            return true;
-#else
-            return false;
-#endif
         }
     }
 }
