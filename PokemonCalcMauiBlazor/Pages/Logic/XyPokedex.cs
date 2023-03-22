@@ -3,7 +3,7 @@
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class XyPokedex : PokedexType
+    public class XyPokedex : DexType
     {
         public override string Name => "X & Y Pokédex";
 

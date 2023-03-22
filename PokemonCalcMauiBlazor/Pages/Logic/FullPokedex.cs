@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class FullPokedex : PokedexType
+    public class FullPokedex : DexType
     {
         public override string Name => "Full Pokédex";
 

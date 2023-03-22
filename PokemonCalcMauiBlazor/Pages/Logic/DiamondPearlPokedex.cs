@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class DiamondPearlPokedex : PokedexType
+    public class DiamondPearlPokedex : DexType
     {
         public override string Name => "Diamond/Pearl Pokédex";
 

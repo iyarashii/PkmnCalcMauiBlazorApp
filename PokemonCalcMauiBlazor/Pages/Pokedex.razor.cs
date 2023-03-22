@@ -10,12 +10,29 @@ namespace PkmnCalcMauiBlazor.Pages
 {
     public partial class Pokedex : BasePage
     {
+        private readonly List<IDexType> pokedexTypes = new()
+        {
+            new FullPokedex(),
+            new RedBluePokedex(),
+            new GoldSilverPokedex(),
+            new RubySapphirePokedex(),
+            new DiamondPearlPokedex(),
+            new BlackWhitePokedex(),
+            new XyPokedex(),
+            new SunMoonPokedex(),
+            new LetsGoPokedex(),
+            new SwordShieldPokedex(),
+            new BdspPokedex(),
+            new LegendsPokedex(),
+            new GoPokedex(),
+            new ScarletVioletPokedex()
+        };
         private static string SerebiiPokedexSource
         {
             get => $"{PokedexSource}{GetPokedexPageName()}";
         }
         private bool progressVisible = false;
-        private static IPokedexType selectedPokedexType = new ScarletVioletPokedex();
+        private static IDexType selectedPokedexType = new ScarletVioletPokedex();
         public static string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
         public static string PokemonName { get; set; } = "";
         public double SaveProgress { get; set; } = 0.0;
@@ -24,7 +41,7 @@ namespace PkmnCalcMauiBlazor.Pages
 #else
         private static string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
 #endif
-        public static IPokedexType SelectedPokedexType
+        public static IDexType SelectedPokedexType
         {
             get => selectedPokedexType;
             set

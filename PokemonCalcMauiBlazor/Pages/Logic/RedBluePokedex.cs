@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class RedBluePokedex : PokedexType
+    public class RedBluePokedex : DexType
     {
         public override string Name => "Red/Blue Pokédex";
 

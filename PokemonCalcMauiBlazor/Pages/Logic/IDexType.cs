@@ -3,7 +3,7 @@
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public interface IPokedexType
+    public interface IDexType
     {
         string Name { get; }
         string Url { get; }

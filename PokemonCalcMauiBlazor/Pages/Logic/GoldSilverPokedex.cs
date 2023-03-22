@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class GoldSilverPokedex : PokedexType
+    public class GoldSilverPokedex : DexType
     {
         public override string Name => "Gold/Silver Pokédex";
 

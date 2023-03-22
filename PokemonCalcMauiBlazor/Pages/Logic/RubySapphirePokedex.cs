@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class RubySapphirePokedex : PokedexType
+    public class RubySapphirePokedex : DexType
     {
         public override string Name => "Ruby/Sapphire Pokédex";
 

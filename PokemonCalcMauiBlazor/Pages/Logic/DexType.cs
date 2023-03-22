@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public abstract class PokedexType : IPokedexType
+    public abstract class DexType : IDexType
     {
         public abstract string Name { get; }
         public abstract string Url { get; }
@@ -19,7 +19,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
         // Note: this is important so the MudSelect can compare pokedex types
         public override bool Equals(object o)
         {
-            var other = o as PokedexType;
+            var other = o as DexType;
             return other?.Name == Name;
         }
         // Note: this is important too!

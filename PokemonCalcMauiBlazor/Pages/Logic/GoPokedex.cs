@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class GoPokedex : PokedexType
+    public class GoPokedex : DexType
     {
         public override string Name => "GO Pokédex";
 

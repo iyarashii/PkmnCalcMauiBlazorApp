@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
 {
-    public class SunMoonPokedex : PokedexType
+    public class SunMoonPokedex : DexType
     {
         public override string Name => "Sun & Moon Pokédex";
 

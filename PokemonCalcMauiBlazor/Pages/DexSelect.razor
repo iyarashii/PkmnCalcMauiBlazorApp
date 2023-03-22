@@ -1,0 +1,16 @@
+﻿@using Logic
+
+<MudSelect Dense="true"
+           T="IDexType"
+           Label="@Label"
+           AnchorOrigin="Origin.BottomCenter"
+           @bind-Value="@SelectedDexType">
+    @foreach (var dexType in DexTypes)
+    {
+        <MudSelectItem Value="@dexType" />
+    }
+</MudSelect>
+
+@code {
+   
+}
