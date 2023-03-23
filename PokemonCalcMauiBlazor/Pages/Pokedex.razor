@@ -3,7 +3,7 @@
 @page "/pokedex"
 @inject IDialogService DialogService
 @inherits BasePage
-<DexSelect Label="Pokedex Type" @bind-SelectedDexType="SelectedPokedexType" @bind-DexSource="PokedexSource" DexTypes="pokedexTypes" />
+<DexSelect Label="Pokedex Type" DexTypes="pokedexTypes" @bind-SelectedDexType="SelectedPokedexType" @bind-DexSource="PokedexSource"/>
 @if(IsDebug())
 {
 <p>Path to names: @pathToPokemonNames</p>
