@@ -1,6 +1,7 @@
 ﻿@page "/attackdex"
 @inherits BasePage
-<label>Attackdex type</label>
+<DexSelect Label="Attackdex Type" DexTypes="attackdexTypes"
+           @bind-SelectedDexType="SelectedAttackdexType" @bind-DexSource="AttackdexSource" />
 @if (IsDebug())
 {
     <p>Path to data: </p>
