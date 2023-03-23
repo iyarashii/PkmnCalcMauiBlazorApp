@@ -69,6 +69,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Pages\Logic\Attackdex\" />
       <Folder Include="wwwroot\css\" />
     </ItemGroup>
 
