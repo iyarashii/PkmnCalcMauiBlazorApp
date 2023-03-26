@@ -2,6 +2,7 @@
 // Licensed under the GNU General Public License v3.0.
 
 using PkmnCalcMauiBlazor.Pages.Logic;
+using PkmnCalcMauiBlazor.Pages.Logic.Attackdex;
 
 namespace PkmnCalcMauiBlazor.Pages
 {
@@ -15,20 +16,7 @@ namespace PkmnCalcMauiBlazor.Pages
 #endif
         private readonly List<IDexType> attackdexTypes = new()
         {
-            new FullPokedex(),
-            new RedBluePokedex(),
-            new GoldSilverPokedex(),
-            new RubySapphirePokedex(),
-            new DiamondPearlPokedex(),
-            new BlackWhitePokedex(),
-            new XyPokedex(),
-            new SunMoonPokedex(),
-            new LetsGoPokedex(),
-            new SwordShieldPokedex(),
-            new BdspPokedex(),
-            new LegendsPokedex(),
-            new GoPokedex(),
-            new ScarletVioletPokedex()
+            new RedBlueYellowAttackdex(),
         };
         public static string AttackdexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
         public static IDexType SelectedAttackdexType
