@@ -1,5 +1,6 @@
 ﻿@page "/attackdex"
 @inherits BasePage
+@inject IDialogService DialogService
 <DexSelect Label="Attackdex Type" DexTypes="attackdexTypes"
            @bind-SelectedDexType="SelectedAttackdexType" @bind-DexSource="AttackdexSource" />
 @if (IsDebug())
@@ -8,3 +9,15 @@
     <p>Dex src: </p>
     <p>Iframe src: </p>
 }
+@if (progressVisible)
+{
+    <SavePokemonNamesProgress Value="SaveProgress" />
+}
+<MudAutocomplete AutoFocus="true" accesskey="f" T="string" Label="Attack Name" @bind-Value="AttackName" SearchFunc="@SearchForAttackName"
+                 ResetValueOnEmptyText="true"
+                 CoerceText="true" CoerceValue="false"
+                 AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
+<MudButton Variant="Variant.Filled" OnClick="OpenSavePokemonDataDialog">Save list of attack names from @SelectedAttackdexType.Name</MudButton>
+<MudPaper Height="1080px">
+    <iframe id="serebiiPokedex" src="@Attackdex.SerebiiAttackdexSource" />
+</MudPaper>
