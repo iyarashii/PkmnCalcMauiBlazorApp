@@ -21,7 +21,7 @@ namespace PkmnCalcMauiBlazor.Pages
         {
             new RedBlueYellowAttackdex(),
         };
-        public static string AttackdexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
+        public static string AttackdexSource { get; set; } = selectedAttackdexType.Url;
         public static IDexType SelectedAttackdexType
         {
             get => selectedAttackdexType;
@@ -58,12 +58,8 @@ namespace PkmnCalcMauiBlazor.Pages
         {
             get => $"{AttackdexSource}{GetPageName()}";
         }
-        // returns pokemon number or pokemon name depending on the pokedex for example "25.shtml" or "pikachu"
-        public static string GetPageName() =>
-                                                    ((!string.IsNullOrEmpty(AttackName)
-                                                    && char.IsDigit(AttackName[0]))
-                                                    ? $"{AttackName[..3]}.shtml"
-                                                    : AttackName?.Replace(" ", "").ToLower());
+
+        public static string GetPageName() => $"{AttackName?.Replace(" ", "").ToLower()}.shtml";
         public async Task SaveNamesFromSerebii()
         {
             using (HttpClient client = new())
