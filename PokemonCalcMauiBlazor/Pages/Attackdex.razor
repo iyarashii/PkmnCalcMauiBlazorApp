@@ -5,9 +5,9 @@
            @bind-SelectedDexType="SelectedAttackdexType" @bind-DexSource="AttackdexSource" />
 @if (IsDebug())
 {
-    <p>Path to data: </p>
-    <p>Dex src: </p>
-    <p>Iframe src: </p>
+    <p>Path to data: @pathToData</p>
+    <p>Dex src: @AttackdexSource</p>
+    <p>Iframe src: @SerebiiAttackdexSource</p>
 }
 @if (progressVisible)
 {
