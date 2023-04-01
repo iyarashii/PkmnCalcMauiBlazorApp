@@ -59,7 +59,7 @@ namespace PkmnCalcMauiBlazor.Pages
             get => $"{AttackdexSource}{GetPageName()}";
         }
 
-        public static string GetPageName() => $"{AttackName?.Replace(" ", "").ToLower()}.shtml";
+        public static string GetPageName() => string.IsNullOrEmpty(AttackName) ? null : $"{AttackName?.Replace(" ", "").ToLower()}.shtml";
         public async Task SaveNamesFromSerebii()
         {
             using (HttpClient client = new())
