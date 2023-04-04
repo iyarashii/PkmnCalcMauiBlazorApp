@@ -22,6 +22,7 @@ namespace PkmnCalcMauiBlazor.Pages
             new RedBlueYellowAttackdex(),
             new GoldSilverCrystalAttackdex(),
             new Gen3Attackdex(),
+            new DiamondPearlAttackdex(),
         };
         public static string AttackdexSource { get; set; } = selectedAttackdexType.Url;
         public static IDexType SelectedAttackdexType
@@ -71,7 +72,7 @@ namespace PkmnCalcMauiBlazor.Pages
                 HashSet<string> namesToSave = new();
                 Action<Match> formatAndSaveName = SelectedAttackdexType switch
                 {
-                    RedBlueYellowAttackdex or GoldSilverCrystalAttackdex or Gen3Attackdex => nameMatch =>
+                    RedBlueYellowAttackdex or GoldSilverCrystalAttackdex or Gen3Attackdex or DiamondPearlAttackdex => nameMatch =>
                            namesToSave.Add(Regex.Replace(nameMatch.Value.Trim(), "</option>", "")),
                     _ => nameMatch => namesToSave.Add(Regex.Replace(nameMatch.Value, "\\d+? ", "").Trim()),
                 };
