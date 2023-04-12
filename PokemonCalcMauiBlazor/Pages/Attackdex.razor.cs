@@ -27,6 +27,7 @@ namespace PkmnCalcMauiBlazor.Pages
             new XyAttackdex(),
             new SunMoonAttackdex(),
             new SwordShieldAttackdex(),
+            new ScarletVioletAttackdex(),
         };
         public static string AttackdexSource { get; set; } = selectedAttackdexType.Url;
         public static IDexType SelectedAttackdexType
@@ -78,7 +79,8 @@ namespace PkmnCalcMauiBlazor.Pages
                 {
                     RedBlueYellowAttackdex or GoldSilverCrystalAttackdex 
                     or Gen3Attackdex or DiamondPearlAttackdex or BlackWhiteAttackdex
-                    or XyAttackdex or SunMoonAttackdex or SwordShieldAttackdex => nameMatch =>
+                    or XyAttackdex or SunMoonAttackdex or SwordShieldAttackdex 
+                    or ScarletVioletAttackdex => nameMatch =>
                            namesToSave.Add(Regex.Replace(nameMatch.Value.Trim(), "</option>", "")),
                     _ => nameMatch => namesToSave.Add(Regex.Replace(nameMatch.Value, "\\d+? ", "").Trim()),
                 };
