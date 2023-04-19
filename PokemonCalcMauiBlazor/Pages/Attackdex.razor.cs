@@ -75,15 +75,7 @@ namespace PkmnCalcMauiBlazor.Pages
                 string downloadString = await client.GetStringAsync(AttackdexSource);
                 var nameMatches = Regex.Matches(downloadString, SelectedAttackdexType.Regex);
                 HashSet<string> namesToSave = new();
-                Action<Match> formatAndSaveName = SelectedAttackdexType switch
-                {
-                    RedBlueYellowAttackdex or GoldSilverCrystalAttackdex 
-                    or Gen3Attackdex or DiamondPearlAttackdex or BlackWhiteAttackdex
-                    or XyAttackdex or SunMoonAttackdex or SwordShieldAttackdex 
-                    or ScarletVioletAttackdex => nameMatch =>
-                           namesToSave.Add(Regex.Replace(nameMatch.Value.Trim(), "</option>", "")),
-                    _ => nameMatch => namesToSave.Add(Regex.Replace(nameMatch.Value, "\\d+? ", "").Trim()),
-                };
+                Action<Match> formatAndSaveName = nameMatch => namesToSave.Add(Regex.Replace(nameMatch.Value.Trim(), "</option>", ""));
                 var progress = 0.0;
                 foreach (Match nameMatch in nameMatches.Cast<Match>())
                 {
