@@ -5,7 +5,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic.Attackdex
 {
     public class RedBlueYellowAttackdex : DexType
     {
-        public override string Name => "Red/Blue/Yellow";
+        public override string Name => "Red / Blue / Yellow";
 
         public override string Url => "https://www.serebii.net/attackdex-rby/";
 

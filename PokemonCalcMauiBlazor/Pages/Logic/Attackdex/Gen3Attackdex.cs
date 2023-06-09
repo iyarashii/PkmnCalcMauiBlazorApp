@@ -5,7 +5,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic.Attackdex
 {
     public class Gen3Attackdex : DexType
     {
-        public override string Name => "Ruby/Sapphire/Emerald";
+        public override string Name => "Ruby / Sapphire / Emerald";
 
         public override string Url => "https://www.serebii.net/attackdex/";
 

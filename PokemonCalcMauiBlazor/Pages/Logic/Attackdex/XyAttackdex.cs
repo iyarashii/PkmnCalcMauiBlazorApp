@@ -5,7 +5,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic.Attackdex
 {
     public class XyAttackdex : DexType
     {
-        public override string Name => "X/Y";
+        public override string Name => "X / Y";
 
         public override string Url => "https://www.serebii.net/attackdex-xy/";
 

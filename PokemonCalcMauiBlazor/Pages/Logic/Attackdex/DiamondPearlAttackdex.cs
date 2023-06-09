@@ -5,7 +5,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic.Attackdex
 {
     public class DiamondPearlAttackdex : DexType
     {
-        public override string Name => "Diamond/Pearl";
+        public override string Name => "Diamond / Pearl";
 
         public override string Url => "https://www.serebii.net/attackdex-dp/";
 

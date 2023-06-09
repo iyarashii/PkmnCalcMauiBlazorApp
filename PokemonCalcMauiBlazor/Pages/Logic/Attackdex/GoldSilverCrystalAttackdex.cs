@@ -5,7 +5,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic.Attackdex
 {
     public class GoldSilverCrystalAttackdex : DexType
     {
-        public override string Name => "Gold/Silver/Crystal";
+        public override string Name => "Gold / Silver / Crystal";
 
         public override string Url => "https://www.serebii.net/attackdex-gs/";
 

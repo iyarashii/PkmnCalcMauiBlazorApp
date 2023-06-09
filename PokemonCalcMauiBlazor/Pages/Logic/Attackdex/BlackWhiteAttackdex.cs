@@ -5,7 +5,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic.Attackdex
 {
     public class BlackWhiteAttackdex : DexType
     {
-        public override string Name => "Black/White";
+        public override string Name => "Black / White";
 
         public override string Url => "https://www.serebii.net/attackdex-bw/";
 
