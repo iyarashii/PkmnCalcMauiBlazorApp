@@ -11,6 +11,6 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class BdspPokedex : SwordShieldPokedex
     {
-        public override string Name => "BDSP Pokédex";
+        public override string Name => "BD / SP";
     }
 }
