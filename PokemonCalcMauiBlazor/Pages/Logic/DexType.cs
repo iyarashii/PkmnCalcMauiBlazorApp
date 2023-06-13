@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2022 iyarashii @ https://github.com/iyarashii 
+﻿// Copyright (c) 2023 iyarashii @ https://github.com/iyarashii 
 // Licensed under the GNU General Public License v3.0.
 
 namespace PkmnCalcMauiBlazor.Pages.Logic
