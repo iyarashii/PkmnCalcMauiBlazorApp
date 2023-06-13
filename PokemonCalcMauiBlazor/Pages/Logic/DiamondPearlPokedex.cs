@@ -11,7 +11,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class DiamondPearlPokedex : DexType
     {
-        public override string Name => "Diamond/Pearl Pokédex";
+        public override string Name => "Diamond / Pearl";
 
         public override string Url => "https://www.serebii.net/pokedex-dp/";
 
