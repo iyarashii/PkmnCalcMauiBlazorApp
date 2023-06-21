@@ -11,6 +11,6 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class LetsGoPokedex : SunMoonPokedex
     {
-        public override string Name => "Let's Go Pokédex";
+        public override string Name => "Let's Go";
     }
 }
