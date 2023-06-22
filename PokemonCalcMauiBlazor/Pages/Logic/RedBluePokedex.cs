@@ -11,7 +11,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class RedBluePokedex : DexType
     {
-        public override string Name => "Red/Blue Pokédex";
+        public override string Name => "Red / Blue";
 
         public override string Url => "https://www.serebii.net/pokedex/";
 
