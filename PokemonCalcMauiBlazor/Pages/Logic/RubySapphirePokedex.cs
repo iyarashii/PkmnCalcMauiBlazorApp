@@ -11,7 +11,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class RubySapphirePokedex : DexType
     {
-        public override string Name => "Ruby/Sapphire Pokédex";
+        public override string Name => "Ruby / Sapphire";
 
         public override string Url => "https://www.serebii.net/pokedex-rs/";
 
