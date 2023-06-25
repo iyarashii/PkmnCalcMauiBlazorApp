@@ -11,7 +11,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class ScarletVioletPokedex : DexType
     {
-        public override string Name => "Scarlet & Violet Pokédex";
+        public override string Name => "Scarlet / Violet";
 
         public override string Url => "https://www.serebii.net/pokedex-sv/";
 
