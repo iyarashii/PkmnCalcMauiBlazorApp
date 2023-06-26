@@ -11,7 +11,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class SunMoonPokedex : DexType
     {
-        public override string Name => "Sun & Moon Pokédex";
+        public override string Name => "Sun / Moon";
 
         public override string Url => "https://www.serebii.net/pokedex-sm/";
 
