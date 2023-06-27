@@ -11,7 +11,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class SwordShieldPokedex : DexType
     {
-        public override string Name => "Sword & Shield Pokédex";
+        public override string Name => "Sword / Shield";
 
         public override string Url => "https://www.serebii.net/pokedex-swsh/";
 
