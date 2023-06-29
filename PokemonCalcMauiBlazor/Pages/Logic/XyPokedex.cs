@@ -5,7 +5,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class XyPokedex : DexType
     {
-        public override string Name => "X & Y Pokédex";
+        public override string Name => "X / Y";
 
         public override string Url => "https://www.serebii.net/pokedex-xy/";
 
