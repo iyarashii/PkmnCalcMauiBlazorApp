@@ -11,7 +11,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class GoPokedex : DexType
     {
-        public override string Name => "GO Pokédex";
+        public override string Name => "GO";
 
         public override string Url => "https://www.serebii.net/pokemongo/pokemon/";
 
