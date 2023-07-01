@@ -11,7 +11,7 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
 {
     public class FullPokedex : DexType
     {
-        public override string Name => "Full Pokédex";
+        public override string Name => "Full";
 
         public override string Url => "https://www.serebii.net/pokemon/";
 
