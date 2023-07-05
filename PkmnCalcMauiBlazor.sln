@@ -6,7 +6,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PkmnCalcMauiBlazor", "Pokem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonTypeLibrary", "PokemonTypeLibrary\PokemonTypeLibrary.csproj", "{084BA887-A478-4CB3-BE4A-9397D98C7383}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PkmnCalcMauiBlazor.Tests", "PkmnCalcMauiBlazor.Tests\PkmnCalcMauiBlazor.Tests.csproj", "{72ED6C0A-752A-4D0E-B9E9-28D6BA4B1357}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PkmnCalcMauiBlazor.Tests", "PkmnCalcMauiBlazor.Tests\PkmnCalcMauiBlazor.Tests.csproj", "{72ED6C0A-752A-4D0E-B9E9-28D6BA4B1357}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
