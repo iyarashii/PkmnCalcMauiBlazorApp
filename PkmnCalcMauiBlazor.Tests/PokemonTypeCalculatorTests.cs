@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
 using MudBlazor.Services;
 using PkmnCalcMauiBlazor.Pages;
+using PokemonTypeLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,11 @@ namespace PkmnCalcMauiBlazor.Tests
 			JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
 			var cut = RenderComponent<PokemonTypeCalculator>();
 			var primaryTypeSelect = cut.FindComponent<PokemonTypeSelect>();
+            var expectedType = PkmnTypeFactory.CreateEmptyPkmnType();
 
 			// Assert
-			Assert.Equal("(none)", primaryTypeSelect.Instance.SelectedTypeName);
+			Assert.Equal(expectedType.TypeName, primaryTypeSelect.Instance.SelectedTypeName);
+			Assert.Equal(expectedType.TypeColor, primaryTypeSelect.Instance.SelectedTypeColor);
 		}
 
         [Fact]
