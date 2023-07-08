@@ -37,9 +37,11 @@ namespace PkmnCalcMauiBlazor.Tests
             JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
             var cut = RenderComponent<PokemonTypeCalculator>();
             var secondaryTypeSelect = cut.FindComponents<PokemonTypeSelect>().First(x => x.Instance.Label == "Secondary Type");
+            var expectedType = PkmnTypeFactory.CreateEmptyPkmnType();
 
             // Assert
-            Assert.Equal("(none)", secondaryTypeSelect.Instance.SelectedTypeName);
+            Assert.Equal(expectedType.TypeName, secondaryTypeSelect.Instance.SelectedTypeName);
+            Assert.Equal(expectedType.TypeColor, secondaryTypeSelect.Instance.SelectedTypeColor);
         }
     }
 }
