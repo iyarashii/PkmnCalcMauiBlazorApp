@@ -22,7 +22,20 @@ Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating
 		Assert.Equal(expectedType.TypeName, primaryTypeSelect.Instance.SelectedTypeName);
 		Assert.Equal(expectedType.TypeColor, primaryTypeSelect.Instance.SelectedTypeColor);
 	}
- //   [Fact]
+
+	[Fact]
+	public void VerifyDefendingPokemonTypeLegendMarkup()
+	{
+		// Arrange
+		Services.AddMudServices();
+		JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
+		JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
+		var cut = Render(@<PokemonTypeCalculator />);
+
+		// Assert
+		cut.Find("legend").MarkupMatches(@<legend style="margin-inline:5px;">Defending Pokemon Types</legend>);
+	}
+	//   [Fact]
 	//public void VerifySecondaryTypeDefaultSelection()
 	//{
 	//	// Arrange
