@@ -35,16 +35,20 @@ Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating
 		// Assert
 		cut.Find("legend").MarkupMatches(@<legend style="margin-inline:5px;">Defending Pokemon Types</legend>);
 	}
-	//   [Fact]
-	//public void VerifySecondaryTypeDefaultSelection()
-	//{
-	//	// Arrange
-	//	var cut = Render(@<Counter />);
 
-	//	// Act - click button to increment counter
-	//	cut.Find("button").Click();
+	[Fact]
+	public void VerifySecondaryTypeDefaultSelection()
+	{
+		// Arrange
+		Services.AddMudServices();
+		JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
+		JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
+		var cut = Render(@<PokemonTypeCalculator />);
+		var secondaryTypeSelect = cut.FindComponents<PokemonTypeSelect>().First(x => x.Instance.Label == "Secondary Type");
+		var expectedType = PkmnTypeFactory.CreateEmptyPkmnType();
 
-	//	// Assert that the counter was incremented
-	//	cut.Find("p").MarkupMatches(@<p>Current count: 1</p>);
-	//}
+		// Assert
+		Assert.Equal(expectedType.TypeName, secondaryTypeSelect.Instance.SelectedTypeName);
+		Assert.Equal(expectedType.TypeColor, secondaryTypeSelect.Instance.SelectedTypeColor);
+	}
 }
