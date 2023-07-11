@@ -13,8 +13,6 @@ Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating
 		JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
 		JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
 		var cut = Render(@<PokemonTypeCalculator />);
-
-		// Assert that content of the paragraph shows counter at zero
 		var primaryTypeSelect = cut.FindComponent<PokemonTypeSelect>();
 		var expectedType = PkmnTypeFactory.CreateEmptyPkmnType();
 
