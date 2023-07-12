@@ -19,6 +19,7 @@ Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating
 		// Assert
 		Assert.Equal(expectedType.TypeName, primaryTypeSelect.Instance.SelectedTypeName);
 		Assert.Equal(expectedType.TypeColor, primaryTypeSelect.Instance.SelectedTypeColor);
+		Assert.Equal("Primary Type", primaryTypeSelect.Instance.Label);
 	}
 
 	[Fact]
