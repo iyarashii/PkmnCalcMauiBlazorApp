@@ -49,5 +49,6 @@ Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating
 		// Assert
 		Assert.Equal(expectedType.TypeName, secondaryTypeSelect.Instance.SelectedTypeName);
 		Assert.Equal(expectedType.TypeColor, secondaryTypeSelect.Instance.SelectedTypeColor);
+		Assert.Equal("Secondary Type", secondaryTypeSelect.Instance.Label);
 	}
 }
