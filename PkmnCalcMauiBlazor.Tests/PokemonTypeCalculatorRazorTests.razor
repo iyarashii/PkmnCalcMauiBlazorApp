@@ -22,6 +22,31 @@ Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating
 		Assert.Equal("Primary Type", primaryTypeSelect.Instance.Label);
 	}
 
+	public static IEnumerable<object[]> PreparePokemonTypeData()
+	{
+		yield return new object[] { PkmnTypeFactory.CreateNormalPkmnType() };
+	}
+
+	[Theory]
+	[MemberData(nameof(PreparePokemonTypeData))]
+	public void VerifyPrimaryTypeSelection(IPkmnType pkmnType)
+	{
+		// Arrange
+		Services.AddMudServices();
+		JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
+		JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
+		var cut = Render(@<PokemonTypeCalculator />);
+		var primaryTypeSelect = cut.FindComponent<PokemonTypeSelect>();
+
+		// Act
+		primaryTypeSelect.SetParametersAndRender(parameters => parameters
+			.Add(p => p.SelectedTypeName, pkmnType.TypeName));
+
+		// Assert
+		Assert.Equal(pkmnType.TypeName, primaryTypeSelect.Instance.SelectedTypeName);
+		Assert.Equal(pkmnType.TypeColor, primaryTypeSelect.Instance.SelectedTypeColor);
+	}
+
 	[Fact]
 	public void VerifyDefendingPokemonTypeLegendMarkup()
 	{
