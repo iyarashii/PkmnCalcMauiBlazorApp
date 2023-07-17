@@ -25,6 +25,7 @@ Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating
 	public static IEnumerable<object[]> PreparePokemonTypeData()
 	{
 		yield return new object[] { PkmnTypeFactory.CreateNormalPkmnType() };
+		yield return new object[] { PkmnTypeFactory.CreateBugPkmnType() };
 	}
 
 	[Theory]
