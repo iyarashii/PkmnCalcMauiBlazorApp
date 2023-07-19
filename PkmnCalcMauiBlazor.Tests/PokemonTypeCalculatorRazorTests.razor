@@ -37,16 +37,19 @@ Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating
 		JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
 		var cut = Render(@<PokemonTypeCalculator />);
 		var primaryTypeSelect = cut.FindComponent<PokemonTypeSelect>();
+		var secondaryTypeSelect = cut.FindComponents<PokemonTypeSelect>().First(x => x.Instance.Label == "Secondary Type");
 
 		foreach (var pkmnType in pkmnTypesList)
 		{
 			// Act
 			primaryTypeSelect.SetParametersAndRender(parameters => parameters
 				.Add(p => p.SelectedTypeName, pkmnType.TypeName));
+			//secondaryTypeSelect.Render();
 
 			// Assert
 			Assert.Equal(pkmnType.TypeName, primaryTypeSelect.Instance.SelectedTypeName);
 			Assert.Equal(pkmnType.TypeColor, primaryTypeSelect.Instance.SelectedTypeColor);
+			Assert.Equal(pkmnType.TypeName, secondaryTypeSelect.Instance.Selected2ndTypeName);
 		}
 	}
 
