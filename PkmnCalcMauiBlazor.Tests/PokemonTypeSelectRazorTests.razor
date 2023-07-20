@@ -1,0 +1,20 @@
+﻿@inherits TestContext
+@using PokemonTypeLibrary.Models;
+
+
+@code {
+	[Fact]
+	public void VerifyMudSelectParams()
+	{
+		// Arrange
+		Services.AddMudServices();
+		JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
+		JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
+		var pokemonTypeSelect = Render(@<PokemonTypeSelect Label="Test" 
+		PkmnTypeList="PkmnTypeFactory.GeneratePkmnTypeList()" />);
+		var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
+
+		// Assert
+		Assert.True(cut.Instance.Dense);
+	}
+}
