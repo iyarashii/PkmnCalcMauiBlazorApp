@@ -10,12 +10,15 @@
 		Services.AddMudServices();
 		JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
 		JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
-		var pokemonTypeSelect = Render(@<PokemonTypeSelect Label="Test" 
+		string labelText = "Test";
+		var pokemonTypeSelect = Render(
+		@<PokemonTypeSelect Label="@labelText" 
 		PkmnTypeList="PkmnTypeFactory.GeneratePkmnTypeList()" />);
 		var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
 
 		// Assert
 		Assert.True(cut.Instance.Dense);
 		Assert.Equal(-1, cut.Instance.MaxHeight);
+		Assert.Equal(labelText, cut.Instance.Label);
 	}
 }
