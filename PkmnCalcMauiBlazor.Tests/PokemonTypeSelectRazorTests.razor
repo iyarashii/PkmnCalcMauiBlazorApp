@@ -23,5 +23,6 @@
 		Assert.Equal(labelText, cut.Instance.Label);
 		Assert.Equal(Origin.BottomCenter, cut.Instance.AnchorOrigin);
 		Assert.Equal($"-webkit-text-fill-color:{PkmnTypeFactory.CreateEmptyPkmnType().TypeColor}", cut.Instance.Style);
+		Assert.Equal(19, cut.FindComponents<MudSelectItem<string>>().Count);
 	}
 }
