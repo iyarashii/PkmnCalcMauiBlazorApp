@@ -24,5 +24,8 @@
 		Assert.Equal(Origin.BottomCenter, cut.Instance.AnchorOrigin);
 		Assert.Equal($"-webkit-text-fill-color:{PkmnTypeFactory.CreateEmptyPkmnType().TypeColor}", cut.Instance.Style);
 		Assert.Equal(19, cut.FindComponents<MudSelectItem<string>>().Count);
+		Assert.Equal(
+			pokemonTypeSelect.FindComponent<PokemonTypeSelect>().Instance.PkmnTypeList.Select(x => x.TypeName).ToHashSet(), 
+		cut.FindComponents<MudSelectItem<string>>().Select(x => x.Instance.Value).ToHashSet());
 	}
 }
