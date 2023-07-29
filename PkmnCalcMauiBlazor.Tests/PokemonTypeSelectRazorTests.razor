@@ -27,5 +27,6 @@
 		Assert.Equal(
 			pokemonTypeSelect.FindComponent<PokemonTypeSelect>().Instance.PkmnTypeList.Select(x => x.TypeName).ToHashSet(), 
 		cut.FindComponents<MudSelectItem<string>>().Select(x => x.Instance.Value).ToHashSet());
+		Assert.True(cut.FindComponents<MudSelectItem<string>>().All(x => x.Instance.Disabled is false));
 	}
 }
