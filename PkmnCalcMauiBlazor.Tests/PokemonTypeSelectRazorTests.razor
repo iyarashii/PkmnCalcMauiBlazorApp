@@ -28,5 +28,6 @@
 			pokemonTypeSelect.FindComponent<PokemonTypeSelect>().Instance.PkmnTypeList.Select(x => x.TypeName).ToHashSet(), 
 		cut.FindComponents<MudSelectItem<string>>().Select(x => x.Instance.Value).ToHashSet());
 		Assert.True(cut.FindComponents<MudSelectItem<string>>().All(x => x.Instance.Disabled is false));
+		Assert.Equal(19, cut.FindComponents<MudSelectItem<string>>().DistinctBy(x => x.Instance.Style).Count());
 	}
 }
