@@ -8,6 +8,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using PkmnCalcMauiBlazor.Pages;
+using Xunit;
 
 namespace PkmnCalcMauiBlazor.Tests
 {
@@ -38,6 +39,23 @@ namespace PkmnCalcMauiBlazor.Tests
 						cut.FindComponents<MudSelectItem<string>>().Select(x => x.Instance.Value).ToHashSet());
 			Assert.True(cut.FindComponents<MudSelectItem<string>>().All(x => x.Instance.Disabled is false));
 			Assert.Equal(19, cut.FindComponents<MudSelectItem<string>>().DistinctBy(x => x.Instance.Style).Count());
+		}
+
+		[Fact]
+		public void VerifySelection()
+		{
+			Services.AddMudServices();
+			JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
+			JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
+			string labelText = "Test";
+			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p
+																	.Add(x => x.Label, labelText)
+																	.Add(x => x.SelectedTypeColor, "#FFFFFF")
+																	.Add(x => x.PkmnTypeList, PkmnTypeFactory.GeneratePkmnTypeList()));
+			var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
+			cut.SetParametersAndRender(p => p.Add(x => x.Value, PkmnTypeFactory.CreateDragonPkmnType().TypeName));
+
+			Assert.Equal(PkmnTypeFactory.CreateDragonPkmnType().TypeName, cut.Instance.Value);
 		}
 	}
 }
