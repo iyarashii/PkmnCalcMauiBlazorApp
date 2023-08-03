@@ -14,10 +14,9 @@ namespace PkmnCalcMauiBlazor.Pages
             private readonly int maxHeight = -1;
 #endif
         private string _selectedTypeName;
+        public string SelectedTypeColor { get => PkmnTypeList?.FirstOrDefault(x => x.TypeName == SelectedTypeName)?.TypeColor ?? "#FFFFFF"; }
         [Parameter]
         public string Label { get; set; }
-        [Parameter]
-        public string SelectedTypeColor { get; set; }
         [Parameter]
         public string SelectedTypeName
         {
