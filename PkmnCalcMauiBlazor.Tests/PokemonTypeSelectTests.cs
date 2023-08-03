@@ -24,7 +24,6 @@ namespace PkmnCalcMauiBlazor.Tests
 			string labelText = "Test";
 			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p
 																	.Add(x => x.Label, labelText)
-																	.Add(x => x.SelectedTypeColor, "#FFFFFF")
 																	.Add(x => x.PkmnTypeList, PkmnTypeFactory.GeneratePkmnTypeList()));
 			var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
 
@@ -50,12 +49,12 @@ namespace PkmnCalcMauiBlazor.Tests
 			string labelText = "Test";
 			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p
 																	.Add(x => x.Label, labelText)
-																	.Add(x => x.SelectedTypeColor, "#FFFFFF")
 																	.Add(x => x.PkmnTypeList, PkmnTypeFactory.GeneratePkmnTypeList()));
 			var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
-			cut.SetParametersAndRender(p => p.Add(x => x.Value, PkmnTypeFactory.CreateDragonPkmnType().TypeName));
+			pokemonTypeSelect.SetParametersAndRender(p => p.Add(x => x.SelectedTypeName, PkmnTypeFactory.CreateDragonPkmnType().TypeName));
 
 			Assert.Equal(PkmnTypeFactory.CreateDragonPkmnType().TypeName, cut.Instance.Value);
+			Assert.Contains(PkmnTypeFactory.CreateDragonPkmnType().TypeColor, cut.Instance.Style);
 		}
 	}
 }
