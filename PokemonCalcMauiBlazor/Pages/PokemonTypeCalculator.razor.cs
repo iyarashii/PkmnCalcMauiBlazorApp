@@ -33,13 +33,8 @@ namespace PkmnCalcMauiBlazor.Pages
                 Calculate();
             }
         }
-
+        // TODO: check if needed
         public List<IPkmnType> PkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
-
-        public string SelectedPrimaryTypeColor { get => SelectedPrimaryType.TypeColor; }
-
-        public string SelectedSecondaryTypeColor { get => SelectedSecondaryType.TypeColor; }
-
         public IPkmnType SelectedPrimaryType
         {
             get => PrimaryPkmnTypeList.Where(type => type.TypeName == SelectedPrimaryTypeName).Single();
