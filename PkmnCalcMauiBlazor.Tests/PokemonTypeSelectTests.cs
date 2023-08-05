@@ -40,8 +40,14 @@ namespace PkmnCalcMauiBlazor.Tests
 			Assert.Equal(19, cut.FindComponents<MudSelectItem<string>>().DistinctBy(x => x.Instance.Style).Count());
 		}
 
-		[Fact]
-		public void VerifySelection()
+		public static IEnumerable<object[]> PreparePokemonTypeData()
+		{
+			yield return new object[] { PkmnTypeFactory.GeneratePkmnTypeList() };
+		}
+
+		[Theory]
+		[MemberData(nameof(PreparePokemonTypeData))]
+		public void VerifySelection(List<IPkmnType> pkmnTypes)
 		{
 			Services.AddMudServices();
 			JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
@@ -51,10 +57,14 @@ namespace PkmnCalcMauiBlazor.Tests
 																	.Add(x => x.Label, labelText)
 																	.Add(x => x.PkmnTypeList, PkmnTypeFactory.GeneratePkmnTypeList()));
 			var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
-			pokemonTypeSelect.SetParametersAndRender(p => p.Add(x => x.SelectedTypeName, PkmnTypeFactory.CreateDragonPkmnType().TypeName));
 
-			Assert.Equal(PkmnTypeFactory.CreateDragonPkmnType().TypeName, cut.Instance.Value);
-			Assert.Contains(PkmnTypeFactory.CreateDragonPkmnType().TypeColor, cut.Instance.Style);
+            foreach (var type in pkmnTypes)
+            {
+				pokemonTypeSelect.SetParametersAndRender(p => p.Add(x => x.SelectedTypeName, type.TypeName));
+
+				Assert.Equal(type.TypeName, cut.Instance.Value);
+				Assert.Contains(type.TypeColor, cut.Instance.Style);
+			}
 		}
 	}
 }
