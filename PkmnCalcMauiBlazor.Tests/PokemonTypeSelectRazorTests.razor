@@ -12,7 +12,7 @@
 		JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
 		string labelText = "Test";
 		var pokemonTypeSelect = 
-			Render(@<PokemonTypeSelect Label="@labelText" PkmnTypeList="PkmnTypeFactory.GeneratePkmnTypeList()" />);
+			Render(@<PokemonTypeSelect Label="@labelText"/>);
 		var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
 
 		// Assert

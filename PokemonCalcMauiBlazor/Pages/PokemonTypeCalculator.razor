@@ -9,11 +9,11 @@
         <MudSimpleTable Style="border-collapse:collapse; width:100%; padding:0px 5px 5px 5px;">
             <tr>
                 <td>
-                    <PokemonTypeSelect Label="Primary Type" PkmnTypeList="@PrimaryPkmnTypeList"
+                    <PokemonTypeSelect Label="Primary Type"
                     @bind-SelectedTypeName="SelectedPrimaryTypeName" Selected2ndTypeName="@SelectedSecondaryTypeName" />
                 </td>
                 <td>
-                    <PokemonTypeSelect Label="Secondary Type" PkmnTypeList="@SecondaryPkmnTypeList"
+                    <PokemonTypeSelect Label="Secondary Type"
                     @bind-SelectedTypeName="SelectedSecondaryTypeName" Selected2ndTypeName="@SelectedPrimaryTypeName" />
                 </td>
             </tr>

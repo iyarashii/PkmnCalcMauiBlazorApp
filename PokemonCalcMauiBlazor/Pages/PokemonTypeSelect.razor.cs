@@ -32,7 +32,6 @@ namespace PkmnCalcMauiBlazor.Pages
         public EventCallback<string> SelectedTypeNameChanged { get; set; }
         [Parameter]
         public string Selected2ndTypeName { get; set; }
-        [Parameter]
-        public List<IPkmnType> PkmnTypeList { get; set; }
+        public List<IPkmnType> PkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
     }
 }

@@ -22,9 +22,7 @@ namespace PkmnCalcMauiBlazor.Tests
 			JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
 			JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
 			string labelText = "Test";
-			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p
-																	.Add(x => x.Label, labelText)
-																	.Add(x => x.PkmnTypeList, PkmnTypeFactory.GeneratePkmnTypeList()));
+			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p.Add(x => x.Label, labelText));
 			var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
 
 			// Assert
@@ -53,9 +51,7 @@ namespace PkmnCalcMauiBlazor.Tests
 			JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
 			JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
 			string labelText = "Test";
-			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p
-																	.Add(x => x.Label, labelText)
-																	.Add(x => x.PkmnTypeList, PkmnTypeFactory.GeneratePkmnTypeList()));
+			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p.Add(x => x.Label, labelText));
 			var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
 
             foreach (var type in pkmnTypes)
