@@ -9,8 +9,6 @@ namespace PkmnCalcMauiBlazor.Pages
     public partial class PokemonTypeCalculator : ComponentBase
     {
         public static string EmptyTypeName { get; } = PkmnTypeFactory.CreateEmptyPkmnType().TypeName;
-        public List<IPkmnType> PrimaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
-        public List<IPkmnType> SecondaryPkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
         private string _selectedPrimaryTypeName = EmptyTypeName;
         public string SelectedPrimaryTypeName
         {
@@ -33,15 +31,14 @@ namespace PkmnCalcMauiBlazor.Pages
                 Calculate();
             }
         }
-        // TODO: check if needed
         public List<IPkmnType> PkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
         public IPkmnType SelectedPrimaryType
         {
-            get => PrimaryPkmnTypeList.Where(type => type.TypeName == SelectedPrimaryTypeName).Single();
+            get => PkmnTypeList.Where(type => type.TypeName == SelectedPrimaryTypeName).Single();
         }
         public IPkmnType SelectedSecondaryType
         {
-            get => SecondaryPkmnTypeList.Where(type => type.TypeName == SelectedSecondaryTypeName).Single();
+            get => PkmnTypeList.Where(type => type.TypeName == SelectedSecondaryTypeName).Single();
         }
 
         public void Calculate()
