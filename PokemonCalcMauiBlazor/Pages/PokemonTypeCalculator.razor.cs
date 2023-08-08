@@ -31,7 +31,7 @@ namespace PkmnCalcMauiBlazor.Pages
                 Calculate();
             }
         }
-        public List<IPkmnType> PkmnTypeList { get; set; } = PkmnTypeFactory.GeneratePkmnTypeList();
+        public List<IPkmnType> PkmnTypeList { get; } = PkmnTypeFactory.GeneratePkmnTypeList();
         public IPkmnType SelectedPrimaryType
         {
             get => PkmnTypeList.Where(type => type.TypeName == SelectedPrimaryTypeName).Single();
