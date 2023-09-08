@@ -14,13 +14,17 @@ namespace PkmnCalcMauiBlazor.Tests
 {
 	public class PokemonTypeSelectTests : TestContext
 	{
-		[Fact]
-		public void VerifyMudSelectParams()
-		{
-			// Arrange
+        public PokemonTypeSelectTests()
+        {
+			// Mud services test setup
 			Services.AddMudServices();
 			JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
 			JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
+		}
+        [Fact]
+		public void VerifyMudSelectParams()
+		{
+			// Arrange
 			string labelText = "Test";
 			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p.Add(x => x.Label, labelText));
 			var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
@@ -47,9 +51,6 @@ namespace PkmnCalcMauiBlazor.Tests
 		[MemberData(nameof(PreparePokemonTypeData))]
 		public void VerifySelection(List<IPkmnType> pkmnTypes)
 		{
-			Services.AddMudServices();
-			JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
-			JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
 			string labelText = "Test";
 			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p.Add(x => x.Label, labelText));
 			var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
