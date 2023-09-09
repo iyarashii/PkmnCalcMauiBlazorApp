@@ -21,6 +21,7 @@ namespace PkmnCalcMauiBlazor.Tests
 			JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
 			JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
 		}
+
         [Fact]
 		public void VerifyMudSelectParams()
 		{
