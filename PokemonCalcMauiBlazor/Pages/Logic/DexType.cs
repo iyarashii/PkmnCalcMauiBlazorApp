@@ -11,9 +11,9 @@ namespace PkmnCalcMauiBlazor.Pages.Logic
         public abstract string FileName { get; }
 
         // Note: this is important so the MudSelect can compare pokedex types
-        public override bool Equals(object o)
+        public override bool Equals(object obj)
         {
-            var other = o as DexType;
+            var other = obj as DexType;
             return other?.Name == Name;
         }
         // Note: this is important too!
