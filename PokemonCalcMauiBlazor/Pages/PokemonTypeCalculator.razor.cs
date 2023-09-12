@@ -34,11 +34,11 @@ namespace PkmnCalcMauiBlazor.Pages
         public List<IPkmnType> PkmnTypeList { get; } = PkmnTypeFactory.GeneratePkmnTypeList();
         public IPkmnType SelectedPrimaryType
         {
-            get => PkmnTypeList.Where(type => type.TypeName == SelectedPrimaryTypeName).Single();
+            get => PkmnTypeList.Single(type => type.TypeName == SelectedPrimaryTypeName);
         }
         public IPkmnType SelectedSecondaryType
         {
-            get => PkmnTypeList.Where(type => type.TypeName == SelectedSecondaryTypeName).Single();
+            get => PkmnTypeList.Single(type => type.TypeName == SelectedSecondaryTypeName);
         }
 
         public void Calculate()
