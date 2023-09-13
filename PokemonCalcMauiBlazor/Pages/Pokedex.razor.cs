@@ -60,7 +60,7 @@ namespace PkmnCalcMauiBlazor.Pages
                                                     && char.IsDigit(PokemonName[0]))
                                                     ? $"{PokemonName[..3]}.shtml"
                                                     : PokemonName?.Replace(" ", "").ToLower());
-        private async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
+        private static async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
         {
             // if text is null or empty, don't return values (drop-down will not open)
             if (string.IsNullOrEmpty(pokemonName))
