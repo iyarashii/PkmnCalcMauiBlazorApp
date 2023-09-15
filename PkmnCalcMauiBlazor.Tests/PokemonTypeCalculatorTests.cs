@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Components.Web;
-using MudBlazor.Services;
+﻿using MudBlazor.Services;
 using PkmnCalcMauiBlazor.Pages;
 using PokemonTypeLibrary.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Tests
 {
