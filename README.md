@@ -8,7 +8,7 @@ Other versions:
 - ASP.NET with Razor Pages - https://github.com/iyarashii/PkmnTypeCalcRazorPages
 - Blazor WASM - https://github.com/iyarashii/PkmnCalcBlazorWasm
 
-This app shows damage multipliers that affect defending pokemon.  
+This app shows damage multipliers that affect defending Pokemon.  
 App on Windows:
 Type calc
 ![image](https://user-images.githubusercontent.com/38395954/196004141-13c05d37-5737-408d-99ad-168bcc4dd029.png)
@@ -16,7 +16,11 @@ Type calc
 Pokedex - Windows  
 ![image](https://user-images.githubusercontent.com/38395954/219704402-e4b35c7d-5bac-473f-8331-b467ac28c5c2.png)
 Pokedex - Android  
-<img src="https://user-images.githubusercontent.com/38395954/219873361-a69fe4b9-d72b-4ed7-9fdd-32ba2ad8c0a7.png" width="300">
+<img src="https://user-images.githubusercontent.com/38395954/219873361-a69fe4b9-d72b-4ed7-9fdd-32ba2ad8c0a7.png" width="300">  
+
+SonarQube quality gate  
+![image](https://github.com/iyarashii/PkmnCalcMauiBlazorApp/assets/38395954/4536618d-2ce3-480f-87ea-e78ccd799fbf)
+
 Filter by name - Windows  
 ![image](https://user-images.githubusercontent.com/38395954/219704582-769a4813-ccf1-497b-aa89-387702fd96d8.png)
 Filter by name - Android    
@@ -25,11 +29,10 @@ Filter by name - Android
 Filter suggestions
 ![image](https://user-images.githubusercontent.com/38395954/219704763-42f4beac-12b6-467f-b31e-1e6b2669bba3.png)
 
-
 App on Android - Type Calc:  
 <img src="https://user-images.githubusercontent.com/38395954/196034384-ccd88503-d719-4dcf-977e-867e0a3055f3.png" width="300">
 
-After selecting types it displays every pokemon attack type and a multiplier of its damage. The list of multipliers and types is sorted by the dmg multiplier from highest to lowest by default.
+After selecting types, it displays every Pokemon attack type and its damage multiplier. The list of multipliers and types is sorted by the default dmg multiplier from highest to lowest.
 
 You can click on the table headers to sort the list by type name or dmg multiplier.  
 sorted by type alphabetically:
