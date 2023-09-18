@@ -4,12 +4,11 @@
 @inject IDialogService DialogService
 @inherits BasePage
 <DexSelect Label="Pokedex Type" DexTypes="pokedexTypes" @bind-SelectedDexType="SelectedPokedexType" @bind-DexSource="PokedexSource"/>
-@if(IsDebug())
-{
-<p>Path to names: @pathToPokemonNames</p>
-<p>Dex src: @PokedexSource</p>
-<p>Iframe src: @SerebiiPokedexSource</p>
-}
+@{#if DEBUG
+    <p>Path to names: @pathToPokemonNames</p>
+    <p>Dex src: @PokedexSource</p>
+    <p>Iframe src: @SerebiiPokedexSource</p>
+#endif}
 @if (progressVisible)
 {
     <SavePokemonNamesProgress Value="SaveProgress" />

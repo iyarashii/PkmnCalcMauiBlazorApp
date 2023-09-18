@@ -3,12 +3,11 @@
 @inject IDialogService DialogService
 <DexSelect Label="Attackdex Type" DexTypes="attackdexTypes"
            @bind-SelectedDexType="SelectedAttackdexType" @bind-DexSource="AttackdexSource" />
-@if (IsDebug())
-{
+@{#if DEBUG
     <p>Path to data: @pathToData</p>
     <p>Dex src: @AttackdexSource</p>
     <p>Iframe src: @SerebiiAttackdexSource</p>
-}
+#endif}
 @if (progressVisible)
 {
     <SavePokemonNamesProgress Value="SaveProgress" />
