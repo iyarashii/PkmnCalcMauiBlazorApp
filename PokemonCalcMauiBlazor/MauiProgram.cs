@@ -24,6 +24,12 @@ public static class MauiProgram
 #endif
         builder.Services.AddMudServices();
 
+        // TODO investigate how to handle context menus here Configure BlazorWebView options
+        //builder.Services.Configure<BlazorWebView>(options =>
+        //{
+        //    options. = false; // Set this as needed
+        //});
+
         return builder.Build();
 	}
 }
