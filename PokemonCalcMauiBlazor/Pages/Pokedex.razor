@@ -7,7 +7,7 @@
 @{#if DEBUG
     <p>Path to names: @pathToPokemonNames</p>
     <p>Dex src: @PokedexSource</p>
-    <p>Iframe src: @SerebiiPokedexSource</p>
+    <p @oncontextmenu="HandleRightClick">Iframe src: @SerebiiPokedexSource</p>
 #endif}
 @if (progressVisible)
 {
@@ -24,5 +24,6 @@
 
 @code {
     
+
 }
 

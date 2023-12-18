@@ -4,6 +4,7 @@
 using MudBlazor;
 using System.Text.RegularExpressions;
 using PkmnCalcMauiBlazor.Pages.Logic;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace PkmnCalcMauiBlazor.Pages
 {
@@ -69,7 +70,12 @@ namespace PkmnCalcMauiBlazor.Pages
             return names.Where(x => x.Contains(pokemonName, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        public async Task SavePokemonNames()
+        public void HandleRightClick(MouseEventArgs args)
+        {
+            if (args.Button == 2)
+                Clipboard.SetTextAsync(SerebiiPokedexSource);
+        }
+            public async Task SavePokemonNames()
         {
             using (HttpClient client = new())
             {
