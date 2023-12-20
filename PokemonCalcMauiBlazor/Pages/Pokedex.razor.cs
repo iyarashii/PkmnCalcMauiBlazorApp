@@ -70,7 +70,7 @@ namespace PkmnCalcMauiBlazor.Pages
             return names.Where(x => x.Contains(pokemonName, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        public void HandleRightClick(MouseEventArgs args)
+        public static void HandleRightClick(MouseEventArgs args)
         {
             if (args.Button == 2)
                 Clipboard.SetTextAsync(SerebiiPokedexSource);
