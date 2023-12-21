@@ -22,7 +22,11 @@ public static class MauiProgram
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
-        builder.Services.AddMudServices();
+        builder.Services.AddMudServices(config => 
+        {
+            config.SnackbarConfiguration.PreventDuplicates = false;
+            config.SnackbarConfiguration.ClearAfterNavigation = true;
+        });
 
         // TODO investigate how to handle context menus here Configure BlazorWebView options
         //builder.Services.Configure<BlazorWebView>(options =>

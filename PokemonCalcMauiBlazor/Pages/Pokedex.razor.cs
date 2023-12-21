@@ -70,10 +70,13 @@ namespace PkmnCalcMauiBlazor.Pages
             return names.Where(x => x.Contains(pokemonName, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        public static void HandleRightClick(MouseEventArgs args)
+        public void HandleRightClick(MouseEventArgs args)
         {
             if (args.Button == 2)
+            {
+                Snackbar.Add("Copied to the clipboard!", Severity.Success);
                 Clipboard.SetTextAsync(SerebiiPokedexSource);
+            }
         }
             public async Task SavePokemonNames()
         {
