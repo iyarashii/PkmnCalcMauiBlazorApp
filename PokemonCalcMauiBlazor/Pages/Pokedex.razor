@@ -2,6 +2,7 @@
 // Licensed under the GNU General Public License v3.0.*@
 @page "/pokedex"
 @inject IDialogService DialogService
+@inject ISnackbar Snackbar
 @inherits BasePage
 <DexSelect Label="Pokedex Type" DexTypes="pokedexTypes" @bind-SelectedDexType="SelectedPokedexType" @bind-DexSource="PokedexSource"/>
 @{#if DEBUG
