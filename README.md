@@ -16,7 +16,7 @@ Type calc
 Pokedex - Windows  
 ![image](https://user-images.githubusercontent.com/38395954/219704402-e4b35c7d-5bac-473f-8331-b467ac28c5c2.png)
 Pokedex - Android  
-<img src="https://user-images.githubusercontent.com/38395954/219873361-a69fe4b9-d72b-4ed7-9fdd-32ba2ad8c0a7.png" width="300">
+<img src="https://user-images.githubusercontent.com/38395954/219873361-a69fe4b9-d72b-4ed7-9fdd-32ba2ad8c0a7.png" width="300">  
 Filter by name - Windows  
 ![image](https://user-images.githubusercontent.com/38395954/219704582-769a4813-ccf1-497b-aa89-387702fd96d8.png)
 Filter by name - Android    
