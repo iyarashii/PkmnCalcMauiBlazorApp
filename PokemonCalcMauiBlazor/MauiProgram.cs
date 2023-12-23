@@ -26,6 +26,7 @@ public static class MauiProgram
         {
             config.SnackbarConfiguration.PreventDuplicates = false;
             config.SnackbarConfiguration.ClearAfterNavigation = true;
+            config.SnackbarConfiguration.VisibleStateDuration = 500;
         });
 
         // TODO investigate how to handle context menus here Configure BlazorWebView options
