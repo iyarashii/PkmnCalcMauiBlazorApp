@@ -28,12 +28,6 @@ public static class MauiProgram
             config.SnackbarConfiguration.VisibleStateDuration = 500;
         });
 
-        // TODO investigate how to handle context menus here Configure BlazorWebView options
-        //builder.Services.Configure<BlazorWebView>(options =>
-        //{
-        //    options. = false; // Set this as needed
-        //});
-
         return builder.Build();
 	}
 }
