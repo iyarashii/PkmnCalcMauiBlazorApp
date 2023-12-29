@@ -14,6 +14,7 @@ Agility
 Air Cutter
 Air Slash
 All-Out Pummeling
+Alluring Voice
 Ally Switch
 Amnesia
 Anchor Shot
@@ -67,6 +68,7 @@ Blazing Torque
 Bleakwind Storm
 Blizzard
 Block
+Blood Moon
 Bloom Doom
 Blue Flare
 Body Press
@@ -95,6 +97,7 @@ Bulldoze
 Bullet Punch
 Bullet Seed
 Burn Up
+Burning Bulwark
 Burning Jealousy
 Buzzy Buzz
 Calm Mind
@@ -181,6 +184,7 @@ Double-Edge
 Draco Meteor
 Dragon Ascent
 Dragon Breath
+Dragon Cheer
 Dragon Claw
 Dragon Dance
 Dragon Darts
@@ -210,6 +214,7 @@ Electric Terrain
 Electrify
 Electro Ball
 Electro Drift
+Electro Shot
 Electroweb
 Embargo
 Ember
@@ -237,6 +242,7 @@ Feather Dance
 Feint
 Feint Attack
 Fell Stinger
+Fickle Beam
 Fiery Dance
 Fiery Wrath
 Fillet Away
@@ -323,6 +329,7 @@ Gyro Ball
 Hail
 Hammer Arm
 Happy Hour
+Hard Press
 Harden
 Haze
 Head Charge
@@ -386,6 +393,7 @@ Ion Deluge
 Iron Defense
 Iron Head
 Iron Tail
+Ivy Cudgel
 Jaw Lock
 Jet Punch
 Judgment
@@ -439,7 +447,9 @@ Magnetic Flux
 Magnitude
 Make It Rain
 Malicious Moonsault
+Malignant Chain
 Mat Block
+Matcha Gotcha
 Max Airstream
 Max Darkness
 Max Flare
@@ -475,6 +485,7 @@ Meteor Assault
 Meteor Beam
 Meteor Mash
 Metronome
+Mighty Cleave
 Milk Drink
 Mimic
 Mind Blown
@@ -575,6 +586,7 @@ Psyblade
 Psych Up
 Psychic
 Psychic Fangs
+Psychic Noise
 Psychic Terrain
 Psycho Boost
 Psycho Cut
@@ -765,6 +777,7 @@ Sucker Punch
 Sunny Day
 Sunsteel Strike
 Super Fang
+Supercell Slam
 Superpower
 Supersonic
 Supersonic Skystrike
@@ -779,6 +792,8 @@ Switcheroo
 Swords Dance
 Synchronoise
 Synthesis
+Syrup Bomb
+Tachyon Cutter
 Tackle
 Tail Glow
 Tail Slap
@@ -795,7 +810,9 @@ Tectonic Rage
 Teeter Dance
 Telekinesis
 Teleport
+Temper Flare
 Tera Blast
+Tera Starstorm
 Terrain Pulse
 Thief
 Thousand Arrows
@@ -809,6 +826,7 @@ Thunder Punch
 Thunder Shock
 Thunder Wave
 Thunderbolt
+Thunderclap
 Thunderous Kick
 Tickle
 Tidy Up
@@ -835,6 +853,7 @@ Twineedle
 Twinkle Tackle
 Twister
 U-turn
+Upper Hand
 Uproar
 V-create
 Vacuum Wave
