@@ -36,7 +36,7 @@ namespace PkmnCalcMauiBlazor.Pages
         public static string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
         public static string PokemonName { get; set; } = "";
         public double SaveProgress { get; set; } = 0.0;
-#if DEBUG && WINDOWS
+#if (DEBUG && WINDOWS) || UNIT_TEST
         private static string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
 #else
         private static string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
@@ -47,7 +47,7 @@ namespace PkmnCalcMauiBlazor.Pages
             set
             {
                 selectedPokedexType = value;
-#if DEBUG && WINDOWS
+#if (DEBUG && WINDOWS) || UNIT_TEST
                 pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
 #else
                 pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
