@@ -34,6 +34,15 @@
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
+    <DefineConstants>$(DefineConstants);UNIT_TEST</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|x64'">
+    <DefineConstants>$(DefineConstants);UNIT_TEST</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|ARM64'">
+    <DefineConstants>$(DefineConstants);UNIT_TEST</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <!-- App Icon -->
     <MauiIcon Include="Resources\AppIcon\appicon.svg" />
@@ -62,10 +71,18 @@
     <None Remove="PokemonTypeLibrary\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\Images\botti.apng" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\PokemonTypeLibrary\PokemonTypeLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+  <ItemGroup>
+    <MauiImage Include="wwwroot\botti.apng">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </MauiImage>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MudBlazor" Version="6.0.15" />
