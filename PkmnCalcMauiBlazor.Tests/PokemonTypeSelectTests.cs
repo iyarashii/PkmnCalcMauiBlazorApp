@@ -50,11 +50,9 @@ namespace PkmnCalcMauiBlazor.Tests
 			string labelText = "Test";
 			var pokemonTypeSelect = RenderComponent<PokemonTypeSelect>(p => p.Add(x => x.Label, labelText));
 			var cut = pokemonTypeSelect.FindComponent<MudSelect<string>>();
-
             foreach (var type in pkmnTypes)
             {
 				pokemonTypeSelect.SetParametersAndRender(p => p.Add(x => x.SelectedTypeName, type.TypeName));
-
 				Assert.Equal(type.TypeName, cut.Instance.Value);
 				Assert.Contains(type.TypeColor, cut.Instance.Style);
 			}
