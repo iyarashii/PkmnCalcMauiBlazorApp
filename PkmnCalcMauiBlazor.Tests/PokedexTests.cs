@@ -1,15 +1,9 @@
 ﻿using MudBlazor.Services;
-using MudBlazor;
-using PokemonTypeLibrary.Models;
-using System.Collections.Generic;
-using System.Linq;
 using PkmnCalcMauiBlazor.Pages;
-using System;
-using Xunit;
 
 namespace PkmnCalcMauiBlazor.Tests
 {
-	public class PokedexTests : TestContext
+    public class PokedexTests : TestContext
     {
 		public PokedexTests()
 		{
