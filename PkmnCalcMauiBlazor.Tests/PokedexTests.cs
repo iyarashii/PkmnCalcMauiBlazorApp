@@ -1,5 +1,6 @@
 ﻿using MudBlazor.Services;
 using PkmnCalcMauiBlazor.Pages;
+using System.IO;
 
 namespace PkmnCalcMauiBlazor.Tests
 {
@@ -40,5 +41,22 @@ namespace PkmnCalcMauiBlazor.Tests
             Assert.NotNull(cut);
             Assert.Equal("393.shtml", result);
         }
-	}
+
+        [Fact]
+        public void SavePokemonNames_CreatesFileWithPokemonNames()
+        {
+            // Arrange
+            var cut = RenderComponent<Pokedex>();
+
+            // Act
+            cut.InvokeAsync(() => cut.Instance.SavePokemonNames()).Wait();
+
+            // Assert
+            Assert.NotNull(cut);
+            //Assert.False(cut.Instance.progressVisible);
+            //Assert.Equal(0.0, cut.Instance.SaveProgress);
+            Assert.True(File.Exists(Pokedex.pathToPokemonNames));
+        }
+
+    }
 }

@@ -5,6 +5,8 @@ using MudBlazor;
 using System.Text.RegularExpressions;
 using PkmnCalcMauiBlazor.Pages.Logic;
 using Microsoft.AspNetCore.Components.Web;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("PkmnCalcMauiBlazor.Tests")]
 
 namespace PkmnCalcMauiBlazor.Pages
 {
@@ -31,15 +33,15 @@ namespace PkmnCalcMauiBlazor.Pages
         {
             get => $"{PokedexSource}{GetPokedexPageName()}";
         }
-        private bool progressVisible = false;
+        internal bool progressVisible = false;
         private static IDexType selectedPokedexType = new ScarletVioletPokedex();
         public static string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
         public static string PokemonName { get; set; } = "";
         public double SaveProgress { get; set; } = 0.0;
 #if (DEBUG && WINDOWS) || UNIT_TEST
-        private static string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
+        internal static string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
 #else
-        private static string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
+        internal static string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
 #endif
         public static IDexType SelectedPokedexType
         {
@@ -78,7 +80,7 @@ namespace PkmnCalcMauiBlazor.Pages
                 Clipboard.SetTextAsync(SerebiiPokedexSource);
             }
         }
-            public async Task SavePokemonNames()
+        public async Task SavePokemonNames()
         {
             using (HttpClient client = new())
             {
