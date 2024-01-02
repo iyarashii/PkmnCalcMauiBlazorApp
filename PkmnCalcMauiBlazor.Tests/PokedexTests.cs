@@ -26,5 +26,19 @@ namespace PkmnCalcMauiBlazor.Tests
             Assert.NotNull(cut);
             Assert.Equal("testpokemonname", result);
 		}
+
+		[Fact]
+		public void GetPokedexPageName_PokemonNameStartsWithDigit_Returns3DigitsWithShtml()
+		{
+            // Arrange
+            string testName = "393";
+            Pokedex.PokemonName = testName;
+            var cut = RenderComponent<Pokedex>();
+            // Act
+            var result = Pokedex.GetPokedexPageName();
+            // Assert
+            Assert.NotNull(cut);
+            Assert.Equal("393.shtml", result);
+        }
 	}
 }
