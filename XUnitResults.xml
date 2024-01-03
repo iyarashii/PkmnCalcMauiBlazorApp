@@ -1,0 +1,67 @@
+<assemblies timestamp="01/03/2024 00:17:40">
+  <assembly name="G:\repos\PkmnCalcMauiBlazor\PkmnCalcMauiBlazor.Tests\bin\Debug\net8.0\PkmnCalcMauiBlazor.Tests.dll" run-date="2024-01-03" run-time="00:17:40" total="16" passed="16" failed="0" skipped="0" time="5.968" errors="0">
+    <errors />
+    <collection total="2" passed="2" failed="0" skipped="0" name="Test collection for PkmnCalcMauiBlazor.Tests.CounterCSharpTests" time="0.215">
+      <test name="PkmnCalcMauiBlazor.Tests.CounterCSharpTests.CounterStartsAtZero" type="PkmnCalcMauiBlazor.Tests.CounterCSharpTests" method="CounterStartsAtZero" time="0.2076710" result="Pass">
+        <traits />
+      </test>
+      <test name="PkmnCalcMauiBlazor.Tests.CounterCSharpTests.ClickingButtonIncrementsCounter" type="PkmnCalcMauiBlazor.Tests.CounterCSharpTests" method="ClickingButtonIncrementsCounter" time="0.0069446" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="2" passed="2" failed="0" skipped="0" name="Test collection for PkmnCalcMauiBlazor.Tests.CounterRazorTests" time="0.215">
+      <test name="PkmnCalcMauiBlazor.Tests.CounterRazorTests.CounterStartsAtZero" type="PkmnCalcMauiBlazor.Tests.CounterRazorTests" method="CounterStartsAtZero" time="0.2076748" result="Pass">
+        <traits />
+      </test>
+      <test name="PkmnCalcMauiBlazor.Tests.CounterRazorTests.ClickingButtonIncrementsCounter" type="PkmnCalcMauiBlazor.Tests.CounterRazorTests" method="ClickingButtonIncrementsCounter" time="0.0069507" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="3" passed="3" failed="0" skipped="0" name="Test collection for PkmnCalcMauiBlazor.Tests.PokedexTests" time="5.310">
+      <test name="PkmnCalcMauiBlazor.Tests.PokedexTests.GetPokedexPageName_PokemonNameStartsWithDigit_Returns3DigitsWithShtml" type="PkmnCalcMauiBlazor.Tests.PokedexTests" method="GetPokedexPageName_PokemonNameStartsWithDigit_Returns3DigitsWithShtml" time="0.2111106" result="Pass">
+        <traits />
+      </test>
+      <test name="PkmnCalcMauiBlazor.Tests.PokedexTests.GetPokedexPageName_PokemonNameWithWhitespace_ReturnsLowercaseWithoutSpace" type="PkmnCalcMauiBlazor.Tests.PokedexTests" method="GetPokedexPageName_PokemonNameWithWhitespace_ReturnsLowercaseWithoutSpace" time="0.0030004" result="Pass">
+        <traits />
+      </test>
+      <test name="PkmnCalcMauiBlazor.Tests.PokedexTests.SavePokemonNames_CreatesFileWithPokemonNames" type="PkmnCalcMauiBlazor.Tests.PokedexTests" method="SavePokemonNames_CreatesFileWithPokemonNames" time="5.0957839" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="4" passed="4" failed="0" skipped="0" name="Test collection for PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorRazorTests" time="0.288">
+      <test name="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorRazorTests.VerifyPrimaryTypeDefaultSelection" type="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorRazorTests" method="VerifyPrimaryTypeDefaultSelection" time="0.2102100" result="Pass">
+        <traits />
+      </test>
+      <test name="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorRazorTests.VerifySecondaryTypeDefaultSelection" type="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorRazorTests" method="VerifySecondaryTypeDefaultSelection" time="0.0030211" result="Pass">
+        <traits />
+      </test>
+      <test name="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorRazorTests.VerifyDefendingPokemonTypeLegendMarkup" type="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorRazorTests" method="VerifyDefendingPokemonTypeLegendMarkup" time="0.0250148" result="Pass">
+        <traits />
+      </test>
+      <test name="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorRazorTests.VerifyPrimaryTypeSelection" type="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorRazorTests" method="VerifyPrimaryTypeSelection(pkmnTypesList: [EmptyPkmnType { DmgMultiplier = 0, TypeColor = &quot;#FFFFFF&quot;, TypeName = &quot;(none)&quot; }, NormalPkmnType { DmgMultiplier = 0, TypeColor = &quot;#A8A878&quot;, TypeName = &quot;NORMAL&quot; }, FightingPkmnType { DmgMultiplier = 0, TypeColor = &quot;#C03028&quot;, TypeName = &quot;FIGHTING&quot; }, FlyingPkmnType { DmgMultiplier = 0, TypeColor = &quot;#A890F0&quot;, TypeName = &quot;FLYING&quot; }, PoisonPkmnType { DmgMultiplier = 0, TypeColor = &quot;#A040A0&quot;, TypeName = &quot;POISON&quot; }, ...])" time="0.0492642" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="2" passed="2" failed="0" skipped="0" name="Test collection for PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorTests" time="0.213">
+      <test name="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorTests.VerifySecondaryTypeDefaultSelection" type="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorTests" method="VerifySecondaryTypeDefaultSelection" time="0.2102682" result="Pass">
+        <traits />
+      </test>
+      <test name="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorTests.VerifyPrimaryTypeDefaultSelection" type="PkmnCalcMauiBlazor.Tests.PokemonTypeCalculatorTests" method="VerifyPrimaryTypeDefaultSelection" time="0.0030163" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="1" passed="1" failed="0" skipped="0" name="Test collection for PkmnCalcMauiBlazor.Tests.PokemonTypeSelectRazorTests" time="0.211">
+      <test name="PkmnCalcMauiBlazor.Tests.PokemonTypeSelectRazorTests.VerifyMudSelectParams" type="PkmnCalcMauiBlazor.Tests.PokemonTypeSelectRazorTests" method="VerifyMudSelectParams" time="0.2110512" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="2" passed="2" failed="0" skipped="0" name="Test collection for PkmnCalcMauiBlazor.Tests.PokemonTypeSelectTests" time="0.219">
+      <test name="PkmnCalcMauiBlazor.Tests.PokemonTypeSelectTests.VerifyMudSelectParams" type="PkmnCalcMauiBlazor.Tests.PokemonTypeSelectTests" method="VerifyMudSelectParams" time="0.2117764" result="Pass">
+        <traits />
+      </test>
+      <test name="PkmnCalcMauiBlazor.Tests.PokemonTypeSelectTests.VerifySelection" type="PkmnCalcMauiBlazor.Tests.PokemonTypeSelectTests" method="VerifySelection(pkmnTypes: [EmptyPkmnType { DmgMultiplier = 0, TypeColor = &quot;#FFFFFF&quot;, TypeName = &quot;(none)&quot; }, NormalPkmnType { DmgMultiplier = 0, TypeColor = &quot;#A8A878&quot;, TypeName = &quot;NORMAL&quot; }, FightingPkmnType { DmgMultiplier = 0, TypeColor = &quot;#C03028&quot;, TypeName = &quot;FIGHTING&quot; }, FlyingPkmnType { DmgMultiplier = 0, TypeColor = &quot;#A890F0&quot;, TypeName = &quot;FLYING&quot; }, PoisonPkmnType { DmgMultiplier = 0, TypeColor = &quot;#A040A0&quot;, TypeName = &quot;POISON&quot; }, ...])" time="0.0075586" result="Pass">
+        <traits />
+      </test>
+    </collection>
+  </assembly>
+</assemblies>
