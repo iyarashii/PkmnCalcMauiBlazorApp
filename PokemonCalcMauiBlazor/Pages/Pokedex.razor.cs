@@ -88,7 +88,7 @@ namespace PkmnCalcMauiBlazor.Pages
                 if (selectedPokedexType is SwordShieldPokedex)
                     downloadString = downloadString.Split("</SELECT> </FORM></td></tr></table><option value=\"/pokedex-swsh/")[0];
                 var pokemonNameMatches = Regex.Matches(downloadString, SelectedPokedexType.Regex);
-                HashSet<string> pokemonNamesToSave = new();
+                HashSet<string> pokemonNamesToSave = [];
                 Action<Match> formatAndSavePokemonName = selectedPokedexType switch
                 {
                     XyPokedex or SunMoonPokedex => pokemonNameMatch =>
