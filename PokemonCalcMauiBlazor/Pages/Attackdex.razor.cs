@@ -11,7 +11,7 @@ namespace PkmnCalcMauiBlazor.Pages
     public partial class Attackdex : BasePage
     {
         private bool progressVisible = false;
-        private static IDexType selectedAttackdexType = new RedBlueYellowAttackdex();
+        private static IDexType selectedAttackdexType = new ScarletVioletAttackdex();
 #if DEBUG && WINDOWS
         private static string pathToData = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedAttackdexType.FileName}";
 #else
