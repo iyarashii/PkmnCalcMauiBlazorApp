@@ -12,8 +12,8 @@ namespace PkmnCalcMauiBlazor.Pages
 {
     public partial class Pokedex : BasePage
     {
-        private readonly List<IDexType> pokedexTypes = new()
-        {
+        private readonly List<IDexType> pokedexTypes =
+        [
             new FullPokedex(),
             new RedBluePokedex(),
             new GoldSilverPokedex(),
@@ -28,7 +28,7 @@ namespace PkmnCalcMauiBlazor.Pages
             new LegendsPokedex(),
             new GoPokedex(),
             new ScarletVioletPokedex()
-        };
+        ];
         private static string SerebiiPokedexSource
         {
             get => $"{PokedexSource}{GetPokedexPageName()}";
