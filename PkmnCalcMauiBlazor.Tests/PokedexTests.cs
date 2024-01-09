@@ -1,6 +1,7 @@
 ﻿using MudBlazor.Services;
 using PkmnCalcMauiBlazor.Pages;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace PkmnCalcMauiBlazor.Tests
 {
@@ -47,16 +48,35 @@ namespace PkmnCalcMauiBlazor.Tests
         {
             // Arrange
             var cut = RenderComponent<Pokedex>();
-
             // Act
             cut.InvokeAsync(() => cut.Instance.SavePokemonNames()).Wait();
-
             // Assert
             Assert.NotNull(cut);
-            //Assert.False(cut.Instance.progressVisible);
-            //Assert.Equal(0.0, cut.Instance.SaveProgress);
             Assert.True(File.Exists(Pokedex.pathToPokemonNames));
         }
 
+        [Fact]
+        public void SavePokemonNames_DisplaysProgress()
+        {
+            // Arrange
+            var cut = RenderComponent<Pokedex>();
+            Assert.False(cut.Instance.progressVisible);
+            Assert.Equal(0.0, cut.Instance.SaveProgress);
+            // Act
+            var savePokemonNamesTask = cut.InvokeAsync(() => cut.Instance.SavePokemonNames());
+            while (savePokemonNamesTask.Status != TaskStatus.RanToCompletion)
+            {
+                if(cut.Instance.progressVisible && cut.Instance.SaveProgress != 0.0)
+                {
+                    Assert.True(cut.Instance.SaveProgress > 0.0);
+                    break;
+                }
+            }
+            savePokemonNamesTask.Wait();
+            // Assert
+            Assert.NotNull(cut);
+            Assert.False(cut.Instance.progressVisible);
+            Assert.Equal(0.0, cut.Instance.SaveProgress);
+        }
     }
 }
