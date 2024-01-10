@@ -17,8 +17,8 @@ namespace PkmnCalcMauiBlazor.Pages
 #else
         private static string pathToData = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedAttackdexType.FileName);
 #endif
-        private readonly List<IDexType> attackdexTypes = new()
-        {
+        private readonly List<IDexType> attackdexTypes =
+        [
             new RedBlueYellowAttackdex(),
             new GoldSilverCrystalAttackdex(),
             new Gen3Attackdex(),
@@ -28,7 +28,7 @@ namespace PkmnCalcMauiBlazor.Pages
             new SunMoonAttackdex(),
             new SwordShieldAttackdex(),
             new ScarletVioletAttackdex(),
-        };
+        ];
         public static string AttackdexSource { get; set; } = selectedAttackdexType.Url;
         public static IDexType SelectedAttackdexType
         {
