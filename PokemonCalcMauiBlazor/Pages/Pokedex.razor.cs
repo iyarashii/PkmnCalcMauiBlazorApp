@@ -1,11 +1,11 @@
 ﻿// Copyright (c) 2023 iyarashii @ https://github.com/iyarashii 
 // Licensed under the GNU General Public License v3.0.
 
-using MudBlazor;
-using System.Text.RegularExpressions;
-using PkmnCalcMauiBlazor.Pages.Logic;
 using Microsoft.AspNetCore.Components.Web;
+using MudBlazor;
+using PkmnCalcMauiBlazor.Pages.Logic;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 [assembly: InternalsVisibleTo("PkmnCalcMauiBlazor.Tests")]
 
 namespace PkmnCalcMauiBlazor.Pages
@@ -104,9 +104,9 @@ namespace PkmnCalcMauiBlazor.Pages
                     ,
                     RedBluePokedex or GoldSilverPokedex or RubySapphirePokedex
                         or DiamondPearlPokedex or BlackWhitePokedex or SwordShieldPokedex or GoPokedex => pokemonNameMatch =>
-                           pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value.Trim(), "</option>", "")),
+                           pokemonNamesToSave.Add(OptionClosingTag().Replace(pokemonNameMatch.Value.Trim(), "")),
                     _ => pokemonNameMatch =>
-                            pokemonNamesToSave.Add(Regex.Replace(pokemonNameMatch.Value, "\\d+? ", "").Trim()),
+                            pokemonNamesToSave.Add(DigitsFollowedBySpace().Replace(pokemonNameMatch.Value, "").Trim()),
                 };
                 var progress = 0.0;
                 foreach (Match pokemonNameMatch in pokemonNameMatches.Cast<Match>())
@@ -133,5 +133,10 @@ namespace PkmnCalcMauiBlazor.Pages
                 await SavePokemonNames();
             }
         }
+
+        [GeneratedRegex("</option>")]
+        private static partial Regex OptionClosingTag();
+        [GeneratedRegex("\\d+? ")]
+        private static partial Regex DigitsFollowedBySpace();
     }
 }
