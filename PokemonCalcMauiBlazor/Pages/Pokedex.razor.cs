@@ -96,12 +96,10 @@ namespace PkmnCalcMauiBlazor.Pages
                                                 var pokemonNumber = pokemonNameMatch.Value[..3];
                                                 if (pokemonNumber == pokemonNameMatch.Value.Substring(11, 3))
                                                 {
-                                                    var pokemonName = Regex.Replace(pokemonNameMatch.Value, "</option>", "").Remove(0, 14).Trim();
+                                                    var pokemonName = OptionClosingTag().Replace(pokemonNameMatch.Value, "").Remove(0, 14).Trim();
                                                     pokemonNamesToSave.Add($"{pokemonNumber} {pokemonName}");
                                                 }
-                                            }
-
-                    ,
+                                            },
                     RedBluePokedex or GoldSilverPokedex or RubySapphirePokedex
                         or DiamondPearlPokedex or BlackWhitePokedex or SwordShieldPokedex or GoPokedex => pokemonNameMatch =>
                            pokemonNamesToSave.Add(OptionClosingTag().Replace(pokemonNameMatch.Value.Trim(), "")),
