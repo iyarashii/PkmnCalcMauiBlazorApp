@@ -27,7 +27,7 @@ public static class MauiProgram
             config.SnackbarConfiguration.ClearAfterNavigation = true;
             config.SnackbarConfiguration.VisibleStateDuration = 500;
         });
-
+        builder.Services.AddSingleton<System.IO.Abstractions.IFileSystem, System.IO.Abstractions.FileSystem>();
         return builder.Build();
 	}
 }
