@@ -22,6 +22,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="MudBlazor" Version="6.6.0" />
+    <PackageReference Include="System.IO.Abstractions" Version="20.0.4" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="xunit" Version="2.4.2" />

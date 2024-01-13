@@ -63,12 +63,12 @@ namespace PkmnCalcMauiBlazor.Pages
                                                     && char.IsDigit(PokemonName[0]))
                                                     ? $"{PokemonName[..3]}.shtml"
                                                     : PokemonName?.Replace(" ", "").ToLower());
-        private static async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
+        internal async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
         {
             // if text is null or empty, don't return values (drop-down will not open)
             if (string.IsNullOrEmpty(pokemonName))
                 return Array.Empty<string>();
-            var names = await File.ReadAllLinesAsync(pathToPokemonNames);
+            var names = await FileSystemAbstraction.File.ReadAllLinesAsync(pathToPokemonNames);
             return names.Where(x => x.Contains(pokemonName, StringComparison.InvariantCultureIgnoreCase));
         }
 
