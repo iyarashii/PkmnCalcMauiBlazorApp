@@ -1,7 +1,11 @@
 ﻿using MudBlazor.Services;
+using NSubstitute;
 using PkmnCalcMauiBlazor.Pages;
+using System;
 using System.IO;
+using System.IO.Abstractions;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace PkmnCalcMauiBlazor.Tests
 {
@@ -11,6 +15,7 @@ namespace PkmnCalcMauiBlazor.Tests
 		{
 			// Mud services test setup
 			Services.AddMudServices();
+            Services.AddSingleton<IFileSystem, FileSystem>();
 			JSInterop.SetupVoid("mudPopover.initialize", "mudblazor-main-content", 0);
 			JSInterop.SetupVoid("mudKeyInterceptor.connect", _ => true);
 		}
@@ -77,6 +82,18 @@ namespace PkmnCalcMauiBlazor.Tests
             Assert.NotNull(cut);
             Assert.False(cut.Instance.progressVisible);
             Assert.Equal(0.0, cut.Instance.SaveProgress);
+        }
+
+        [Fact]
+        public void SearchForPokemonName_GivenEmptyString_ReturnsEmptyArray()
+        {
+            // Arrange
+            var cut = RenderComponent<Pokedex>();
+            // Act
+            var result = cut.Instance.SearchForPokemonName("").Result;
+            // Assert
+            Assert.NotNull(cut);
+            Assert.Empty(result);
         }
     }
 }
