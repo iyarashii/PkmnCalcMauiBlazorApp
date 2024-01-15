@@ -95,5 +95,21 @@ namespace PkmnCalcMauiBlazor.Tests
             Assert.NotNull(cut);
             Assert.Empty(result);
         }
+
+        [Fact]
+        public void SearchForPokemonName_GivenNotEmptyString_ReturnsMatchingNames()
+        {
+            // Arrange
+            var fileSystemMock = Substitute.For<FileSystem>();
+            fileSystemMock.File.ReadAllLinesAsync(Arg.Any<string>()).Returns(new string[] { "pikachu", "pichu", "raichu" });
+            Services.AddSingleton<IFileSystem>(fileSystemMock);
+            var cut = RenderComponent<Pokedex>();
+            // Act
+            var result = cut.Instance.SearchForPokemonName("pi").Result;
+            // Assert
+            Assert.NotNull(cut);
+            Assert.Contains("pikachu", result);
+            Assert.Contains("pichu", result);
+        }
     }
 }
