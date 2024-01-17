@@ -99,7 +99,7 @@ namespace PkmnCalcMauiBlazor.Tests
         {
             // Arrange
             var fileSystemMock = Substitute.For<FileSystem>();
-            fileSystemMock.File.ReadAllLinesAsync(Arg.Any<string>()).Returns(new string[] { "pikachu", "pichu", "raichu" });
+            fileSystemMock.File.ReadAllLinesAsync(Arg.Any<string>()).Returns(["pikachu", "pichu", "raichu" ]);
             Services.AddSingleton<IFileSystem>(fileSystemMock);
             var cut = RenderComponent<Pokedex>();
             // Act
