@@ -122,14 +122,16 @@ namespace PkmnCalcMauiBlazor.Pages
             SaveProgress = 0.0;
         }
 
-        private async Task OpenSavePokemonDataDialog()
+        public async Task<bool> OpenSavePokemonDataDialog()
         {
             var options = new DialogOptions { CloseOnEscapeKey = true, NoHeader = true };
             var dialogRef = DialogService.Show<SavePokemonDataDialog>("", options);
             if (await dialogRef.GetReturnValueAsync<bool?>() ?? false)
             {
                 await SavePokemonNames();
+                return true;
             }
+            return false;
         }
 
         [GeneratedRegex("</option>")]

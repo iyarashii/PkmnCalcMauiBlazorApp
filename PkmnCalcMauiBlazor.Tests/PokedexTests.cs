@@ -1,4 +1,5 @@
-﻿using MudBlazor.Services;
+﻿using MudBlazor;
+using MudBlazor.Services;
 using NSubstitute;
 using PkmnCalcMauiBlazor.Pages;
 using System.IO;
@@ -108,6 +109,22 @@ namespace PkmnCalcMauiBlazor.Tests
             Assert.NotNull(cut);
             Assert.Contains("pikachu", result);
             Assert.Contains("pichu", result);
+        }
+
+        [Fact]
+        public void OpenSavePokemonDataDialog_DialogReturnsYes_CallsSavePokemonNames()
+        {
+            // Arrange
+            var dialogServiceMock = Substitute.For<IDialogService>();
+            var dialogRefMock = Substitute.For<IDialogReference>();
+            dialogRefMock.GetReturnValueAsync<bool?>().Returns(true);
+            dialogServiceMock.Show<SavePokemonDataDialog>(Arg.Any<string>(), Arg.Any<DialogOptions>()).Returns(dialogRefMock);
+            Services.AddSingleton(dialogServiceMock);
+            var cut = RenderComponent<Pokedex>();
+            // Act
+            var result = cut.InvokeAsync(() => cut.Instance.OpenSavePokemonDataDialog()).Result;
+            // Assert
+            Assert.True(result);
         }
     }
 }
