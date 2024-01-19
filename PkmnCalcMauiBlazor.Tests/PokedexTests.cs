@@ -112,7 +112,7 @@ namespace PkmnCalcMauiBlazor.Tests
         }
 
         [Fact]
-        public void OpenSavePokemonDataDialog_DialogReturnsYes_CallsSavePokemonNames()
+        public void OpenSavePokemonDataDialog_DialogClickedYes_ReturnsTrue()
         {
             // Arrange
             var dialogServiceMock = Substitute.For<IDialogService>();
@@ -125,6 +125,22 @@ namespace PkmnCalcMauiBlazor.Tests
             var result = cut.InvokeAsync(() => cut.Instance.OpenSavePokemonDataDialog()).Result;
             // Assert
             Assert.True(result);
+        }
+
+        [Fact]
+        public void OpenSavePokemonDataDialog_DialogClickedNo_ReturnsFalse()
+        {
+            // Arrange
+            var dialogServiceMock = Substitute.For<IDialogService>();
+            var dialogRefMock = Substitute.For<IDialogReference>();
+            dialogRefMock.GetReturnValueAsync<bool?>().Returns(false);
+            dialogServiceMock.Show<SavePokemonDataDialog>(Arg.Any<string>(), Arg.Any<DialogOptions>()).Returns(dialogRefMock);
+            Services.AddSingleton(dialogServiceMock);
+            var cut = RenderComponent<Pokedex>();
+            // Act
+            var result = cut.InvokeAsync(() => cut.Instance.OpenSavePokemonDataDialog()).Result;
+            // Assert
+            Assert.False(result);
         }
     }
 }
