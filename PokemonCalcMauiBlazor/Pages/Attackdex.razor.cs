@@ -45,7 +45,7 @@ namespace PkmnCalcMauiBlazor.Pages
         }
         public double SaveProgress { get; set; } = 0.0;
         public static string AttackName { get; set; } = "";
-        private static async Task<IEnumerable<string>> SearchForAttackName(string attackName)
+        public static async Task<IEnumerable<string>> SearchForAttackName(string attackName)
         {
             // if text is null or empty, don't return values (drop-down will not open)
             if (string.IsNullOrEmpty(attackName))
