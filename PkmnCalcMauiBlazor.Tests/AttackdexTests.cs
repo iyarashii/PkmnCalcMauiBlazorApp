@@ -1,12 +1,7 @@
 ﻿using MudBlazor.Services;
+using NSubstitute;
 using PkmnCalcMauiBlazor.Pages;
-using System;
-using System.Collections.Generic;
 using System.IO.Abstractions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace PkmnCalcMauiBlazor.Tests
 {
@@ -26,10 +21,27 @@ namespace PkmnCalcMauiBlazor.Tests
             // Arrange
             var cut = RenderComponent<Attackdex>();
             // Act
-            var result = Attackdex.SearchForAttackName("").Result;
+            var result = cut.Instance.SearchForAttackName("").Result;
+            // Assert
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void SearchForAttackName_GivenNotEmptyName_ReturnsMatchingNames()
+        {
+            // Arrange
+            var fileSystemMock = Substitute.For<FileSystem>();
+            fileSystemMock.File.ReadAllLinesAsync(Arg.Any<string>()).Returns(["thunderbolt", "thunder", "thunder fang", "THUNDER CAGE"]);
+            Services.AddSingleton<IFileSystem>(fileSystemMock);
+            var cut = RenderComponent<Attackdex>();
+            // Act
+            var result = cut.Instance.SearchForAttackName("thunder").Result;
             // Assert
             Assert.NotNull(cut);
-            Assert.Empty(result);
+            Assert.Contains("thunderbolt", result);
+            Assert.Contains("thunder", result);
+            Assert.Contains("thunder fang", result);
+            Assert.Contains("THUNDER CAGE", result);
         }
     }
 }
