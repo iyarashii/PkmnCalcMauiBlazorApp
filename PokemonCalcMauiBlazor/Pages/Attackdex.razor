@@ -1,6 +1,8 @@
 ﻿@page "/attackdex"
 @inherits BasePage
 @inject IDialogService DialogService
+@inject System.IO.Abstractions.IFileSystem FileSystemAbstraction
+
 <DexSelect Label="Attackdex Type" DexTypes="attackdexTypes"
            @bind-SelectedDexType="SelectedAttackdexType" @bind-DexSource="AttackdexSource" />
 @{#if DEBUG
