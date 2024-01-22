@@ -45,14 +45,9 @@ namespace PkmnCalcMauiBlazor.Pages
         }
         public double SaveProgress { get; set; } = 0.0;
         public static string AttackName { get; set; } = "";
-        // TODO: maybe move code to basepage since both attackdex and pokedex use it
         public async Task<IEnumerable<string>> SearchForAttackName(string attackName)
         {
-            // if text is null or empty, don't return values (drop-down will not open)
-            if (string.IsNullOrEmpty(attackName))
-                return Array.Empty<string>();
-            var names = await FileSystemAbstraction.File.ReadAllLinesAsync(pathToData);
-            return names.Where(x => x.Contains(attackName, StringComparison.InvariantCultureIgnoreCase));
+            return await SearchForMatchingNamesInFile(attackName, FileSystemAbstraction, pathToData);
         }
         private async Task OpenSavePokemonDataDialog()
         {

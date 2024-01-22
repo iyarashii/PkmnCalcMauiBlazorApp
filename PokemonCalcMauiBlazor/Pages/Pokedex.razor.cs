@@ -65,11 +65,7 @@ namespace PkmnCalcMauiBlazor.Pages
                                                     : PokemonName?.Replace(" ", "").ToLower());
         internal async Task<IEnumerable<string>> SearchForPokemonName(string pokemonName)
         {
-            // if text is null or empty, don't return values (drop-down will not open)
-            if (string.IsNullOrEmpty(pokemonName))
-                return Array.Empty<string>();
-            var names = await FileSystemAbstraction.File.ReadAllLinesAsync(pathToPokemonNames);
-            return names.Where(x => x.Contains(pokemonName, StringComparison.InvariantCultureIgnoreCase));
+            return await SearchForMatchingNamesInFile(pokemonName, FileSystemAbstraction, pathToPokemonNames);
         }
 
         public void HandleRightClick(MouseEventArgs args)
