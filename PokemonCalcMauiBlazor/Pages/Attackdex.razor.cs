@@ -70,7 +70,7 @@ namespace PkmnCalcMauiBlazor.Pages
             {
                 string downloadString = await client.GetStringAsync(AttackdexSource);
                 var nameMatches = Regex.Matches(downloadString, SelectedAttackdexType.Regex);
-                HashSet<string> namesToSave = new();
+                HashSet<string> namesToSave = [];
                 void formatAndSaveName(Match nameMatch) => namesToSave.Add(Regex.Replace(nameMatch.Value.Trim(), "</option>", ""));
                 var progress = 0.0;
                 foreach (Match nameMatch in nameMatches.Cast<Match>())
