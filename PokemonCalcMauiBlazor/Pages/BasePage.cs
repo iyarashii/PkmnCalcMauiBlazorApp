@@ -2,10 +2,11 @@
 // Licensed under the GNU General Public License v3.0.
 
 using Microsoft.AspNetCore.Components;
+using System.Text.RegularExpressions;
 
 namespace PkmnCalcMauiBlazor.Pages
 {
-    public class BasePage : ComponentBase
+    public partial class BasePage : ComponentBase
     {
         public static async Task<IEnumerable<string>> SearchForMatchingNamesInFile(string name, System.IO.Abstractions.IFileSystem fileSystem, string pathToData)
         {
@@ -15,5 +16,7 @@ namespace PkmnCalcMauiBlazor.Pages
             var names = await fileSystem.File.ReadAllLinesAsync(pathToData);
             return names.Where(x => x.Contains(name, StringComparison.InvariantCultureIgnoreCase));
         }
+        [GeneratedRegex("</option>")]
+        public static partial Regex OptionClosingTag();
     }
 }
