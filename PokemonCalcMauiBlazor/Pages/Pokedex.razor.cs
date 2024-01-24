@@ -130,8 +130,6 @@ namespace PkmnCalcMauiBlazor.Pages
             return false;
         }
 
-        [GeneratedRegex("</option>")]
-        private static partial Regex OptionClosingTag();
         [GeneratedRegex("\\d+? ")]
         private static partial Regex DigitsFollowedBySpace();
     }

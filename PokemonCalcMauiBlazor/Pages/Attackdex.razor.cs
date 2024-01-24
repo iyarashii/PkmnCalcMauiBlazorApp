@@ -63,7 +63,8 @@ namespace PkmnCalcMauiBlazor.Pages
             get => $"{AttackdexSource}{GetPageName()}";
         }
 
-        public static string GetPageName() => string.IsNullOrEmpty(AttackName) ? null : $"{AttackName?.Replace(" ", "").ToLower()}.shtml";
+        public static string GetPageName() => 
+            string.IsNullOrEmpty(AttackName) ? null : $"{AttackName?.Replace(" ", "").ToLower()}.shtml";
         public async Task SaveNamesFromSerebii()
         {
             using (HttpClient client = new())
@@ -71,7 +72,8 @@ namespace PkmnCalcMauiBlazor.Pages
                 string downloadString = await client.GetStringAsync(AttackdexSource);
                 var nameMatches = Regex.Matches(downloadString, SelectedAttackdexType.Regex);
                 HashSet<string> namesToSave = [];
-                void formatAndSaveName(Match nameMatch) => namesToSave.Add(Regex.Replace(nameMatch.Value.Trim(), "</option>", ""));
+                void formatAndSaveName(Match nameMatch) => 
+                    namesToSave.Add(OptionClosingTag().Replace(nameMatch.Value.Trim(), ""));
                 var progress = 0.0;
                 foreach (Match nameMatch in nameMatches.Cast<Match>())
                 {
