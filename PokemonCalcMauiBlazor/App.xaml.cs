@@ -24,4 +24,15 @@ public partial class App : Application
 
     [DllImport("user32.dll")]
     private static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
+
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+        var window = base.CreateWindow(activationState);
+        if (window != null)
+        {
+            window.Title = "Pokemon Type Calculator - MAUI";
+        }
+
+        return window;
+    }
 }
