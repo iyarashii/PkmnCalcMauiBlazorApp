@@ -22,8 +22,9 @@ public partial class App : Application
         MainPage = new MainPage();
 	}
 
-    [DllImport("user32.dll")]
-    private static extern bool ShowWindow(IntPtr hWnd, int cmdShow);
+    [LibraryImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool ShowWindow(IntPtr hWnd, int cmdShow);
 
     protected override Window CreateWindow(IActivationState activationState)
     {
