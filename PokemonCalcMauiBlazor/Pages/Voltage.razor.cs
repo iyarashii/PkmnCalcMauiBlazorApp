@@ -1,18 +1,10 @@
-﻿// Copyright (c) 2023 iyarashii @ https://github.com/iyarashii 
+﻿// Copyright (c) 2024 iyarashii @ https://github.com/iyarashii 
 // Licensed under the GNU General Public License v3.0.
-
-using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PkmnCalcMauiBlazor.Pages
 {
     public partial class Voltage : BasePage
     {
-        private static string ProjectVoltageUrl
-        {
-            get => $"https://www.serebii.net/music/projectvoltage/";
-        }
+        private static string ProjectVoltageUrl => $"https://www.serebii.net/music/projectvoltage/";
     }
 }
