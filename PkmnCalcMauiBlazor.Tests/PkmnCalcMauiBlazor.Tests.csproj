@@ -39,6 +39,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PokemonCalcMauiBlazor\PkmnCalcMauiBlazor.csproj" />
-    <ProjectReference Include="..\PokemonTypeLibrary\PokemonTypeLibrary.csproj" />
   </ItemGroup>
 </Project>
