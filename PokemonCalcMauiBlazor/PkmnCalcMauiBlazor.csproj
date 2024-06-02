@@ -75,9 +75,6 @@
     <None Remove="Resources\Images\botti.apng" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PokemonTypeLibrary\PokemonTypeLibrary.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +87,7 @@
     <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.3" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="8.0.3" />
+    <PackageReference Include="PokemonTypeLibrary" Version="1.0.2" />
     <PackageReference Include="System.IO.Abstractions" Version="20.0.4" />
   </ItemGroup>
 </Project>
