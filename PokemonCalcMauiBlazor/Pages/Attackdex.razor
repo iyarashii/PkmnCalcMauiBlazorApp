@@ -5,11 +5,15 @@
 
 <DexSelect Label="Attackdex Type" DexTypes="attackdexTypes"
            @bind-SelectedDexType="SelectedAttackdexType" @bind-DexSource="AttackdexSource" />
-@{#if DEBUG
+@{
+    #if DEBUG
+}
     <p>Path to data: @pathToData</p>
     <p>Dex src: @AttackdexSource</p>
     <p>Iframe src: @SerebiiAttackdexSource</p>
-#endif}
+@{
+    #endif
+}
 @if (progressVisible)
 {
     <SavePokemonNamesProgress Value="SaveProgress" />
