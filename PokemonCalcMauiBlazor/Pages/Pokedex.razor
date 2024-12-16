@@ -6,11 +6,15 @@
 @inject System.IO.Abstractions.IFileSystem FileSystemAbstraction
 @inherits BasePage
 <DexSelect Label="Pokedex Type" DexTypes="pokedexTypes" @bind-SelectedDexType="SelectedPokedexType" @bind-DexSource="PokedexSource"/>
-@{#if DEBUG
+@{
+    #if DEBUG
+}
     <p>Path to names: @pathToPokemonNames</p>
     <p>Dex src: @PokedexSource</p>
     <p @oncontextmenu="HandleRightClick">Iframe src: @SerebiiPokedexSource</p>
-#endif}
+@{
+    #endif
+}
 @if (progressVisible)
 {
     <SavePokemonNamesProgress Value="SaveProgress" />
