@@ -13,7 +13,7 @@ namespace PkmnCalcMauiBlazor.Pages
         private bool progressVisible = false;
         private static IDexType selectedAttackdexType = new ScarletVioletAttackdex();
 #if (DEBUG && WINDOWS) || UNIT_TEST
-        private static string pathToData = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedAttackdexType.FileName}";
+        private static string pathToData = $@"F:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedAttackdexType.FileName}";
 #else
         private static string pathToData = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedAttackdexType.FileName);
 #endif
@@ -37,7 +37,7 @@ namespace PkmnCalcMauiBlazor.Pages
             {
                 selectedAttackdexType = value;
 #if (DEBUG && WINDOWS) || UNIT_TEST
-                pathToData = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedAttackdexType.FileName}";
+                pathToData = $@"F:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedAttackdexType.FileName}";
 #else
                 pathToData = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedAttackdexType.FileName);
 #endif

@@ -39,7 +39,7 @@ namespace PkmnCalcMauiBlazor.Pages
         public static string PokemonName { get; set; } = "";
         public double SaveProgress { get; set; } = 0.0;
 #if (DEBUG && WINDOWS) || UNIT_TEST
-        internal static string pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
+        internal static string pathToPokemonNames = $@"F:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
 #else
         internal static string pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
 #endif
@@ -50,7 +50,7 @@ namespace PkmnCalcMauiBlazor.Pages
             {
                 selectedPokedexType = value;
 #if (DEBUG && WINDOWS) || UNIT_TEST
-                pathToPokemonNames = $@"G:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
+                pathToPokemonNames = $@"F:\repos\PkmnCalcMauiBlazor\PokemonCalcMauiBlazor\Data\{SelectedPokedexType.FileName}";
 #else
                 pathToPokemonNames = Path.Combine(FileSystem.Current.AppDataDirectory, SelectedPokedexType.FileName);
 #endif
