@@ -12,7 +12,7 @@ namespace PkmnCalcMauiBlazor.Pages
         {
             // if text is null or empty, don't return values (drop-down will not open)
             if (string.IsNullOrEmpty(name))
-                return Array.Empty<string>();
+                return [];
             var names = await fileSystem.File.ReadAllLinesAsync(pathToData);
             return names.Where(x => x.Contains(name, StringComparison.InvariantCultureIgnoreCase));
         }
