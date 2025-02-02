@@ -13,6 +13,9 @@ App on Windows:
 Type calc
 ![image](https://user-images.githubusercontent.com/38395954/196004141-13c05d37-5737-408d-99ad-168bcc4dd029.png)
 
+Voltage page:
+![image](https://github.com/user-attachments/assets/aac8cd5b-05fe-4029-a738-aedb1db0806e)
+
 Pokedex - Windows  
 ![image](https://user-images.githubusercontent.com/38395954/219704402-e4b35c7d-5bac-473f-8331-b467ac28c5c2.png)
 Pokedex - Android  
