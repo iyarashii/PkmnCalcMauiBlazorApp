@@ -67,6 +67,8 @@ namespace PkmnCalcMauiBlazor.Pages
             string.IsNullOrEmpty(AttackName) ? null : $"{AttackName?.Replace(" ", "").ToLower()}.shtml";
         public async Task SaveNamesFromSerebii()
         {
+            progressVisible = true;
+            StateHasChanged();
             using (HttpClient client = new())
             {
                 string downloadString = await client.GetStringAsync(AttackdexSource);
@@ -79,7 +81,6 @@ namespace PkmnCalcMauiBlazor.Pages
                 {
                     formatAndSaveName(nameMatch);
                     progress++;
-                    progressVisible = true;
                     SaveProgress = progress / nameMatches.Count * 100;
                     StateHasChanged();
                 }
