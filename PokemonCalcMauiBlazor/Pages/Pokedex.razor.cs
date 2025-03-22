@@ -78,6 +78,8 @@ namespace PkmnCalcMauiBlazor.Pages
         }
         public async Task SavePokemonNames()
         {
+            progressVisible = true;
+            StateHasChanged();
             using (HttpClient client = new())
             {
                 string downloadString = await client.GetStringAsync(PokedexSource);
@@ -107,7 +109,6 @@ namespace PkmnCalcMauiBlazor.Pages
                 {
                     formatAndSavePokemonName(pokemonNameMatch);
                     progress++;
-                    progressVisible = true;
                     SaveProgress = progress / pokemonNameMatches.Count * 100;
                     StateHasChanged();
                 }
