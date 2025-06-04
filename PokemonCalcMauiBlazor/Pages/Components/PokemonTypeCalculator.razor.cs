@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Components;
 using PokemonTypeLibrary.Models;
 
-namespace PkmnCalcMauiBlazor.Pages
+namespace PkmnCalcMauiBlazor.Pages.Components
 {
     public partial class PokemonTypeCalculator : ComponentBase
     {

@@ -3,6 +3,7 @@
 
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor;
+using PkmnCalcMauiBlazor.Pages.Components;
 using PkmnCalcMauiBlazor.Pages.Logic;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;

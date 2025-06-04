@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Components;
 
-namespace PkmnCalcMauiBlazor.Pages
+namespace PkmnCalcMauiBlazor.Pages.Components
 {
     public partial class SavePokemonNamesProgress : ComponentBase
     {

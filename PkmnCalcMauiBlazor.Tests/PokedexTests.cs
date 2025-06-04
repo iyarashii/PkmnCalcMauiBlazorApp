@@ -2,6 +2,7 @@
 using MudBlazor.Services;
 using NSubstitute;
 using PkmnCalcMauiBlazor.Pages;
+using PkmnCalcMauiBlazor.Pages.Components;
 using System.IO;
 using System.IO.Abstractions;
 using System.Threading.Tasks;

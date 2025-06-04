@@ -1,5 +1,5 @@
 ﻿using MudBlazor.Services;
-using PkmnCalcMauiBlazor.Pages;
+using PkmnCalcMauiBlazor.Pages.Components;
 using PokemonTypeLibrary.Models;
 using System.Linq;
 

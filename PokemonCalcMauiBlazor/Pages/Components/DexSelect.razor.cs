@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Components;
 using PkmnCalcMauiBlazor.Pages.Logic;
 
-namespace PkmnCalcMauiBlazor.Pages
+namespace PkmnCalcMauiBlazor.Pages.Components
 {
     public partial class DexSelect : ComponentBase
     {

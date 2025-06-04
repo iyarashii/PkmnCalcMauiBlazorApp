@@ -2,6 +2,7 @@
 // Licensed under the GNU General Public License v3.0.
 
 using MudBlazor;
+using PkmnCalcMauiBlazor.Pages.Components;
 using PkmnCalcMauiBlazor.Pages.Logic;
 using PkmnCalcMauiBlazor.Pages.Logic.Attackdex;
 using System.Text.RegularExpressions;
