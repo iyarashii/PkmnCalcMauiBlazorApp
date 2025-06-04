@@ -5,6 +5,8 @@
 @inject ISnackbar Snackbar
 @inject System.IO.Abstractions.IFileSystem FileSystemAbstraction
 @inherits BasePage
+@using PkmnCalcMauiBlazor.Pages.Components
+
 <DexSelect Label="Pokedex Type" DexTypes="pokedexTypes" @bind-SelectedDexType="SelectedPokedexType" @bind-DexSource="PokedexSource"/>
 @{
     #if DEBUG

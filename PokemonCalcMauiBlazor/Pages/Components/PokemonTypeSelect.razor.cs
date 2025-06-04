@@ -4,14 +4,14 @@
 using Microsoft.AspNetCore.Components;
 using PokemonTypeLibrary.Models;
 
-namespace PkmnCalcMauiBlazor.Pages
+namespace PkmnCalcMauiBlazor.Pages.Components
 {
     public partial class PokemonTypeSelect : ComponentBase
     {
 #if ANDROID
         private readonly int maxHeight = 600;
 #else
-            private readonly int maxHeight = -1;
+        private readonly int maxHeight = -1;
 #endif
         private string _selectedTypeName;
         public string SelectedTypeColor { get => PkmnTypeList?.Find(x => x.TypeName == SelectedTypeName)?.TypeColor ?? "#FFFFFF"; }
