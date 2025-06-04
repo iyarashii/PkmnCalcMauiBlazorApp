@@ -3,7 +3,7 @@ using MudBlazor;
 using PokemonTypeLibrary.Models;
 using System.Collections.Generic;
 using System.Linq;
-using PkmnCalcMauiBlazor.Pages;
+using PkmnCalcMauiBlazor.Pages.Components;
 
 namespace PkmnCalcMauiBlazor.Tests
 {
