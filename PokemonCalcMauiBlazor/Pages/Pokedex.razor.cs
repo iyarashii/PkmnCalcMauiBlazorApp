@@ -35,7 +35,7 @@ namespace PkmnCalcMauiBlazor.Pages
             get => $"{PokedexSource}{GetPokedexPageName()}";
         }
         internal bool progressVisible = false;
-        private static IDexType selectedPokedexType = new ScarletVioletPokedex();
+        private static IDexType selectedPokedexType = new FullPokedex();
         public static string PokedexSource { get; set; } = "https://www.serebii.net/pokedex-sv/";
         public static string PokemonName { get; set; } = "";
         public double SaveProgress { get; set; } = 0.0;
