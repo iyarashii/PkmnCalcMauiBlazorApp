@@ -59,6 +59,7 @@ namespace PkmnCalcMauiBlazor.Pages
         }
 
         // returns pokemon number or pokemon name depending on the pokedex for example "25.shtml" or "pikachu"
+        // TODO: check if works when pokemon has 4 digits (e.g. 1000)
         public static string GetPokedexPageName() =>
                                                     ((!string.IsNullOrEmpty(PokemonName)
                                                     && char.IsDigit(PokemonName[0]))
